@@ -1,0 +1,9 @@
+/* pages/carCustomizationOrderDetail/carCustomizationOrderDetail.wxss */
+.cardText {
+  font-size: 28rpx;
+  color: #666666;
+}
+.footer {
+  width: 100%;
+  margin-top: 100rpx;
+}

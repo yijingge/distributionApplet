@@ -1,0 +1,60 @@
+<!--pages/carCustomizationOrderDetail/carCustomizationOrderDetail.wxml-->
+<view class="info">
+  <wux-cell-group title="用车信息">
+      <wux-cell title="出发地 :" extra="苏州"></wux-cell>
+      <wux-cell title="行程天数 :" extra="3天"></wux-cell>
+      <wux-cell title="行程类型 :" extra="往返"></wux-cell>
+      <wux-cell title="人数 :" extra="64人"></wux-cell>
+      <wux-cell title="出行时间 :" extra="2018-02-05 9:00"></wux-cell>
+      <wux-cell title="车型限制 :" extra="限制"></wux-cell>
+      <wux-cell title="备注 :" extra="要三年内新车"></wux-cell>
+  </wux-cell-group>
+  <wux-accordion-group title="行程安排">
+      <wux-accordion title="点击查看详细行程">
+        2018.09.10, 10:40, 南前门到南京万豪酒店
+      </wux-accordion>
+  </wux-accordion-group>
+  <wux-accordion-group title="车辆需求">
+      <wux-accordion title="点击查看详细需求">
+        <wux-card title="需求1">
+          <view slot="body">
+            <wux-row>
+              <wux-col span="6">
+                  <text class="cardText">座位数 : 27座</text>
+              </wux-col>
+              <wux-col span="6">
+                  <text class="cardText">数量 : 1辆</text>
+              </wux-col>
+            </wux-row>
+            <wux-row>
+              <wux-col span="6">
+                  <text class="cardText">座位数 : 33座</text>
+              </wux-col>
+              <wux-col span="6">
+                  <text class="cardText">数量 : 1辆</text>
+              </wux-col>
+            </wux-row>
+          </view>
+          <view slot="footer"></view>
+        </wux-card>
+        <wux-white-space size="default" />
+      <wux-card title="需求2">
+        <view slot="body">
+          <wux-row>
+            <wux-col span="6">
+                <text class="cardText">座位数 : 27座</text>
+            </wux-col>
+            <wux-col span="6">
+                <text class="cardText">数量 : 2辆</text>
+            </wux-col>
+          </wux-row>
+        </view>
+        <view slot="footer"></view>
+      </wux-card>
+      </wux-accordion>
+  </wux-accordion-group>
+</view>
+<view class="footer">
+  <wux-button block type="positive">立即报价</wux-button>
+</view>
+<wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />

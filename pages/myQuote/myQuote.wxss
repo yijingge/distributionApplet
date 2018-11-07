@@ -1,0 +1,17 @@
+/* pages/myQuote/myQuote.wxss */
+
+.priceText {
+    text-align: right;
+}
+.price_red {
+    color: #ff4d4d;
+}
+.tableText {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    font-size: 28rpx;
+}
+.rowText {
+    font-size: 28rpx;
+}

@@ -1,0 +1,31 @@
+<!--pages/personalCenter/personalCenter.wxml-->
+<view class="info">
+    <wux-cell-group title="账户信息">
+        <wux-cell title="会员名 :" extra="admin"></wux-cell>
+        <wux-cell title="手机号 :" extra="13961161742"></wux-cell>
+    </wux-cell-group>
+</view>
+<view class="logoOut">
+    <wux-button block type="assertive">退出登录</wux-button>
+</view>
+<view class="footer">
+    <wux-tabbar default-current="1" position="bottom" theme="positive">
+        <wux-tabbar-item title="定制报价" bindtap="goToCarCustomizationOrderList">
+            <wux-badge dot slot="icon-on">
+                <wux-icon wux-class="icon" type="ios-list-box" size="22" />
+            </wux-badge>
+            <wux-badge dot slot="icon-off">
+                <wux-icon wux-class="icon" type="ios-list-box" size="22" />
+            </wux-badge>
+        </wux-tabbar-item>
+        <wux-tabbar-item title="个人中心" bindtap="goToPersonalCenter">
+            <wux-badge slot="icon-on">
+                <wux-icon wux-class="icon" type="ios-contact" size="22" />
+            </wux-badge>
+            <wux-badge slot="icon-off">
+                <wux-icon wux-class="icon" type="ios-contact" size="22" />
+            </wux-badge>
+        </wux-tabbar-item>
+    </wux-tabbar>
+</view>
+<wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />

@@ -1,0 +1,154 @@
+<!--pages/immediateOffer.wxml-->
+<view class="info">
+    <wux-cell-group title="车辆方案">
+        <wux-cell>
+            <view>
+                <wux-row>
+                    <wux-col span="3">
+                        <view>方案1</view>
+                    </wux-col>
+                    <wux-col span="7" push="2">
+                        <view class="priceText">报价合计 : <text class="price_red">500元</text></view>
+                    </wux-col>
+                </wux-row>
+                <wux-white-space size="default" />
+                <wux-row>
+                    <view class="tableText">车辆配置</view>
+                    <view class="tableText">品牌</view>
+                    <view class="tableText">座位数</view>
+                    <view class="tableText">数量</view>
+                    <view class="tableText">单价</view>
+                </wux-row>
+                <wux-white-space size="small" />
+                <wux-row>
+                    <view class="tableText">豪华型</view>
+                    <view class="tableText">金龙</view>
+                    <view class="tableText">18座</view>
+                    <view class="tableText">1辆</view>
+                    <view class="tableText">250元</view>
+                </wux-row>
+                <wux-row>
+                    <view class="tableText">豪华型</view>
+                    <view class="tableText">金龙</view>
+                    <view class="tableText">18座</view>
+                    <view class="tableText">1辆</view>
+                    <view class="tableText">250元</view>
+                </wux-row>
+                <wux-white-space size="large" />
+            </view>
+            <view>
+                <wux-row>
+                    <wux-col span="3">
+                        <view>方案2</view>
+                    </wux-col>
+                    <wux-col span="7" push="2">
+                        <view class="priceText">报价合计 : <text class="price_red">500元</text></view>
+                    </wux-col>
+                </wux-row>
+                <wux-white-space size="default" />
+                <wux-row>
+                    <view class="tableText">车辆配置</view>
+                    <view class="tableText">品牌</view>
+                    <view class="tableText">座位数</view>
+                    <view class="tableText">数量</view>
+                    <view class="tableText">单价</view>
+                </wux-row>
+                <wux-white-space size="small" />
+                <wux-row>
+                    <view class="tableText">豪华型</view>
+                    <view class="tableText">金龙</view>
+                    <view class="tableText">18座</view>
+                    <view class="tableText">1辆</view>
+                    <view class="tableText">250元</view>
+                </wux-row>
+                <wux-row>
+                    <view class="tableText">豪华型</view>
+                    <view class="tableText">金龙</view>
+                    <view class="tableText">18座</view>
+                    <view class="tableText">1辆</view>
+                    <view class="tableText">250元</view>
+                </wux-row>
+                <wux-white-space size="large" />
+            </view>
+            <view>
+                <wux-row>
+                    <wux-col span="3">
+                        <view>方案3</view>
+                    </wux-col>
+                    <wux-col span="7" push="2">
+                        <view class="priceText">报价合计 : <text class="price_red">500元</text></view>
+                    </wux-col>
+                </wux-row>
+                <wux-white-space size="default" />
+                <wux-row>
+                    <view class="tableText">车辆配置</view>
+                    <view class="tableText">品牌</view>
+                    <view class="tableText">座位数</view>
+                    <view class="tableText">数量</view>
+                    <view class="tableText">单价</view>
+                </wux-row>
+                <wux-white-space size="small" />
+                <wux-row>
+                    <view class="tableText">豪华型</view>
+                    <view class="tableText">金龙</view>
+                    <view class="tableText">18座</view>
+                    <view class="tableText">1辆</view>
+                    <view class="tableText">250元</view>
+                </wux-row>
+                <wux-row>
+                    <view class="tableText">豪华型</view>
+                    <view class="tableText">金龙</view>
+                    <view class="tableText">18座</view>
+                    <view class="tableText">1辆</view>
+                    <view class="tableText">250元</view>
+                </wux-row>
+                <wux-white-space size="large" />
+            </view>
+            <view class="addNewOffer">
+                <wux-button block type="positive">新增方案</wux-button>
+            </view>
+        </wux-cell>
+    </wux-cell-group>
+    <wux-cell-group title="报价留言">
+        <wux-cell>
+            <wux-textarea hasCount rows="3" cursorSpacing="80" maxlength="100" placeholder="" />
+        </wux-cell>
+    </wux-cell-group>
+</view>
+<view class="footer">
+    <checkbox-group class="carKnowledge" bindchange="checkboxChange">
+        <label class="checkbox">
+            <checkbox value="true" color="#3c81ff"/>
+        </label>
+        <view class="checkbox_text">我已阅读并同意<view class="checkbox_text_special" bindtap="openCarKnowledge">《用车须知》</view>使用条款</view>
+    </checkbox-group>
+    <wux-white-space />
+    <view class="footerButton">
+        <wux-button block type="positive">确认报价</wux-button>
+    </view>
+</view>
+<wux-popup closable position="center" visible="{{ carKnowledgeIsShow }}" bind:close="closeCarKnowledge">
+    <wux-cell-group title="用车须知">
+        <wux-cell hover-class="none" class="carKnowledgeContent">
+            <wux-row>
+                <text class="rowText">超公里数 : 超出行程内的公里数另算</text>
+            </wux-row>
+            <wux-white-space size="default" />
+            <wux-row>
+                <text class="rowText">超时长费 : 当日用车时长超过10小时,司机将按50元/小时收取超时长费</text>
+            </wux-row>
+            <wux-white-space size="default" />
+            <wux-row>
+                <text class="rowText">第三方收费 : 含第三方收取的停车费、过路过桥费</text>
+            </wux-row>
+            <wux-white-space size="default" />
+            <wux-row>
+                <text class="rowText">差旅补贴 : 用餐补贴30元/餐、住宿补贴为150元/晚</text>
+            </wux-row>
+            <wux-white-space size="default" />
+            <wux-row>
+                <text class="rowText">空驶费 : 默认接送点为两个,且距离为50公里以内,司机将按1元/公里收取超公里费,超过两个以上接送点,每多一个增加100元</text>
+            </wux-row>
+        </wux-cell>
+    </wux-cell-group>
+</wux-popup>

@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "wux-cell-group": "../../style/cell-group/index",
+    "wux-cell": "../../style/cell/index",
+    "wux-spin": "../../style/spin/index",
+    "wux-icon": "../../style/icon/index",
+    "wux-button": "../../style/button/index",
+    "wux-badge": "../../style/badge/index",
+    "wux-tabbar": "../../style/tabbar/index",
+    "wux-tabbar-item": "../../style/tabbar-item/index"
+  }
+}

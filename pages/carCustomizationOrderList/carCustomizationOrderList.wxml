@@ -1,0 +1,72 @@
+<!--pages/test/test.wxml-->
+<!--<view class="header">-->
+  <!--<wux-search-bar show-cancel value="{{ value }}" auto="{{ false }}" placeholder="请输入需求编号搜索" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />-->
+<!--</view>-->
+<!--<wux-white-space size="default" />-->
+<!--<wux-white-space size="default" />-->
+<!--<wux-white-space size="default" />-->
+<!--<wux-white-space size="default" />-->
+<!--<view class="list" wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">-->
+  <!--<wux-card full="{{ true }}" title="需求编号" extra="{{item.id}}">-->
+      <!--<view slot="body">-->
+          <!--<wux-row>-->
+              <!--<wux-col span="4">-->
+                  <!--<text class="cardText">出发地：{{item.address}}</text>-->
+              <!--</wux-col>-->
+              <!--<wux-col span="4">-->
+                  <!--<text class="cardText">人数 : {{item.count}}人</text>-->
+              <!--</wux-col>-->
+              <!--<wux-col span="4">-->
+                <!--<text class="cardText">状态：<text class="cardText_red" wx:if="{{item.status === '报价中'}}">{{item.status}}</text><text wx:else>{{item.status}}</text>-->
+                <!--</text>-->
+              <!--</wux-col>-->
+          <!--</wux-row>-->
+          <!--<wux-white-space size="small" />            -->
+          <!--<wux-row>-->
+              <!--<wux-col span="12">-->
+                <!--<text class="cardText">指派时间 : {{item.time}}</text>-->
+              <!--</wux-col>-->
+          <!--</wux-row>-->
+          <!--<wux-white-space size="small" />-->
+          <!--&lt;!&ndash;<wux-row>&ndash;&gt;-->
+              <!--&lt;!&ndash;<wux-col span="12">&ndash;&gt;-->
+                <!--&lt;!&ndash;<text class="cardText">剩余报价时长 : {{item.lastTime}}</text>&ndash;&gt;-->
+              <!--&lt;!&ndash;</wux-col>&ndash;&gt;-->
+          <!--&lt;!&ndash;</wux-row> &ndash;&gt;-->
+          <!--<wux-white-space size="default" />-->
+          <!--<view class="footerButton_left">-->
+            <!--<wux-button block clear type="balanced" bindtap="goToCarCustomizationOrderDetail" data-id="{{item.id}}">需求详情  </wux-button>-->
+          <!--</view>-->
+          <!--<view class="footerButton_right">-->
+            <!--<wux-button block clear type="positive" wx:if="{{item.status === '报价中'}}" bindtap="goToImmediateOffer">立即报价</wux-button>-->
+            <!--<wux-button block clear type="calm" wx:else bindtap="goToMyQuote" data-id="{{item.id}}">我的报价</wux-button>-->
+          <!--</view>-->
+      <!--</view>-->
+      <!--<view slot="footer"></view>-->
+  <!--</wux-card>-->
+<!--</view>-->
+<!--<wux-white-space size="default" />-->
+<!--<wux-white-space size="default" />-->
+<!--<view class="footer">-->
+  <!--<wux-tabbar default-current="0" position="bottom" theme="positive">-->
+      <!--<wux-tabbar-item title="定制报价" bindtap="goToCarCustomizationOrderList">-->
+          <!--<wux-badge dot slot="icon-on">-->
+              <!--<wux-icon wux-class="icon" type="ios-list-box" size="22" />-->
+          <!--</wux-badge>-->
+          <!--<wux-badge dot slot="icon-off">-->
+              <!--<wux-icon wux-class="icon" type="ios-list-box" size="22" />-->
+          <!--</wux-badge>-->
+      <!--</wux-tabbar-item>-->
+      <!--<wux-tabbar-item title="个人中心" bindtap="goToPersonalCenter">-->
+          <!--<wux-badge slot="icon-on">-->
+              <!--<wux-icon wux-class="icon" type="ios-contact" size="22" />-->
+          <!--</wux-badge>-->
+          <!--<wux-badge slot="icon-off">-->
+              <!--<wux-icon wux-class="icon" type="ios-contact" size="22" />-->
+          <!--</wux-badge>-->
+      <!--</wux-tabbar-item>-->
+  <!--</wux-tabbar>-->
+<!--</view>-->
+
+<view class="list"></view>
+<wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />

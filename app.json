@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/carCustomizationOrderList/carCustomizationOrderList",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
+    "pages/myQuote/myQuote",
+    "pages/personalCenter/personalCenter",
+    "pages/immediateOffer/immediateOffer"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00aaff",
+    "navigationBarTitleText": "飞鹰车队ERP",
+    "navigationBarTextStyle": "white"
+  }
+}

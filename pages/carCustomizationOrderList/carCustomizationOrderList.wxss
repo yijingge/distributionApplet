@@ -1,34 +1,150 @@
 /* pages/test/test.wxss */
 page {
-    background-color: #eee;
+  background-color: #f2f3f4;
 }
+
 .header {
   position:fixed;
   width: 100%;
   z-index: 100;
   top:0;
 }
-.list {
-  border: 1rpx solid #666666;
-  margin-bottom: 20rpx;
+
+.card {
+  width: 92%;
+  height: auto;
+  margin: 20rpx auto;
+  border: 1rpx solid #dddee1;
+  border-radius: 16rpx;
+  background: #fff;
 }
-.cardText {
+
+.card_header {
+  width: auto;
+  height: 88rpx;
+  border-bottom: 1px dashed #dddee1;
+  line-height: 88rpx;
+  padding: 0 30rpx;
+}
+
+.card_header_right {
+  text-align: right;
+}
+
+.date {
+  font-size: 28rpx;
+  color: #000000;
+}
+
+.tag {
+  display: inline;
+  width: 120rpx;
+  height: 44rpx;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+}
+
+.tag:active {
+  background: #f8f8f9;
+}
+
+.tag_red {
+  background: rgba(255, 77, 77, 0.1);
+  color: #ff4d4d;
+}
+
+.tag_blue {
+  background: rgba(0, 170, 255, 0.1);
+  color: #00aaff;
+}
+
+.tag_grey {
+  background: rgba(233, 234, 236, 0.1);
+  color: #e9eaec;
+}
+
+.card_content {
+  width: auto;
+  height: 232rpx;
+  padding: 0 30rpx;
+}
+
+.card_content_row {
+  display: block;
+  margin-top: 32rpx;
+}
+
+.card_content_left {
+  text-align: left;
   font-size: 28rpx;
   color: #666666;
 }
-.cardText_red {
-  color: #f5222d;
+
+.card_content_right {
+  text-align: right;
+  font-size: 28rpx;
+  color: #000000;
 }
-.footerButton_left {
-  width: 49%;
-  display: inline-block;
-  border-top: 1rpx solid #e5e5e5;
-  /*border-right: 1rpx solid #e5e5e5;*/
-  font-weight: bold;
+
+.card_footer {
+  width: auto;
+  height: 88rpx;
+  border-top: 1rpx solid #dddee1;
 }
-.footerButton_right {
-  width: 49%;
-  display: inline-block;
-  border-top: 1rpx solid #e5e5e5;
-  font-weight: bold;
+
+.card_footer_click {
+  background: #f8f8f9;
+}
+
+.card_footer_left {
+  float: left;
+  width: 49.9%;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card_footer_divider {
+  float: left;
+  width: 0.2%;
+  height: 88rpx;
+}
+
+#divider {
+  width: auto;
+  height: 88rpx;
+  margin: 0 auto;
+  background: #dddee1;
+}
+
+.card_footer_right {
+  float: right;
+  width: 49.9%;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button {
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.button_red {
+  color: #ff4d4d;
+}
+
+.button_grey {
+  color: #cccccc;
+}
+
+.empty {
+  position: absolute;
+  top:50%;
+  left:50%;
+  width:100%;
+  transform:translate(-50%,-50%);
+  text-align: center;
 }

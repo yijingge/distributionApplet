@@ -67,6 +67,64 @@
       <!--</wux-tabbar-item>-->
   <!--</wux-tabbar>-->
 <!--</view>-->
+<view class="card" wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+    <view class="card_header">
+        <wux-row>
+            <wux-col span="6">
+                <view class="date">{{item.time}}</view>
+            </wux-col>
+            <wux-col span="6" class="card_header_right">
+                <view class="tag tag_red" wx:if="{{item.status === '报价中'}}">报价中</view>
+                <view class="tag tag_blue" wx:if="{{item.status === '已报价'}}">已报价</view>
+            </wux-col>
+        </wux-row>
+    </view>
+    <view class="card_content">
+        <wux-row class="card_content_row">
+            <wux-col span="6" class="card_content_left">
+                需求编号
+            </wux-col>
+            <wux-col span="6" class="card_content_right">
+                {{item.id}}
+            </wux-col>
+        </wux-row>
+        <wux-row class="card_content_row">
+            <wux-col span="6" class="card_content_left">
+                出发地
+            </wux-col>
+            <wux-col span="6" class="card_content_right">
+                {{item.address}}
+            </wux-col>
+        </wux-row>
+        <wux-row class="card_content_row">
+            <wux-col span="6" class="card_content_left">
+                人数
+            </wux-col>
+            <wux-col span="6" class="card_content_right">
+                {{item.count}}
+            </wux-col>
+        </wux-row>
+    </view>
+    <view class="card_footer">
+        <wux-row>
+            <view class="card_footer_left" hover-class="card_footer_click" bindtap="goToCarCustomizationOrderDetail" data-id="{{item.id}}">
+                <text class="button">需求详情</text>
+            </view>
+            <view class="card_footer_divider">
+                <view id="divider"></view>
+            </view>
+            <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '报价中'}}" bindtap="goToImmediateOffer">
+                <text class="button button_red">立即报价</text>
+            </view>
+            <view class="card_footer_right" hover-class="card_footer_click" wx:else bindtap="goToMyQuote" data-id="{{item.id}}">
+                <text class="button">我的报价</text>
+            </view>
+        </wux-row>
+    </view>
+</view>
 
-<view class="list"></view>
+<view class="empty">
+    <wux-prompt visible="{{ listData.length < 1 }}" title="空空如也" text="暂无定制单" />
+</view>
+
 <wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />

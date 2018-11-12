@@ -48,6 +48,7 @@
         <wux-col span="7" push="2">
           <view class="priceText">报价合计 :
             <text class="price_red">500元</text>
+            <text class="price_red">500元</text>
           </view>
         </wux-col>
       </wux-row>
@@ -68,22 +69,22 @@
   </view>
 
   <view class="page card-bottom">
-    <view class="card borderRadius">
-      <view class="title">
+    <view class="borderRadius">
+      <view class="title card">
         <text>报价留言</text>
       </view>
-      <view class="border-top card-bottom">
+      <view class="border-top card-bottom card">
         <text class="text"> 豪车好服务</text>
       </view>
     </view>
   </view>
 
   <view class="page card-bottom">
-    <view class="card borderRadius">
-      <view class="title">
+    <view class="borderRadius">
+      <view class="title card">
         <text>用车须知</text>
       </view>
-      <view class="border-top card-bottom">
+      <view class="border-top card-bottom card">
         <wux-row class="demands">
           <view class="row_title">超公里数：</view>
           <text class="text">超出行程内的公里数另算</text>
@@ -116,7 +117,9 @@
       </view>
     </view>
   </view>
-  <view>
-    
-  </view>
+  <wux-divider>
+    <view class="loadmore">
+      <text class="dividerText">我是有底线的</text>
+    </view>
+  </wux-divider>
 </view>

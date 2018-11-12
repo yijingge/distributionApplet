@@ -13,6 +13,8 @@ page {
   color: #FFFFFF;
   background: #00aaff;
   height: 200rpx;
+  /*position: absolute;*/
+  /*width: 100%;*/
 }
 .priceText {
     text-align: right;
@@ -22,18 +24,18 @@ page {
 }
 
 .borderRadius{
-  border-top-left-radius: 10rpx;
-  border-top-right-radius: 10rpx;
-  border-bottom-left-radius: 10rpx;
-  border-bottom-right-radius: 10rpx;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
 }
 .borderRadiusTopLr{
-  border-top-left-radius: 10rpx;
-  border-top-right-radius: 10rpx;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
 }
 .borderRadiusBotLr{
-  border-bottom-left-radius: 10rpx;
-  border-bottom-right-radius: 10rpx;
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
 }
 
 .border-top{
@@ -82,4 +84,8 @@ page {
 }
 .demands{
   padding-bottom: 30rpx;
+}
+.dividerText {
+  font-size: 28rpx;
+  color: #999;
 }

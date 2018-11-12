@@ -4,6 +4,15 @@ page {
 }
 .page{
   padding:0 30rpx;
+  position: relative;
+  bottom: 150rpx;
+}
+.header{
+  font-size: 36rpx;
+  padding: 20rpx 30rpx;
+  color: #FFFFFF;
+  background: #00aaff;
+  height: 200rpx;
 }
 .priceText {
     text-align: right;
@@ -11,32 +20,66 @@ page {
 .price_red {
     color: #ff4d4d;
 }
-.tableText {
-    display: inline-block;
-    width: 20%;
-    text-align: center;
-    font-size: 28rpx;
-}
-.rowText {
-    font-size: 28rpx;
+
+.borderRadius{
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
 }
 .borderRadiusTopLr{
-    border-top-left-radius: 4rpx;
-    border-top-right-radius: 4rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
 }
 .borderRadiusBotLr{
-    border-bottom-left-radius: 4rpx;
-    border-bottom-right-radius: 4rpx;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
 }
+
 .border-top{
   border-top: 1rpx solid #e8e8e8;
 }
 .card{
   padding: 30rpx;
+  background: #FFFFFF;
 }
+
 .card-bottom{
   padding-top: 30rpx;
 }
+.quoteTitle {
+  padding-top: 30rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.carName{
+  position: relative;
+  bottom: 4rpx;
+  padding-left: 10rpx;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.text{
+  font-size: 26rpx;
+  color: #666;
+}
+.image_icon {
+  width: 32rpx;
+  height: 32rpx;
+}
 .title {
+  padding-bottom: 30rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+
+/*报价留言*/
+.row_title{
+  font-size: 28rpx;
+  color: #666;
+  font-weight: bolder;
+}
+.demands{
   padding-bottom: 30rpx;
 }

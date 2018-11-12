@@ -2,6 +2,7 @@
 <!--<view class="header">-->
   <!--<wux-search-bar show-cancel value="{{ value }}" auto="{{ false }}" placeholder="请输入需求编号搜索" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />-->
 <!--</view>-->
+
 <!--<wux-white-space size="default" />-->
 <!--<wux-white-space size="default" />-->
 <!--<wux-white-space size="default" />-->
@@ -67,6 +68,7 @@
       <!--</wux-tabbar-item>-->
   <!--</wux-tabbar>-->
 <!--</view>-->
+
 <view class="card" wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
     <view class="card_header">
         <wux-row>

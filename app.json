@@ -1,11 +1,10 @@
 {
   "pages": [
-    "pages/carCustomizationOrderList/carCustomizationOrderList",
+    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
+    "pages/carCustomizationOrderList/carCustomizationOrderList",
     "pages/myQuote/myQuote",
-    "pages/personalCenter/personalCenter",
     "pages/immediateOffer/immediateOffer"
   ],
   "window": {

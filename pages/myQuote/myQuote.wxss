@@ -1,11 +1,13 @@
 /* pages/myQuote/myQuote.wxss */
 page {
-    background-color: #f2f3f4;
+  background-color: #f2f3f4;
 }
 .page{
   padding:0 30rpx;
-  position: relative;
-  bottom: 150rpx;
+}
+.card{
+  padding: 30rpx;
+  background: #FFFFFF;
 }
 .header{
   font-size: 36rpx;
@@ -13,8 +15,6 @@ page {
   color: #FFFFFF;
   background: #00aaff;
   height: 200rpx;
-  /*position: absolute;*/
-  /*width: 100%;*/
 }
 .priceText {
     text-align: right;
@@ -40,10 +40,6 @@ page {
 
 .border-top{
   border-top: 1rpx solid #e8e8e8;
-}
-.card{
-  padding: 30rpx;
-  background: #FFFFFF;
 }
 
 .card-bottom{
@@ -83,7 +79,7 @@ page {
   font-weight: bolder;
 }
 .demands{
-  padding-bottom: 30rpx;
+  padding-bottom: 60rpx;
 }
 .dividerText {
   font-size: 28rpx;

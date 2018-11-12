@@ -3,6 +3,7 @@
   "usingComponents": {
     "wux-row": "../../style/row/index",
     "wux-col": "../../style/col/index",
+    "wux-white-space": "../../style/white-space/index",
     "wux-divider": "../../style/divider/index"
   }
 }

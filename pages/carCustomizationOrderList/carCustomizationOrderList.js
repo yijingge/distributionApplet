@@ -56,7 +56,7 @@ Page({
         })
       }
     })
-    }, 1500)
+    }, 500)
   },
 
   // 加载图标
@@ -162,7 +162,7 @@ Page({
     _this.setData({
       pageIndex: pageIndex
     })
-    if ((pageIndex * 10) <= _this.data.totalCount) {
+    if ((pageIndex * _this.data.pageSize) <= _this.data.totalCount) {
       _this.showLoading()
       setTimeout(() => {
         // 请求后台，获取下一页的数据。
@@ -199,7 +199,7 @@ Page({
           })
         }
       })
-      }, 1500)
+      }, 500)
     } else {
       _this.setData({
         dividerIsShow: true

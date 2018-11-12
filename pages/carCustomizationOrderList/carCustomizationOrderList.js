@@ -1,5 +1,7 @@
 // pages/test/test.js
-// import { $wuxCountDown } from '../../style/index'
+const util = require('../../utils/util.js')
+import { $wuxToast } from '../../style/index.js'
+
 Page({
 
   /**
@@ -7,42 +9,13 @@ Page({
    */
   data: {
     spinning: false,
-    listData: [
-      {
-        id: "1001010",
-        address: "上海",
-        count: 10,
-        time: "2018-02-09 15:00:00",
-        date: new Date,
-        status: "报价中"
-      },
-      {
-        id: "1001011",
-        address: "南京",
-        count: 6,
-        time: "2018-02-09 15:00:00",
-        date: new Date,
-        status: "报价中"
-      },
-      {
-        id: "1001012",
-        address: "杭州",
-        count: 12,
-        time: "2018-02-09 15:00:00",
-        date: new Date,
-        status: "已报价"
-      },
-      {
-        id: "1001013",
-        address: "上海",
-        count: 7,
-        time: "2018-02-09 15:00:00",
-        date: new Date,
-        status: "已报价"
-      }
-    ]
+    pageIndex: 1, // 当前是第几页
+    pageSize: 10, // 每页显示多少条数据
+    totalCount: 0, // 总共有多少条数据
+    listData: []
   },
 
+  // 前往需求详情
   goToCarCustomizationOrderDetail: function(e) {
     var id = e.target.dataset.id
     wx.navigateTo({
@@ -50,6 +23,7 @@ Page({
     })
   },
 
+  // 前往我的报价
   goToMyQuote: function(e) {
     var id = e.target.dataset.id
     wx.navigateTo({
@@ -57,6 +31,7 @@ Page({
     })
   },
 
+  // 前往立即报价
   goToImmediateOffer: function (e) {
     var id = e.target.dataset.id
     wx.navigateTo({
@@ -64,12 +39,14 @@ Page({
     })
   },
 
+  // 前往定制报价
   goToCarCustomizationOrderList: function () {
     wx.reLaunch({
       url: "../carCustomizationOrderList/carCustomizationOrderList"
     })
   },
 
+  // 前往个人中心
   goToPersonalCenter: function () {
     wx.reLaunch({
       url: "../personalCenter/personalCenter"
@@ -80,19 +57,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // for (let i = 0; i < this.data.listData.length; i++) {
-    //   this.data.listData[i].date = new Date
-    //   this.data.listData[i].date = new $wuxCountDown({
-    //     date: +(this.data.listData[i].date) + 60000 * 30,
-    //     render(date) {
-    //       const min = this.leadingZeros(date.min, 2) + ' 分 '
-    //       const sec = this.leadingZeros(date.sec, 2) + ' 秒 '
-    //       this.setData({
-    //         "listData[0].lastTime": min + sec,
-    //       })
-    //     },
-    //   })
-    // }
+    var _this = this
+    _this.data.spinning = true
+    wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/demandList.json',
+      method: 'post',
+      data: {
+        pageNumber: _this.data.pageIndex,
+        pageSize: _this.data.pageSize
+      },
+      success: function (res) {
+        _this.data.spinning = false
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        _this.setData({
+          listData: res.data.data,
+          totalCount: res.data.count
+        })
+      },
+      fail: function (res) {
+        _this.data.spinning = false
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
   },
 
   /**

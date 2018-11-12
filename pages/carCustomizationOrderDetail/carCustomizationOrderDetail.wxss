@@ -41,7 +41,100 @@ page {
   color: #000000;
 }
 
-.footer {
+.card_tripInfo {
   width: 100%;
-  margin-top: 100rpx;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.card_tripInfo_header {
+  width: auto;
+  height: 88rpx;
+  font-size: 32rpx;
+  line-height: 88rpx;
+  color: #000000;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #dddee1;
+}
+
+.card_tripInfo_content {
+  width: auto;
+  height: auto;
+  padding: 30rpx;
+}
+
+.card_demandInfo {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.card_demandInfo_header {
+  width: auto;
+  height: 88rpx;
+  font-size: 32rpx;
+  line-height: 88rpx;
+  color: #000000;
+  padding: 0 30rpx;
+}
+
+.card_demandInfo_content {
+  width: auto;
+  height: auto;
+  padding: 30rpx;
+  border-top: 1rpx solid #dddee1;
+}
+
+.content_title {
+  display: block;
+  width: auto;
+  height: auto;
+  font-size: 28rpx;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 30rpx;
+}
+
+.content_text {
+  display: block;
+  width: auto;
+  height: auto;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  text-align: left;
+}
+
+.text_left {
+  color: #999;
+  padding-left: 40rpx;
+}
+
+.text_right {
+  color: #000000;
+  padding-left: 20rpx;
+}
+
+.image_icon {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 6rpx;
+}
+
+.button {
+  width: 92%;
+  height: 88rpx;
+  margin: 60rpx auto;
+  background: #00aaff;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 88rpx;
+}
+
+.button_hover {
+  background: #26b7ff;
 }

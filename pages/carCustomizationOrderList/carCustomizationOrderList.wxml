@@ -73,11 +73,15 @@
     <view class="card_header">
         <wux-row>
             <wux-col span="6">
-                <view class="date">{{item.time}}</view>
+                <view class="date">{{item.assignTime}}</view>
             </wux-col>
             <wux-col span="6" class="card_header_right">
-                <view class="tag tag_red" wx:if="{{item.status === '报价中'}}">报价中</view>
-                <view class="tag tag_blue" wx:if="{{item.status === '已报价'}}">已报价</view>
+                <view class="tag tag_red" wx:if="{{item.status === '1'}}">报价中</view>
+                <view class="tag tag_grey" wx:if="{{item.status === '2'}}">已放弃</view>
+                <view class="tag tag_blue" wx:if="{{item.status === '3'}}">已报价</view>
+                <view class="tag tag_blue" wx:if="{{item.status === '4'}}">已生成订单</view>
+                <view class="tag tag_grey" wx:if="{{item.status === '5'}}">已取消</view>
+                <view class="tag tag_grey" wx:if="{{item.status === '6'}}">未采纳</view>
             </wux-col>
         </wux-row>
     </view>
@@ -87,7 +91,7 @@
                 需求编号
             </wux-col>
             <wux-col span="6" class="card_content_right">
-                {{item.id}}
+                {{item.demandCode}}
             </wux-col>
         </wux-row>
         <wux-row class="card_content_row">
@@ -95,7 +99,7 @@
                 出发地
             </wux-col>
             <wux-col span="6" class="card_content_right">
-                {{item.address}}
+                {{item.departure}}
             </wux-col>
         </wux-row>
         <wux-row class="card_content_row">
@@ -103,7 +107,7 @@
                 人数
             </wux-col>
             <wux-col span="6" class="card_content_right">
-                {{item.count}}
+                {{item.amount}}
             </wux-col>
         </wux-row>
     </view>
@@ -115,10 +119,13 @@
             <view class="card_footer_divider">
                 <view id="divider"></view>
             </view>
-            <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '报价中'}}" bindtap="goToImmediateOffer">
+            <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '1'}}" bindtap="goToImmediateOffer">
                 <text class="button button_red">立即报价</text>
             </view>
-            <view class="card_footer_right" hover-class="card_footer_click" wx:else bindtap="goToMyQuote" data-id="{{item.id}}">
+            <view class="card_footer_right" wx:if="{{item.status === '2' || item.status === '5'}}">
+                <text class="button button_grey">立即报价</text>
+            </view>
+            <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '3' || item.status === '4' || item.status === '6'}}" bindtap="goToMyQuote" data-id="{{item.id}}">
                 <text class="button">我的报价</text>
             </view>
         </wux-row>
@@ -129,4 +136,5 @@
     <wux-prompt visible="{{ listData.length < 1 }}" title="空空如也" text="暂无定制单" />
 </view>
 
+<wux-toast id="wux-toast" />
 <wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />

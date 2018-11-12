@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
+    "pages/carCustomizationOrderList/carCustomizationOrderList",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/carCustomizationOrderList/carCustomizationOrderList",
+    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/myQuote/myQuote",
     "pages/immediateOffer/immediateOffer"
   ],

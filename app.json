@@ -8,9 +8,10 @@
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#00aaff",
     "navigationBarTitleText": "飞鹰车队ERP",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   }
 }

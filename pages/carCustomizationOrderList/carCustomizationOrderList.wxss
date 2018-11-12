@@ -37,11 +37,13 @@ page {
 }
 
 .tag {
-  display: inline;
+  display: inline-block;
   width: 120rpx;
   height: 44rpx;
   border-radius: 6rpx;
   font-size: 28rpx;
+  text-align: center;
+  line-height: 44rpx;
 }
 
 .tag:active {
@@ -138,6 +140,11 @@ page {
 
 .button_grey {
   color: #cccccc;
+}
+
+.dividerText {
+  font-size: 28rpx;
+  color: #999;
 }
 
 .empty {

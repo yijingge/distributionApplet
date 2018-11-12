@@ -79,7 +79,7 @@
                 <view class="tag tag_red" wx:if="{{item.status === '1'}}">报价中</view>
                 <view class="tag tag_grey" wx:if="{{item.status === '2'}}">已放弃</view>
                 <view class="tag tag_blue" wx:if="{{item.status === '3'}}">已报价</view>
-                <view class="tag tag_blue" wx:if="{{item.status === '4'}}">已生成订单</view>
+                <view class="tag tag_blue" style="width: 180rpx" wx:if="{{item.status === '4'}}">已生成订单</view>
                 <view class="tag tag_grey" wx:if="{{item.status === '5'}}">已取消</view>
                 <view class="tag tag_grey" wx:if="{{item.status === '6'}}">未采纳</view>
             </wux-col>
@@ -131,10 +131,15 @@
         </wux-row>
     </view>
 </view>
+<wux-divider wx:if="{{dividerIsShow}}">
+    <view class="loadmore">
+        <text class="dividerText">我是有底线的</text>
+    </view>
+</wux-divider>
 
 <view class="empty">
     <wux-prompt visible="{{ listData.length < 1 }}" title="空空如也" text="暂无定制单" />
 </view>
 
 <wux-toast id="wux-toast" />
-<wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />
+<wux-loading id="wux-loading" />

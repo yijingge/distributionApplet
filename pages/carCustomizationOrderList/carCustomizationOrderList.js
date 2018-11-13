@@ -17,9 +17,8 @@ Page({
   },
 
   // 获取列表数据
-  getList: function (e) {
+  getList: function () {
     var _this = this
-    _this.showLoading()
     setTimeout(() => {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/demandList.json',
@@ -60,10 +59,10 @@ Page({
   },
 
   // 加载图标
-  showLoading: function(e) {
+  showLoading: function(text) {
     this.$wuxLoading = $wuxLoading()
     this.$wuxLoading.show({
-      text: '数据加载中'
+      text: text
     })
   },
 
@@ -109,6 +108,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.showLoading('数据加载中')
     this.getList()
   },
 
@@ -150,6 +150,7 @@ Page({
       totalCount: 0,
       listData: []
     })
+    this.showLoading('数据更新中')
     this.getList()
   },
 
@@ -163,7 +164,7 @@ Page({
       pageIndex: pageIndex
     })
     if ((pageIndex * _this.data.pageSize) <= _this.data.totalCount) {
-      _this.showLoading()
+      _this.showLoading('数据加载中')
       setTimeout(() => {
         // 请求后台，获取下一页的数据。
         wx.request({

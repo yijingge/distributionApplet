@@ -2,6 +2,7 @@
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "立即报价",
   "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "wux-row": "../../style/row/index",
     "wux-col": "../../style/col/index",

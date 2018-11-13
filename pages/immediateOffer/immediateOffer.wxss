@@ -29,7 +29,7 @@ page {
     background: #00aaff;
     font-size: 26rpx;
     color: #ffffff;
-    border-radius: 6rpx;
+    border-radius: 16rpx;
 }
 
 .button {
@@ -86,13 +86,16 @@ page {
 
 .checkbox_text {
     display: inline;
-    font-size: 32rpx;
-    padding-top: 6rpx;
+    font-size: 28rpx;
 }
 
 .checkbox_text_special {
     display: inline;
     color: #00aaff;
+}
+
+.checkbox_text_special_hover {
+    color: #26b7ff;
 }
 
 .footer {

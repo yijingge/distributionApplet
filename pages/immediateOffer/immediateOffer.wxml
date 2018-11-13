@@ -23,7 +23,7 @@
         <label class="checkbox">
             <checkbox value="true" color="#00aaff"/>
         </label>
-        <view class="checkbox_text">我已阅读并同意<view class="checkbox_text_special" bindtap="goToCarKnowledge">《用车须知》</view>使用条款</view>
+        <view class="checkbox_text">我已阅读并同意<view class="checkbox_text_special" hover-class="checkbox_text_special_hover" bindtap="goToCarKnowledge">《飞鹰旅游用车须知》</view>使用条款</view>
     </checkbox-group>
 </view>
 

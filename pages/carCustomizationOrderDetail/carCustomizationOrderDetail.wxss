@@ -70,6 +70,7 @@ page {
   height: auto;
   background: #fff;
   margin-top: 20rpx;
+  margin-bottom: 60rpx;
 }
 
 .card_demandInfo_header {

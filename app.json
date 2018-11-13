@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/myQuote/myQuote",
     "pages/carCustomizationOrderList/carCustomizationOrderList",
-    "pages/immediateOffer/immediateOffer",
+    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/carCustomizationOrderDetail/carCustomizationOrderDetail"
+    "pages/immediateOffer/immediateOffer",
+    "pages/myQuote/myQuote"
   ],
   "window": {
     "backgroundTextStyle": "dark",

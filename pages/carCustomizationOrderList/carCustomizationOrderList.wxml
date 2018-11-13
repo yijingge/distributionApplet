@@ -113,19 +113,19 @@
   </view>
   <view class="card_footer">
     <wux-row>
-      <view class="card_footer_left" hover-class="card_footer_click" bindtap="goToCarCustomizationOrderDetail" data-id="{{item.id}}">
+      <view class="card_footer_left" hover-class="card_footer_click" bindtap="goToCarCustomizationOrderDetail" id="{{item.id}}">
         <text class="button">需求详情</text>
       </view>
       <view class="card_footer_divider">
         <view id="divider"></view>
       </view>
-      <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '1'}}" bindtap="goToImmediateOffer">
+      <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '1'}}" bindtap="goToImmediateOffer" id="{{item.id}}">
         <text class="button button_red">立即报价</text>
       </view>
       <view class="card_footer_right" wx:if="{{item.status === '2' || item.status === '5'}}">
         <text class="button button_grey">立即报价</text>
       </view>
-      <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '3' || item.status === '4' || item.status === '6'}}" bindtap="goToMyQuote" data-id="{{item.id}}">
+      <view class="card_footer_right" hover-class="card_footer_click" wx:if="{{item.status === '3' || item.status === '4' || item.status === '6'}}" bindtap="goToMyQuote" id="{{item.id}}">
         <text class="button">我的报价</text>
       </view>
     </wux-row>

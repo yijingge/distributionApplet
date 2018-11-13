@@ -1,6 +1,6 @@
 // pages/test/test.js
 const util = require('../../utils/util.js')
-import { $wuxToast } from '../../style/index.js'
+import { $wuxToast } from '../../style/index'
 import { $wuxLoading } from '../../style/index'
 
 Page({
@@ -68,7 +68,7 @@ Page({
 
   // 前往需求详情
   goToCarCustomizationOrderDetail: function(e) {
-    var id = e.target.dataset.id
+    var id = e.currentTarget.id
     wx.navigateTo({
       url: "../carCustomizationOrderDetail/carCustomizationOrderDetail?id=" + id
     })
@@ -76,7 +76,7 @@ Page({
 
   // 前往我的报价
   goToMyQuote: function(e) {
-    var id = e.target.dataset.id
+    var id = e.currentTarget.id
     wx.navigateTo({
       url: "../myQuote/myQuote?id=" + id
     })
@@ -84,7 +84,7 @@ Page({
 
   // 前往立即报价
   goToImmediateOffer: function (e) {
-    var id = e.target.dataset.id
+    var id = e.currentTarget.id
     wx.navigateTo({
       url: "../immediateOffer/immediateOffer?id=" + id
     })
@@ -150,7 +150,7 @@ Page({
       totalCount: 0,
       listData: []
     })
-    this.showLoading('数据更新中')
+    this.showLoading('页面刷新中')
     this.getList()
   },
 

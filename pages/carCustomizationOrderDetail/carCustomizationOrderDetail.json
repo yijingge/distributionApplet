@@ -3,8 +3,9 @@
   "navigationBarTitleText": "需求详情",
   "navigationBarTextStyle": "black",
   "usingComponents": {
-    "wux-spin": "../../style/spin/index",
     "wux-row": "../../style/row/index",
-    "wux-col": "../../style/col/index"
+    "wux-col": "../../style/col/index",
+    "wux-loading": "../../style/loading/index",
+    "wux-toast": "../../style/toast/index"
   }
 }

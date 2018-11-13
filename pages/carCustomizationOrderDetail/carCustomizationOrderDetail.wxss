@@ -62,6 +62,7 @@ page {
   width: auto;
   height: auto;
   padding: 30rpx;
+  font-size: 28rpx;
 }
 
 .card_demandInfo {

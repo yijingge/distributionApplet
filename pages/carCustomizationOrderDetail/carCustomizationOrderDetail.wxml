@@ -8,7 +8,7 @@
                 出发地
             </wux-col>
             <wux-col span="9" class="content_right">
-                苏州
+                {{pageData.departure}}
             </wux-col>
         </wux-row>
         <wux-row class="content_row">
@@ -16,7 +16,7 @@
                 行程天数
             </wux-col>
             <wux-col span="9" class="content_right">
-                3天
+                {{pageData.days}}天
             </wux-col>
         </wux-row>
         <wux-row class="content_row">
@@ -24,7 +24,8 @@
                 行程类型
             </wux-col>
             <wux-col span="9" class="content_right">
-                往返
+                <text wx:if="{{pageData.tripType === '1'}}">单程</text>
+                <text wx:if="{{pageData.tripType === '2'}}">往返</text>
             </wux-col>
         </wux-row>
         <wux-row class="content_row">
@@ -32,7 +33,7 @@
                 人数
             </wux-col>
             <wux-col span="9" class="content_right">
-                64人
+                {{pageData.amount}}人
             </wux-col>
         </wux-row>
         <wux-row class="content_row">
@@ -40,7 +41,7 @@
                 出行时间
             </wux-col>
             <wux-col span="9" class="content_right">
-                2018-02-05 9:00
+                {{pageData.assignTime}}
             </wux-col>
         </wux-row>
         <wux-row class="content_row">
@@ -48,7 +49,8 @@
                 车型限制
             </wux-col>
             <wux-col span="9" class="content_right">
-                限制
+                <text wx:if="{{pageData.isLimit === '1'}}">限制</text>
+                <text wx:if="{{pageData.isLimit === '2'}}">不限制</text>
             </wux-col>
         </wux-row>
         <wux-row class="content_row">
@@ -56,78 +58,43 @@
                 备注
             </wux-col>
             <wux-col span="9" class="content_right">
-                要三年内新车
+                {{pageData.remarks}}
             </wux-col>
         </wux-row>
     </view>
 </view>
 
+<import src="../../wxParse/wxParse.wxml" />
 <view class="card_tripInfo">
     <view class="card_tripInfo_header">行程安排</view>
-    <view class="card_tripInfo_content"></view>
+    <view class="card_tripInfo_content">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
 </view>
 
 <view class="card_demandInfo">
     <view class="card_demandInfo_header">车辆需求</view>
-    <view class="card_demandInfo_content">
+    <view class="card_demandInfo_content" wx:for="{{pageData.carDemandCarList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
         <wux-row class="content_title">
             <wux-col span="12">
-                需求1
+                需求{{index + 1}}
             </wux-col>
         </wux-row>
-        <wux-row class="content_text">
+        <wux-row class="content_text" wx:for="{{item.carDemandCarItemList}}" wx:key="key" wx:for-index="key" wx:for-item="i">
             <wux-col span="6">
                 <image src="../../images/che.png" class="image_icon"></image>
                 <text class="text_left">座位数</text>
-                <text class="text_right">27座</text>
+                <text class="text_right">{{i.seatNumber}}座</text>
             </wux-col>
             <wux-col span="6">
                 <text class="text_left">数量</text>
-                <text class="text_right">1辆</text>
-            </wux-col>
-        </wux-row>
-        <wux-row class="content_text">
-            <wux-col span="6">
-                <image src="../../images/che.png" class="image_icon"></image>
-                <text class="text_left">座位数</text>
-                <text class="text_right">9座</text>
-            </wux-col>
-            <wux-col span="6">
-                <text class="text_left">数量</text>
-                <text class="text_right">1辆</text>
-            </wux-col>
-        </wux-row>
-    </view>
-    <view class="card_demandInfo_content">
-        <wux-row class="content_title">
-            <wux-col span="12">
-                需求2
-            </wux-col>
-        </wux-row>
-        <wux-row class="content_text">
-            <wux-col span="6">
-                <image src="../../images/che.png" class="image_icon"></image>
-                <text class="text_left">座位数</text>
-                <text class="text_right">27座</text>
-            </wux-col>
-            <wux-col span="6">
-                <text class="text_left">数量</text>
-                <text class="text_right">1辆</text>
-            </wux-col>
-        </wux-row>
-        <wux-row class="content_text">
-            <wux-col span="6">
-                <image src="../../images/che.png" class="image_icon"></image>
-                <text class="text_left">座位数</text>
-                <text class="text_right">9座</text>
-            </wux-col>
-            <wux-col span="6">
-                <text class="text_left">数量</text>
-                <text class="text_right">1辆</text>
+                <text class="text_right">{{i.carNumber}}辆</text>
             </wux-col>
         </wux-row>
     </view>
 </view>
 
-<view class="button" hover-class="button_hover">立即报价</view>
-<wux-spin wux-class="spin" nested size="large" spinning="{{ spinning }}" tip="Loading..." />
+<view class="button" hover-class="button_hover" wx:if="{{pageData.status === '1'}}">立即报价</view>
+
+<wux-toast id="wux-toast"/>
+<wux-loading id="wux-loading"/>

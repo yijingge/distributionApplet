@@ -146,9 +146,7 @@ Page({
   onPullDownRefresh: function () {
     this.setData({
       dividerIsShow: false,
-      pageIndex: 1,
-      totalCount: 0,
-      listData: []
+      pageIndex: 1
     })
     this.showLoading('页面刷新中')
     this.getList()

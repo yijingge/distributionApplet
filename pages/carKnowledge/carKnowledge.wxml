@@ -1,0 +1,32 @@
+<!--pages/carKnowledge/carKnowledge.wxml-->
+
+<view class="carKnowledge_title">《飞鹰旅游用车须知协议》</view>
+
+<view class="carKnowledge_date">
+    更新日期 : 2018年11月5日
+</view>
+
+<view class="carKnowledge_text">
+    <view class="carKnowledge_text_title">超公里数 :</view>
+    <view class="carKnowledge_text_content">超出行程内的公里数另算</view>
+</view>
+
+<view class="carKnowledge_text">
+    <view class="carKnowledge_text_title">超时长费 :</view>
+    <view class="carKnowledge_text_content">当日用车时长超过10小时,司机将按50元/小时收取超时长费</view>
+</view>
+
+<view class="carKnowledge_text">
+    <view class="carKnowledge_text_title">第三方收费 :</view>
+    <view class="carKnowledge_text_content">含第三方收取的停车费、过路过桥费</view>
+</view>
+
+<view class="carKnowledge_text">
+    <view class="carKnowledge_text_title">差旅补贴 :</view>
+    <view class="carKnowledge_text_content">用餐补贴30元/餐、住宿补贴为150元/晚</view>
+</view>
+
+<view class="carKnowledge_text">
+    <view class="carKnowledge_text_title">空驶费 :</view>
+    <view class="carKnowledge_text_content">默认接送点为两个,且距离为50公里以内,司机将按1元/公里收取超公里费,超过两个以上接送点,每多一个增加100元</view>
+</view>

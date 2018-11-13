@@ -64,6 +64,14 @@ Page({
     })
   },
 
+  // 前往立即报价
+  goToImmediateOffer: function (e) {
+    var id = e.currentTarget.id
+    wx.navigateTo({
+      url: "../immediateOffer/immediateOffer?id=" + id
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

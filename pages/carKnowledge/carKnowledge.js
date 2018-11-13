@@ -1,4 +1,4 @@
-// pages/immediateOffer.js
+// pages/carKnowledge/carKnowledge.js
 Page({
 
   /**
@@ -6,12 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  goToCarKnowledge: function () {
-    wx.navigateTo({
-      url: "../carKnowledge/carKnowledge"
-    })
   },
 
   /**

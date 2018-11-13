@@ -94,7 +94,7 @@
     </view>
 </view>
 
-<view class="button" hover-class="button_hover" wx:if="{{pageData.status === '1'}}">立即报价</view>
+<view class="button" hover-class="button_hover" wx:if="{{pageData.status === '1'}}" bindtap="goToImmediateOffer" id="{{id}}">立即报价</view>
 
 <wux-toast id="wux-toast"/>
 <wux-loading id="wux-loading"/>

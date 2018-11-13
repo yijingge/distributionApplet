@@ -1,77 +1,29 @@
 // pages/myQuote/myQuote.js
 const util = require('../../utils/util.js')
-
+import { $wuxToast } from '../../style/index.js'
+import { $wuxLoading } from '../../style/index'
 Page({
-  
   /**
    * 页面的初始数据
    */
   data: {
+    id: '',
     dividerIsShow: false,
     pageIndex: 1, // 当前是第几页
     pageSize: 10, // 每页显示多少条数据
-    totalCount: 0, // 总共有多少条数据
-    listData: [
-      {
-        money: '10',
-        schemeList: [
-          {
-            carName: 'benz',
-            type: '豪华型',
-            seatNumber: '10',
-            number: '2',
-            money: '20'
-          },
-          {
-            carName: '宝马',
-            type: '豪华型',
-            seatNumber: '10',
-            number: '2',
-            money: '20'
-          },
-          {
-            carName: '大众',
-            type: '豪华型',
-            seatNumber: '10',
-            number: '2',
-            money: '20'
-          },
-        ]
-      },
-      {
-        money: '20',
-        schemeList: [
-          {
-            carName: '宝来',
-            type: '经济型',
-            seatNumber: '10',
-            number: '2',
-            money: '20'
-          },
-          {
-            carName: '',
-            type: '豪华型',
-            seatNumber: '10',
-            number: '2',
-            money: '20'
-          },
-          {
-            carName: '火车',
-            type: '豪华型',
-            seatNumber: '10',
-            number: '2',
-            money: '20'
-          }
-        ]
-      }
-    ]
+    listData: [],
+    myQuoteData: ''
   },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getList()
+    this.showLoading('数据加载中')
+    this.setData({
+      id: options.id
+    })
+    this.getDetail(options.id)
   },
   
   /**
@@ -106,7 +58,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.showLoading('页面刷新中')
+    this.getDetail(this.data.id)
   },
   
   /**
@@ -123,6 +76,48 @@ Page({
   
   },
   // 获取列表数据
+  getDetail: function (id) {
+    var _this = this
+    setTimeout(() => {
+      wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/getCarDemandOfferDetail.json',
+      method: 'post',
+      data: {
+        demandId: id,
+        pageNumber: _this.data.pageIndex,
+        pageSize: _this.data.pageSize
+      },
+      success: function (res) {
+        console.log(res.data.data)
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        _this.setData({
+          myQuoteData: res.data.data,
+          listData: res.data.data.carDemandOfferEntityList
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
+  }, 500)
+  },
   // 加载图标
   showLoading: function (e) {
     this.$wuxLoading = $wuxLoading()

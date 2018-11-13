@@ -5,90 +5,82 @@
   </view>
   <view style="position: absolute;top: 100rpx;">
     <view class="page">
-      <view class="card borderRadiusTopLr border-top"
-            wx:for="{{listData}}" wx:key="index"
-            wx:for-index="index" wx:for-item="item">
+      <view class="card quoteCard" wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
         <wux-row class="quoteTitle">
           <wux-col span="3">
             <view>方案{{ index + 1 }}</view>
           </wux-col>
           <wux-col span="7" push="2">
             <view class="priceText">报价合计 :
-              <text class="price_red">{{ item.money }}</text>
+              <text class="price_red">{{ item.offerMoney ? item.offerMoney : 0 }}</text>
             </view>
           </wux-col>
         </wux-row>
-        <wux-white-space body-style="height: 30px"/>
-        <wux-row wx:for="{{item.schemeList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
-          <view>
+        <wux-white-space body-style="height: 20px"/>
+        <wux-row  wx:for="{{item.carDemandOfferItemEntityList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+          <view class="">
             <image src="../../images/che.png" class="image_icon"></image>
-            <text class="carName">{{ item.carName }}</text>
+            <text class="carName">{{ item.carBrandName === null ? 0 : item.carBrandName }}</text>
           </view>
-          <view>
-            <wux-col span="3">
-              <text class="text">{{ item.type }}</text>
+          <view class="">
+            <wux-col span="3" push="0">
+              <text class="text alignCenter">{{ item.carLevelName === null ? 0 : item.carLevelName }}</text>
             </wux-col>
-            <wux-col span="3">
-              <text class="text">{{ item.seatNumber }}座</text>
+            <wux-col span="3" push="1">
+              <text class="text alignCenter">{{ item.seatNumber === null ? 0 : item.seatNumber }}座</text>
             </wux-col>
-            <wux-col span="3">
-              <text class="text">{{ item.number }}辆</text>
+            <wux-col span="3" push="1">
+              <text class="text alignCenter">{{ item.carNumber === null ? 0 : item.carNumber  }}辆</text>
             </wux-col>
-            <wux-col span="3">
-              <text class="text">{{ item.type }}元</text>
+            <wux-col span="3" push="2">
+              <text class="text alignRight">{{ item.unitPrice === null ? 0 : item.unitPrice }}元</text>
             </wux-col>
           </view>
         </wux-row>
       </view>
     </view>
 
-
     <!--报价留言s-->
-    <view class="page card-bottom">
-      <view class="borderRadius">
-        <view class="title card">
+    <view class="page pd30">
+      <view class="card">
+        <view class="title">
           <text>报价留言</text>
         </view>
-        <view class="border-top card-bottom card">
-          <text class="text"> 豪车好服务</text>
+        <view class="border-top pd30">
+          <text class="text"> {{ myQuoteData.bookNotes  ? myQuoteData.bookNotes : '无' }}</text>
         </view>
       </view>
     </view>
     <!--报价留言e-->
-    <view class="page card-bottom">
-      <view class="borderRadius">
-        <view class="title card">
+    <view class="page pd30">
+      <view class="card">
+        <view class="title">
           <text>用车须知</text>
         </view>
-        <view class="border-top card-bottom card">
+        <view class="border-top pd30">
           <wux-row class="demands">
             <view class="row_title">超公里数：</view>
-            <text class="text">超出行程内的公里数另算</text>
+            <text class="text">{{ myQuoteData.kilometersFee ? myQuoteData.kilometersFee : '无' }}</text>
           </wux-row>
           <wux-white-space body-style="height: 30px"/>
           <wux-row class="demands">
             <view class="row_title">超时长费：</view>
-            <text class="text">超时长费 : 当日用车时长超过10小时,司机将按50元/小时收取超时长费</text>
+            <text class="text">超时长费 : {{ myQuoteData.overtimeFee ? myQuoteData.overtimeFee : '无' }}</text>
           </wux-row>
           <wux-white-space body-style="height: 30px"/>
           <wux-row class="demands">
             <view class="row_title">第三方收费：</view>
-            <text class="text">第三方收费 : 含第三方收取的停车费、过路过桥费</text>
+            <text class="text">第三方收费 : {{ myQuoteData.thirdPartyCharge ? myQuoteData.thirdPartyCharge : '无' }}</text>
           </wux-row>
           <wux-white-space body-style="height: 30px"/>
           <wux-row>
             <view class="row_title">差旅补贴：</view>
-            <text class="text">差旅补贴 : 用餐补贴30元/餐、住宿补贴为150元/晚</text>
-          </wux-row>
-          <wux-white-space body-style="height: 30px"/>
-          <wux-row>
-            <view class="row_title">超公里数：</view>
-            <text class="text">第三方收费 : 含第三方收取的停车费、过路过桥费</text>
+            <text class="text">{{ myQuoteData.travelSubsidies ? myQuoteData.travelSubsidies : '无' }}</text>
           </wux-row>
           <wux-white-space body-style="height: 30px"/>
           <wux-row>
             <view class="row_title">空驶费：</view>
-            <text class="text"> 默认接送点为两个,且距离为50公里以内,司机将按1元/公里收取超公里费,超过两个以上接送点,每多一个增加100元</text>
+            <text class="text"> {{ myQuoteData.emptyFee ? myQuoteData.emptyFee : '无' }}</text>
           </wux-row>
         </view>
       </view>
@@ -100,3 +92,5 @@
     </wux-divider>
   </view>
 </view>
+<wux-toast id="wux-toast"/>
+<wux-loading id="wux-loading"/>

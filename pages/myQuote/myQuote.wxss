@@ -2,85 +2,96 @@
 page {
   background-color: #f2f3f4;
 }
-.page{
-  padding:0 30rpx;
+
+.page {
+  padding: 0 30rpx;
 }
-.card{
-  padding: 30rpx;
+
+.card {
   background: #FFFFFF;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+  border: 1rpx solid #dddee1;
 }
-.header{
+
+.header {
   font-size: 36rpx;
   padding: 20rpx 30rpx;
   color: #FFFFFF;
   background: #00aaff;
   height: 200rpx;
 }
+
 .priceText {
-    text-align: right;
+  text-align: right;
 }
+
 .price_red {
-    color: #ff4d4d;
+  color: #ff4d4d;
 }
 
-.borderRadius{
-  border-top-left-radius: 16rpx;
-  border-top-right-radius: 16rpx;
-  border-bottom-left-radius: 16rpx;
-  border-bottom-right-radius: 16rpx;
-}
-.borderRadiusTopLr{
-  border-top-left-radius: 16rpx;
-  border-top-right-radius: 16rpx;
-}
-.borderRadiusBotLr{
-  border-bottom-left-radius: 16rpx;
-  border-bottom-right-radius: 16rpx;
-}
-
-.border-top{
+.border-top {
   border-top: 1rpx solid #e8e8e8;
 }
-
-.card-bottom{
+.pd30 {
+  padding: 30rpx;
+}
+.pbt30{
+  padding: 30rpx 0;
+}
+.plr30{
+  padding: 0 30rpx;
+}
+.pdtop30{
   padding-top: 30rpx;
 }
+.pdbot30{
+  padding-bottom: 30rpx;
+}
+.quoteCard{
+  padding: 30rpx;
+}
 .quoteTitle {
-  padding-top: 30rpx;
   font-size: 28rpx;
   font-weight: 600;
 }
-.carName{
+.carName {
   position: relative;
   bottom: 4rpx;
   padding-left: 10rpx;
   font-weight: 600;
   font-size: 28rpx;
 }
-.text{
+
+.text {
   font-size: 26rpx;
   color: #666;
 }
+
 .image_icon {
   width: 32rpx;
   height: 32rpx;
 }
+
 .title {
-  padding-bottom: 30rpx;
+  padding: 30rpx;
   font-size: 32rpx;
   font-weight: 600;
 }
 
-
 /*报价留言*/
-.row_title{
+.row_title {
   font-size: 28rpx;
   color: #666;
   font-weight: bolder;
 }
-.demands{
+
+.demands {
   padding-bottom: 60rpx;
 }
+
 .dividerText {
   font-size: 28rpx;
   color: #999;

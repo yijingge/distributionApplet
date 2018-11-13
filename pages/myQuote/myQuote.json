@@ -1,9 +1,12 @@
 {
   "navigationBarTitleText": "我的报价",
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "wux-row": "../../style/row/index",
     "wux-col": "../../style/col/index",
     "wux-white-space": "../../style/white-space/index",
-    "wux-divider": "../../style/divider/index"
+    "wux-divider": "../../style/divider/index",
+    "wux-loading": "../../style/loading/index",
+    "wux-toast": "../../style/toast/index"
   }
 }

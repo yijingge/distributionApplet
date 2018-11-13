@@ -1,11 +1,12 @@
 <!--pages/myQuote/myQuote.wxml-->
-<view>
+<view style="width: 100%;">
   <view class="header">
     <text>车辆方案</text>
   </view>
-  <view style="position: absolute;top: 100rpx;">
-    <view class="page">
-      <view class="card quoteCard" wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+  <view style="position: absolute; width: 100%;top: 100rpx;">
+    <view class="quoteCardDiv">
+      <view class="quoteCard {{ index !== 0 ? 'border-top' : '' }} "
+            wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
         <wux-row class="quoteTitle">
           <wux-col span="3">
             <view>方案{{ index + 1 }}</view>
@@ -22,7 +23,7 @@
             <image src="../../images/che.png" class="image_icon"></image>
             <text class="carName">{{ item.carBrandName === null ? 0 : item.carBrandName }}</text>
           </view>
-          <view class="">
+          <view class="quoteInfo">
             <wux-col span="3" push="0">
               <text class="text alignCenter">{{ item.carLevelName === null ? 0 : item.carLevelName }}</text>
             </wux-col>
@@ -32,10 +33,11 @@
             <wux-col span="3" push="1">
               <text class="text alignCenter">{{ item.carNumber === null ? 0 : item.carNumber  }}辆</text>
             </wux-col>
-            <wux-col span="3" push="2">
+            <wux-col span="3" push="1">
               <text class="text alignRight">{{ item.unitPrice === null ? 0 : item.unitPrice }}元</text>
             </wux-col>
           </view>
+          <wux-white-space body-style="height: 32px"/>
         </wux-row>
       </view>
     </view>
@@ -47,7 +49,7 @@
           <text>报价留言</text>
         </view>
         <view class="border-top pd30">
-          <text class="text"> {{ myQuoteData.bookNotes  ? myQuoteData.bookNotes : '无' }}</text>
+          <text class="text"> {{ myQuoteData.remarks  ? myQuoteData.remarks : '无' }}</text>
         </view>
       </view>
     </view>

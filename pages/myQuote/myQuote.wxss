@@ -1,19 +1,32 @@
 /* pages/myQuote/myQuote.wxss */
 page {
   background-color: #f2f3f4;
+  width: 100%;
 }
-
 .page {
   padding: 0 30rpx;
+  width: 92%;
 }
-
+.quoteCardDiv{
+  width: 92%;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+  border:1rpx solid #dddee1;
+}
+.quoteCard{
+  padding: 30rpx;
+}
 .card {
   background: #FFFFFF;
   border-top-left-radius: 16rpx;
   border-top-right-radius: 16rpx;
   border-bottom-left-radius: 16rpx;
   border-bottom-right-radius: 16rpx;
-  border: 1rpx solid #dddee1;
+  border:1rpx solid #dddee1;
 }
 
 .header {
@@ -33,7 +46,7 @@ page {
 }
 
 .border-top {
-  border-top: 1rpx solid #e8e8e8;
+  border-top: 1rpx solid #dddee1;
 }
 .pd30 {
   padding: 30rpx;
@@ -50,12 +63,13 @@ page {
 .pdbot30{
   padding-bottom: 30rpx;
 }
-.quoteCard{
-  padding: 30rpx;
-}
+
 .quoteTitle {
   font-size: 28rpx;
   font-weight: 600;
+}
+.quoteInfo{
+  padding-bottom: 32rpx;
 }
 .carName {
   position: relative;

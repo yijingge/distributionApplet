@@ -14,7 +14,6 @@ Page({
     listData: [],
     myQuoteData: ''
   },
-  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -88,7 +87,6 @@ Page({
         pageSize: _this.data.pageSize
       },
       success: function (res) {
-        console.log(res.data.data)
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
         if (res.data.code) {
@@ -116,7 +114,9 @@ Page({
         })
       }
     })
-  }, 500)
+  },
+    500
+  )
   },
   // 加载图标
   showLoading: function (e) {

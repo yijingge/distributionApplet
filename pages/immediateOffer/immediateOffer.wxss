@@ -94,3 +94,9 @@ page {
     display: inline;
     color: #00aaff;
 }
+
+.footer {
+    width: 100%;
+    height: auto;
+    margin-bottom: 60rpx;
+}

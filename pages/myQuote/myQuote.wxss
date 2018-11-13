@@ -18,7 +18,9 @@ page {
   border:1rpx solid #dddee1;
 }
 .quoteCard{
-  padding: 30rpx;
+  padding:30rpx;
+  padding-bottom: 0rpx;
+  margin-bottom: -10rpx;
 }
 .card {
   background: #FFFFFF;

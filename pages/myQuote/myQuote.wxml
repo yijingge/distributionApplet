@@ -1,5 +1,5 @@
 <!--pages/myQuote/myQuote.wxml-->
-<view style="width: 100%;">
+<view>
   <view class="header">
     <text>车辆方案</text>
   </view>

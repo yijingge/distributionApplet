@@ -32,6 +32,12 @@ page {
     border-radius: 16rpx;
 }
 
+.addOfferButton_grey {
+    background: #fff;
+    border: 1rpx solid #dddee1;
+    color: #ccc;
+}
+
 .button {
     width: 92%;
     height: 88rpx;
@@ -51,6 +57,13 @@ page {
 
 .button_hover {
     background: #26b7ff;
+}
+
+.card_offer {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    margin-top: 20rpx;
 }
 
 .card_remarks {

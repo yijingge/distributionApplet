@@ -7,8 +7,8 @@ page {
 .immediateOffer_title {
     width: 100%;
     height: 96rpx;
-    padding: 0 30rpx;
-    border-top: 1px solid #dddee1;
+    padding: 0 20rpx;
+    border-top: 1rpx solid #dddee1;
     line-height: 96rpx;
     background: #fff;
 }
@@ -19,17 +19,17 @@ page {
 }
 
 .addOfferButton {
-    position: fixed;
+    position: absolute;
     top: 16rpx;
-    right: 30rpx;
-    width: 190rpx;
+    right: 50rpx;
+    width: 215rpx;
     height: 64rpx;
     line-height: 64rpx;
     text-align: center;
     background: #00aaff;
     font-size: 26rpx;
     color: #ffffff;
-    border-radius: 16rpx;
+    border-radius: 6rpx;
 }
 
 .addOfferButton_grey {
@@ -43,7 +43,7 @@ page {
     height: 88rpx;
     margin: 60rpx auto;
     background: #00aaff;
-    border-radius: 16rpx;
+    border-radius: 6rpx;
     font-size: 36rpx;
     color: #fff;
     text-align: center;
@@ -53,6 +53,7 @@ page {
 .button_grey {
     background: #e9eaec;
     color: #999999;
+    border: none;
 }
 
 .button_hover {
@@ -64,6 +65,80 @@ page {
     height: auto;
     background: #fff;
     margin-top: 20rpx;
+}
+
+.card_offer_header {
+    width: auto;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 32rpx;
+    color: #333333;
+    padding: 0 30rpx;
+    border-bottom: 1rpx solid #dddee1;
+}
+
+.card_offer_header_hover {
+    background: #f8f8f9;
+}
+
+.card_offer_content {
+    width: auto;
+    height: auto;
+    padding: 30rpx 30rpx;
+    border-bottom: 1rpx solid #dddee1;
+}
+
+.card_offer_content_upRow {
+    display: block;
+    width: auto;
+    height: auto;
+    margin-bottom: 24rpx;
+}
+
+.card_offer_content_downRow {
+    display: block;
+    width: auto;
+    height: auto;
+    margin-bottom: 30rpx;
+    font-size: 26rpx;
+    color: #666666;
+}
+
+.image_arrow {
+    display: inline-block;
+    width: 48rpx;
+    height: 72rpx;
+    float: right;
+    margin-top: 6rpx;
+    margin-right: -14rpx;
+}
+
+.image_icon {
+    width: 28rpx;
+    height: 28rpx;
+    position: absolute;
+    top: 10rpx;
+}
+
+.text_brand {
+    color: #333333;
+    font-size: 28rpx;
+    padding-left: 40rpx;
+}
+
+.card_offer_footer {
+    width: auto;
+    height: 88rpx;
+    line-height: 88rpx;
+    padding: 0 30rpx;
+    font-size: 28rpx;
+    color: #000;
+    text-align: right;
+}
+
+.card_offer_price {
+    color: #ff4141;
+    font-size: 32rpx;
 }
 
 .card_remarks {
@@ -80,7 +155,7 @@ page {
     font-size: 32rpx;
     color: #000000;
     line-height: 88rpx;
-    border-bottom: 1px solid #dddee1;
+    border-bottom: 1rpx solid #dddee1;
 }
 
 .card_remarks_content {

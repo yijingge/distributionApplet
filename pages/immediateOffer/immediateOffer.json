@@ -8,6 +8,7 @@
     "wux-col": "../../style/col/index",
     "wux-checkbox-group": "../../style/checkbox-group/index",
     "wux-checkbox": "../../style/checkbox/index",
-    "wux-textarea": "../../style/textarea/index"
+    "wux-textarea": "../../style/textarea/index",
+    "wux-toast": "../../style/toast/index"
   }
 }

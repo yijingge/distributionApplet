@@ -6,29 +6,57 @@
             车辆方案
         </wux-col>
         <wux-col span="6" class="immediateOffer_title_right">
-            <view class="addOfferButton" hover-class="button_hover">添加车辆方案</view>
+            <button class="addOfferButton" hover-class="button_hover" wx:if="{{phoneCarDemandOfferVOList.length < 3}}" bindtap="goToCarOffer" id="{{id}}">添加车辆方案</button>
+            <button class="addOfferButton addOfferButton_grey" wx:else>添加车辆方案</button>
         </wux-col>
     </wux-row>
 </view>
 
-<view class="card_offer"></view>
-
-<view class="card_remarks">
-    <view class="card_remarks_title">报价留言</view>
-    <view class="card_remarks_content">
-        <wux-textarea hasCount rows="4" cursorSpacing="80" maxlength="100" placeholder="请输入留言" />
+<view class="card_offer">
+    <view class="card_offer_header" hover-class="card_offer_header_hover">
+        <text>方案一</text>
+        <image src="../../images/arrow.png" class="image_arrow"></image>
+    </view>
+    <view class="card_offer_content">
+        <wux-row class="card_offer_content_upRow">
+            <wux-col span="12">
+                <image src="../../images/che.png" class="image_icon"></image>
+                <text class="text_brand">金龙</text>
+            </wux-col>
+        </wux-row>
+        <wux-row class="card_offer_content_downRow">
+            <wux-col span="3">豪华型</wux-col>
+            <wux-col span="3">18座</wux-col>
+            <wux-col span="3">1辆</wux-col>
+            <wux-col span="3">250元</wux-col>
+        </wux-row>
+    </view>
+    <view class="card_offer_footer">
+        报价合计 : <text class="card_offer_price">¥ 1250</text>
     </view>
 </view>
 
-<view class="immediateOffer_checkBox">
-    <checkbox-group class="carKnowledge">
-        <label class="checkbox">
-            <checkbox value="true" color="#00aaff"/>
-        </label>
-        <view class="checkbox_text">我已阅读并同意<view class="checkbox_text_special" hover-class="checkbox_text_special_hover" bindtap="goToCarKnowledge">《飞鹰旅游用车须知》</view>使用条款</view>
-    </checkbox-group>
-</view>
+<form bindsubmit="formSubmit">
+    <view class="card_remarks">
+        <view class="card_remarks_title">报价留言</view>
+        <view class="card_remarks_content">
+            <wux-textarea bind:change="bindTextAreaBlur" value="{{remarks}}" hasCount rows="4" cursorSpacing="80" maxlength="100" placeholder="请输入留言" />
+        </view>
+    </view>
 
-<view class="footer">
-    <view class="button" hover-class="button_hover">确认报价</view>
-</view>
+    <view class="immediateOffer_checkBox">
+        <checkbox-group class="carKnowledge" name="isAgree">
+            <label class="checkbox">
+                <checkbox value="true" color="#00aaff"/>
+            </label>
+            <view class="checkbox_text">我已阅读并同意<view class="checkbox_text_special" hover-class="checkbox_text_special_hover" bindtap="goToCarKnowledge">《飞鹰旅游用车须知》</view>使用条款</view>
+        </checkbox-group>
+    </view>
+
+    <view class="footer">
+        <button class="button" hover-class="button_hover" wx:if="{{phoneCarDemandOfferVOList.length > 0}}" formType="submit">确认报价</button>
+        <button class="button button_grey" wx:else>确认报价</button>
+    </view>
+</form>
+
+<wux-toast id="wux-toast"/>

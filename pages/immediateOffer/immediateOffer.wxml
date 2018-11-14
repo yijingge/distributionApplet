@@ -11,6 +11,8 @@
     </wux-row>
 </view>
 
+<view class="card_offer"></view>
+
 <view class="card_remarks">
     <view class="card_remarks_title">报价留言</view>
     <view class="card_remarks_content">

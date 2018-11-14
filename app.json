@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/immediateOffer/immediateOffer",
     "pages/index/index",
     "pages/logs/logs",
     "pages/carCustomizationOrderList/carCustomizationOrderList",
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
-    "pages/immediateOffer/immediateOffer",
     "pages/myQuote/myQuote",
-    "pages/carKnowledge/carKnowledge"
+    "pages/carKnowledge/carKnowledge",
+    "pages/carOffer/carOffer"
   ],
   "window": {
     "backgroundTextStyle": "dark",

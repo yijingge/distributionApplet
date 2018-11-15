@@ -8,8 +8,17 @@ Page({
    */
   data: {
     id: '',
+    remarks: '',
     phoneCarDemandOfferVOList: [],
-    remarks: ''
+    formData: {
+      phoneCarDemandOfferVOList: [
+        {
+          carDemandOfferItemVOList: [],
+          offerMoney: ''
+        }
+      ],
+      remarks: ''
+    }
   },
 
   // 获取报价留言
@@ -53,11 +62,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var listData = JSON.parse(options.listData);
     this.setData({
-      id: options.id,
-      phoneCarDemandOfferVOList: listData
+      id: options.id
     })
+    if (options.listData.length > 1) {
+      var listData = JSON.parse(options.listData)
+      this.data.phoneCarDemandOfferVOList.push(listData)
+    }
+    console.log(this.data.phoneCarDemandOfferVOList)
   },
 
   /**

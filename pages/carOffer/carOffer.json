@@ -1,1 +1,20 @@
-{}
+{
+  "navigationBarTitleText": "车辆方案",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "wux-cell-group": "../../style/cell-group/index",
+    "wux-cell": "../../style/cell/index",
+    "wux-input": "../../style/input/index",
+    "wux-input-number": "../../style/input-number/index",
+    "wux-select": "../../style/select/index",
+    "wux-row": "../../style/row/index",
+    "wux-col": "../../style/col/index",
+    "wux-icon": "../../style/icon/index",
+    "wux-button": "../../style/button/index",
+    "wux-white-space": "../../style/white-space/index",
+    "wux-divider": "../../style/divider/index",
+    "wux-loading": "../../style/loading/index",
+    "wux-toast": "../../style/toast/index",
+    "wux-dialog": "../../style/dialog/index"
+  }
+}

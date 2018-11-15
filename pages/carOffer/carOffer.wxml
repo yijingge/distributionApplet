@@ -1,2 +1,81 @@
 <!--pages/carOffer/carOffer.wxml-->
-<text>pages/carOffer/carOffer.wxml</text>
+<form class="page" bindsubmit="saveScheme">
+  <view class="header">
+    <wux-row class="">
+      <wux-col span="2">
+        <text class="header_h">方案一</text>
+      </wux-col>
+      <wux-col span="4">
+        <view class="priceText">报价合计：
+          <text class="price_red"> ￥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
+        </view>
+      </wux-col>
+      <wux-col span="6">
+        <view style="text-align: right">
+          <button hover-class="hoverActiveBtn" class="addBtn" bindtap="addItem">新增车辆</button>
+        </view>
+      </wux-col>
+    </wux-row>
+  </view>
+  <wux-white-space body-style="height:20rpx"></wux-white-space>
+
+  <wux-select id="wux-select1"/>
+  <wux-select id="wux-select2"/>
+  <wux-select id="wux-select3"/>
+  <wux-dialog id="wux-dialog"/>
+  <wux-toast id="wux-toast" />
+
+  <view wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+    <view class="listTitle">
+      <wux-row>
+        <wux-col span="6">
+          <image class="listTitleIcon" src="../../images/che.png"></image>
+        </wux-col>
+        <wux-col wx:if="{{index !== 0 }}" span="6" style="text-align: right">
+          <button class="delBtn" bindtap="delItem" style="color: #00aaff;font-size: 28rpx;">删除</button>
+        </wux-col>
+      </wux-row>
+    </view>
+    <view class="page__bd">
+      <wux-cell-group>
+        <wux-cell title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
+          <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}"/>
+          <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
+        </wux-cell>
+        <wux-cell title="车辆品牌" data-index="{{index}}" extra="{{ item.title2 }}" bind:click="onClick2">
+          <input class="hideInput" type="text" name="{{ 'brand' + index }}" value="{{item.title2}}"/>
+          <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
+        </wux-cell>
+        <wux-cell  title="座位数" data-index="{{index}}" extra="{{ item.title3 }}" bind:click="onClick3">
+          <input class="hideInput" type="text" name="{{ 'seatNumber' + index }}"  value="{{item.title3}}"/>
+          <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
+        </wux-cell>
+        <wux-cell title="数量" >
+          <input class="hideInput" type="text" name="{{ 'number' + index }}"  value="{{item.number}}"/>
+          <view style="height: 60rpx;" slot="footer">
+            <wux-input-number data-index="{{index}}" bind:change="inputNumber" name="number" min="0" longpress/>
+          </view>
+        </wux-cell>
+        <wux-cell title="单价">
+          <input class="hideInput"  type="number" name="{{ 'price' + index }}" value="{{item.price}}"/>
+          <view slot="footer" style="height: 60rpx;float: right;line-height: 60rpx;">
+            <wux-input data-index="{{index}}" bind:change="inputPrice" placeholder="请输入" value="{{item.price}}" controlled extra="元"></wux-input>
+          </view>
+        </wux-cell>
+      </wux-cell-group>
+    </view>
+  </view>
+  <wux-white-space body-style="height: 60rpx"></wux-white-space>
+  <view class="footer">
+    <wux-row>
+      <wux-col span="6">
+        <button bindtap="delScheme" hover-class="hoverDefaultBtn" class="footerBtn">删除方案</button>
+      </wux-col>
+      <wux-col span="6">
+        <button formType="submit" hover-class="hoverActiveBtn" class="footerBtn primary">保存方案</button>
+      </wux-col>
+    </wux-row>
+  </view>
+
+  <wux-white-space body-style="height: 60rpx"></wux-white-space>
+</form>

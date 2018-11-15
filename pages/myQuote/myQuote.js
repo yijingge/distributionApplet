@@ -12,7 +12,13 @@ Page({
     pageIndex: 1, // 当前是第几页
     pageSize: 10, // 每页显示多少条数据
     listData: [],
-    myQuoteData: ''
+    myQuoteData: '',
+    value1: '',
+    title1: '',
+    value2: '',
+    title2: '',
+    value3: '',
+    title3: '',
   },
   /**
    * 生命周期函数--监听页面加载

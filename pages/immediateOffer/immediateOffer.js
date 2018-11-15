@@ -8,8 +8,17 @@ Page({
    */
   data: {
     id: '',
-    phoneCarDemandOfferVOList: [{}],
-    remarks: ''
+    remarks: '',
+    phoneCarDemandOfferVOList: [],
+    formData: {
+      phoneCarDemandOfferVOList: [
+        {
+          carDemandOfferItemVOList: [],
+          offerMoney: ''
+        }
+      ],
+      remarks: ''
+    }
   },
 
   // 获取报价留言
@@ -56,6 +65,11 @@ Page({
     this.setData({
       id: options.id
     })
+    if (options.listData) {
+      var listData = JSON.parse(options.listData)
+      this.data.phoneCarDemandOfferVOList.push(listData)
+    }
+    console.log(this.data.phoneCarDemandOfferVOList)
   },
 
   /**

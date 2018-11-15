@@ -202,7 +202,6 @@ Page({
       value: this.data.phoneCarDemandOfferVOList[key].value1,
       options: this.data.carLevelList,
       onConfirm: (value, index, options) => {
-      console.log('config', value, index, options)
     if (index !== -1) {
       this.data.phoneCarDemandOfferVOList[key].value1 = value
       this.data.phoneCarDemandOfferVOList[key].title1 = options[index].label,
@@ -219,7 +218,6 @@ Page({
       value: this.data.phoneCarDemandOfferVOList[key].value2,
       options: this.data.carBrandList,
       onConfirm: (value, index, options) => {
-      console.log('brand', value, index, options)
     if (index !== -1) {
       this.data.phoneCarDemandOfferVOList[key].value2 = value
       this.data.phoneCarDemandOfferVOList[key].title2 = options[index].label,
@@ -236,7 +234,6 @@ Page({
       value: this.data.phoneCarDemandOfferVOList[key].value3,
       options: this.data.seatNumberList,
       onConfirm: (value, index, options) => {
-      console.log('seatNumber', value, index, options)
       if (index !== -1) {
       this.data.phoneCarDemandOfferVOList[key].value3 = value
       this.data.phoneCarDemandOfferVOList[key].title3 = options[index].label,

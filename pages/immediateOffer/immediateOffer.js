@@ -65,7 +65,7 @@ Page({
     this.setData({
       id: options.id
     })
-    if (options.listData.length > 1) {
+    if (options.listData) {
       var listData = JSON.parse(options.listData)
       this.data.phoneCarDemandOfferVOList.push(listData)
     }

@@ -161,7 +161,7 @@ page {
 .card_remarks_content {
     width: auto;
     height: auto;
-    padding: 30rpx;
+    padding: 20rpx 20rpx;
     font-size: 28rpx;
     color: #000000;
 }

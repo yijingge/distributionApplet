@@ -275,7 +275,7 @@ Page({
       title: '删除确认',
       content: '你确定要删除此方案？',
       onConfirm(e) {
-        wx.reLaunch({
+        wx.redirectTo({
           url: "../immediateOffer/immediateOffer"
         })
       }
@@ -322,7 +322,7 @@ Page({
         return false
       }
     }
-    wx.reLaunch({
+    wx.redirectTo({
       url: "../immediateOffer/immediateOffer"
     })
   }

@@ -1,7 +1,7 @@
 <!--pages/carOffer/carOffer.wxml-->
 <form class="page" bindsubmit="saveScheme">
   <view class="header">
-    <wux-row class="">
+    <wux-row>
       <wux-col span="2">
         <text class="header_h">方案一</text>
       </wux-col>
@@ -11,7 +11,7 @@
         </view>
       </wux-col>
       <wux-col span="6">
-        <view style="text-align: right">
+        <view style="text-align: right; background:red; padding-right: 30rpx;">
           <button hover-class="hoverActiveBtn" class="addBtn" bindtap="addItem">新增车辆</button>
         </view>
       </wux-col>
@@ -19,11 +19,12 @@
   </view>
   <wux-white-space body-style="height:20rpx"></wux-white-space>
 
+  <wux-dialog id="wux-dialog"/>
+  <wux-toast id="wux-toast" />
   <wux-select id="wux-select1"/>
   <wux-select id="wux-select2"/>
   <wux-select id="wux-select3"/>
-  <wux-dialog id="wux-dialog"/>
-  <wux-toast id="wux-toast" />
+
 
   <view wx:for="{{listData}}" wx:key="index" wx:for-index="index" wx:for-item="item">
     <view class="listTitle">
@@ -38,22 +39,26 @@
     </view>
     <view class="page__bd">
       <wux-cell-group>
+
         <wux-cell title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
           <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}"/>
           <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
         </wux-cell>
+
         <wux-cell title="车辆品牌" data-index="{{index}}" extra="{{ item.title2 }}" bind:click="onClick2">
           <input class="hideInput" type="text" name="{{ 'brand' + index }}" value="{{item.title2}}"/>
           <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
         </wux-cell>
-        <wux-cell  title="座位数" data-index="{{index}}" extra="{{ item.title3 }}" bind:click="onClick3">
-          <input class="hideInput" type="text" name="{{ 'seatNumber' + index }}"  value="{{item.title3}}"/>
+
+        <wux-cell title="座位数" data-index="{{index}}" extra="{{ item.title3 }}" bind:click="onClick3">
+          <input class="hideInput" type="text" name="{{ 'seatNumber'+ index }}"  value="{{item.title3}}"/>
           <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
         </wux-cell>
+
         <wux-cell title="数量" >
           <input class="hideInput" type="text" name="{{ 'number' + index }}"  value="{{item.number}}"/>
           <view style="height: 60rpx;" slot="footer">
-            <wux-input-number data-index="{{index}}" bind:change="inputNumber" name="number" min="0" longpress/>
+            <wux-input-number data-index="{{index}}" bind:change="inputNumber"  min="0" longpress/>
           </view>
         </wux-cell>
         <wux-cell title="单价">
@@ -79,3 +84,5 @@
 
   <wux-white-space body-style="height: 60rpx"></wux-white-space>
 </form>
+<wux-toast id="wux-toast"/>
+<wux-loading id="wux-loading"/>

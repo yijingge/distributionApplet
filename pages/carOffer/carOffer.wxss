@@ -6,7 +6,7 @@ page {
   background: #ffffff;
   width: 100%;
   font-size: 28rpx;
-  padding: 30rpx 0rpx 30rpx 30rpx;
+  padding: 30rpx 30rpx 30rpx 30rpx;
   color: #000;
 }
 .header_h {
@@ -22,6 +22,7 @@ page {
 }
 
 .addBtn {
+  display: inline-block;
   outline: none;
   width: 190rpx;
   height: 64rpx;

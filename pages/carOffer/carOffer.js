@@ -1,10 +1,14 @@
 // pages/carOffer/carOffer.js
-import {$wuxSelect, $wuxToast,  $wuxDialog} from '../../style/index'
+var util = require('../../utils/util.js')
+import { $wuxSelect, $wuxToast, $wuxDialog, $wuxLoading } from '../../style/index'
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    carLevelList: [],
+    seatNumberList: [],
+    carBrandList: [],
     listData: [
       {
         value1: '',
@@ -33,7 +37,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.showLoading('数据加载中')
+    this.getCarLevelList()
+    this.getCarBrandList()
+    this.getCarSeatNumberList()
   },
 
   /**
@@ -41,6 +48,136 @@ Page({
    */
   onReady: function () {
 
+  },
+  // 加载图标
+  showLoading: function (e) {
+    this.$wuxLoading = $wuxLoading()
+    this.$wuxLoading.show({
+      text: '数据加载中'
+    })
+  },
+ // 获取车辆配置列表
+  getCarLevelList() {
+    var _this = this
+    setTimeout(() => {
+      wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/getCarLevelList.json',
+      method: 'post',
+      data:{},
+      success: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        _this.setData({
+          carLevelList: res.data.data
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
+  },
+    500
+  )
+  },
+  // 获取车品牌列表
+  getCarBrandList() {
+    var _this = this
+    setTimeout(() => {
+      wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/getCarBrandList.json',
+      method: 'post',
+      data:{},
+      success: function (res) {
+        
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        _this.setData({
+          carBrandList: res.data.data
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
+  },
+    500
+  )
+  },
+  // 获取座位数列表
+  getCarSeatNumberList() {
+    var _this = this
+    setTimeout(() => {
+      wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/enableCarInfoList.json',
+      method: 'post',
+      data:{},
+      success: function (res) {
+        res.data.data.map((item, index) => {
+          item.value = (index+1).toString()
+          item.label = item.guestSeat + '座'
+          return item
+        })
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        _this.setData({
+          seatNumberList: res.data.data
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
+  },
+    500
+  )
   },
  // 删除某个车辆
   delItem: function (e) {
@@ -69,28 +206,12 @@ Page({
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select1').open({
       value: this.data.listData[key].value1,
-      options: [
-        {
-          title: '豪华型',
-          value: '001'
-        },
-        {
-          title: '舒适性',
-          value: '002'
-        },
-        {
-          title: '经济型',
-          value: '003'
-        },
-        {
-          title: '加长版',
-          value: '004'
-        }
-      ],
+      options: this.data.carLevelList,
       onConfirm: (value, index, options) => {
+      console.log('config', value, index, options)
     if (index !== -1) {
       this.data.listData[key].value1 = value
-      this.data.listData[key].title1 = options[index].title,
+      this.data.listData[key].title1 = options[index].label,
       this.setData({
         listData: this.data.listData
       })
@@ -102,37 +223,12 @@ Page({
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select2').open({
       value: this.data.listData[key].value2,
-      options: [
-        {
-          title: '大众',
-          value: '001'
-        },
-        {
-          title: '宝来',
-          value: '002'
-        },
-        {
-          title: 'benz',
-          value: '003'
-        },
-        {
-          title: 'jeep',
-          value: '004'
-        },
-        {
-          title: '红旗',
-          value: '005'
-        },
-        {
-          title: 'skoda',
-          value: '006'
-        }
-      ],
+      options: this.data.carBrandList,
       onConfirm: (value, index, options) => {
       console.log('brand', value, index, options)
     if (index !== -1) {
       this.data.listData[key].value2 = value
-      this.data.listData[key].title2 = options[index].title,
+      this.data.listData[key].title2 = options[index].label,
         this.setData({
           listData: this.data.listData
         })
@@ -142,39 +238,14 @@ Page({
   },
   onClick3(event) {
     var key = event.currentTarget.dataset.index
-    $wuxSelect('#wux-select2').open({
+    $wuxSelect('#wux-select3').open({
       value: this.data.listData[key].value3,
-      options: [
-        {
-          title: '5座',
-          value: '001',
-        },
-        {
-          title: '7座',
-          value: '002',
-        },
-        {
-          title: '13座',
-          value: '003',
-        },
-        {
-          title: '22座',
-          value: '004',
-        },
-        {
-          title: '33座',
-          value: '005',
-        },
-        {
-          title: '60座',
-          value: '006',
-        }
-      ],
+      options: this.data.seatNumberList,
       onConfirm: (value, index, options) => {
       console.log('seatNumber', value, index, options)
-    if (index !== -1) {
+      if (index !== -1) {
       this.data.listData[key].value3 = value
-      this.data.listData[key].title3 = options[index].title,
+      this.data.listData[key].title3 = options[index].label,
         this.setData({
           listData: this.data.listData
         })

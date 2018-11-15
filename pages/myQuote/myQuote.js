@@ -1,7 +1,6 @@
 // pages/myQuote/myQuote.js
 const util = require('../../utils/util.js')
-import { $wuxToast } from '../../style/index.js'
-import { $wuxLoading } from '../../style/index'
+import { $wuxToast, $wuxLoading } from '../../style/index.js'
 Page({
   /**
    * 页面的初始数据

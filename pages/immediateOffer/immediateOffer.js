@@ -8,7 +8,7 @@ Page({
    */
   data: {
     id: '',
-    phoneCarDemandOfferVOList: [{}],
+    phoneCarDemandOfferVOList: [],
     remarks: ''
   },
 
@@ -56,7 +56,7 @@ Page({
     var listData = JSON.parse(options.listData);
     this.setData({
       id: options.id,
-      listData: listData
+      phoneCarDemandOfferVOList: listData
     })
   },
 

@@ -6,20 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id: '',
     carLevelList: [],
     seatNumberList: [],
     carBrandList: [],
-    listData: [
-      {
-        value1: '',
-        title1: '',
-        value2: '',
-        title2: '',
-        value3: '',
-        title3: '',
-        number: '',
-        price: ''
-      },
+    phoneCarDemandOfferVOList: [
       {
         value1: '',
         title1: '',
@@ -37,10 +28,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.showLoading('数据加载中')
-    this.getCarLevelList()
-    this.getCarBrandList()
-    this.getCarSeatNumberList()
+    this.setData({
+      id: options.id
+    })
+    // this.showLoading('数据加载中')
+    // this.getCarLevelList()
+    // this.getCarBrandList()
+    // this.getCarSeatNumberList()
   },
 
   /**
@@ -181,14 +175,14 @@ Page({
   },
  // 删除某个车辆
   delItem: function (e) {
-    this.data.listData.splice(this.data.listData.length - 1, 1);
+    this.data.phoneCarDemandOfferVOList.splice(this.data.phoneCarDemandOfferVOList.length - 1, 1);
     this.setData({
-      listData: this.data.listData
+      phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
  //点击添加车辆
   addItem: function (e) {
-    this.data.listData.push({
+    this.data.phoneCarDemandOfferVOList.push({
       value1: '',
       title1: '',
       value2: '',
@@ -199,21 +193,21 @@ Page({
       price: ''
     })
     this.setData({
-      listData: this.data.listData
+      phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
   onClick1(event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select1').open({
-      value: this.data.listData[key].value1,
+      value: this.data.phoneCarDemandOfferVOList[key].value1,
       options: this.data.carLevelList,
       onConfirm: (value, index, options) => {
       console.log('config', value, index, options)
     if (index !== -1) {
-      this.data.listData[key].value1 = value
-      this.data.listData[key].title1 = options[index].label,
+      this.data.phoneCarDemandOfferVOList[key].value1 = value
+      this.data.phoneCarDemandOfferVOList[key].title1 = options[index].label,
       this.setData({
-        listData: this.data.listData
+        phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
       })
     }
   },
@@ -222,15 +216,15 @@ Page({
   onClick2(event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select2').open({
-      value: this.data.listData[key].value2,
+      value: this.data.phoneCarDemandOfferVOList[key].value2,
       options: this.data.carBrandList,
       onConfirm: (value, index, options) => {
       console.log('brand', value, index, options)
     if (index !== -1) {
-      this.data.listData[key].value2 = value
-      this.data.listData[key].title2 = options[index].label,
+      this.data.phoneCarDemandOfferVOList[key].value2 = value
+      this.data.phoneCarDemandOfferVOList[key].title2 = options[index].label,
         this.setData({
-          listData: this.data.listData
+          phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
         })
     }
   },
@@ -239,15 +233,15 @@ Page({
   onClick3(event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select3').open({
-      value: this.data.listData[key].value3,
+      value: this.data.phoneCarDemandOfferVOList[key].value3,
       options: this.data.seatNumberList,
       onConfirm: (value, index, options) => {
       console.log('seatNumber', value, index, options)
       if (index !== -1) {
-      this.data.listData[key].value3 = value
-      this.data.listData[key].title3 = options[index].label,
+      this.data.phoneCarDemandOfferVOList[key].value3 = value
+      this.data.phoneCarDemandOfferVOList[key].title3 = options[index].label,
         this.setData({
-          listData: this.data.listData
+          phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
         })
     }
   },
@@ -255,16 +249,16 @@ Page({
   },
   inputPrice(event) {
     var key = event.currentTarget.dataset.index
-    this.data.listData[key].price = event.detail.value
+    this.data.phoneCarDemandOfferVOList[key].price = event.detail.value
     this.setData({
-      listData: this.data.listData
+      phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
   inputNumber(event) {
     var key = event.currentTarget.dataset.index
-    this.data.listData[key].number = event.detail.value
+    this.data.phoneCarDemandOfferVOList[key].number = event.detail.value
     this.setData({
-      listData: this.data.listData
+      phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
   // 删除报价方案
@@ -294,7 +288,6 @@ Page({
   saveScheme: function(e) {
     var formData = e.detail.value
     var errorMes = ''
-    // console.log(formData)
     for (var i in formData) {
       if (i.indexOf('config') !== -1 && formData[i] === '') {
          errorMes = '请选择车辆配置'
@@ -322,8 +315,10 @@ Page({
         return false
       }
     }
+    var phoneCarDemandOfferVOList = JSON.stringify(this.data.phoneCarDemandOfferVOList)
+    console.log(phoneCarDemandOfferVOList)
     wx.redirectTo({
-      url: "../immediateOffer/immediateOffer"
+      url: "../immediateOffer/immediateOffer?phoneCarDemandOfferVOList=" + phoneCarDemandOfferVOList + '&id=' + this.data.id
     })
   }
 })

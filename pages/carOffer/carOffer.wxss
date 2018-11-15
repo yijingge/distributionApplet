@@ -2,19 +2,34 @@
 page {
   background-color: #f2f3f4;
 }
+.clearFix{
+  zoom:1;
+}
+.clearFix:after{
+  display:block;
+  content:"clear";
+  height:0;
+  clear:both;
+  overflow:hidden;
+  visibility:hidden;
+}
 .header {
   background: #ffffff;
   width: 100%;
   font-size: 28rpx;
-  padding: 30rpx 30rpx 30rpx 30rpx;
+  padding: 30rpx 10rpx 30rpx 30rpx;
   color: #000;
 }
 .header_h {
   font-size: 36rpx;
   color: #000;
+  position: relative;
+  top: 10rpx
 }
 .priceText{
   padding-left: 30rpx;
+  position: relative;
+  top: 10rpx
 }
 .price_red {
   font-size: 36rpx;
@@ -47,7 +62,9 @@ button::after {
 .arrow_icon {
   width: 50rpx;
   height: 50rpx;
-  float: right;
+  /*float: right;*/
+  position: relative;
+  left: 20rpx;
 }
 
 .listTitle {

@@ -17,3 +17,14 @@
 .hoverActiveBtn::after, hoverDefaultBtn::after{
   border: none;
 }
+.disbaledBtn{
+  background: #e9eaec;
+  color: #999;
+  width: 190rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  display: inline-block;
+  outline: none;
+  border: none;
+}

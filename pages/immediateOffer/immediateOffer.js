@@ -53,8 +53,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var listData = JSON.parse(options.listData);
     this.setData({
-      id: options.id
+      id: options.id,
+      listData: listData
     })
   },
 

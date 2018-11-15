@@ -208,7 +208,6 @@ Page({
       value: this.data.listData[key].value1,
       options: this.data.carLevelList,
       onConfirm: (value, index, options) => {
-      console.log('config', value, index, options)
     if (index !== -1) {
       this.data.listData[key].value1 = value
       this.data.listData[key].title1 = options[index].label,
@@ -225,7 +224,6 @@ Page({
       value: this.data.listData[key].value2,
       options: this.data.carBrandList,
       onConfirm: (value, index, options) => {
-      console.log('brand', value, index, options)
     if (index !== -1) {
       this.data.listData[key].value2 = value
       this.data.listData[key].title2 = options[index].label,
@@ -242,7 +240,6 @@ Page({
       value: this.data.listData[key].value3,
       options: this.data.seatNumberList,
       onConfirm: (value, index, options) => {
-      console.log('seatNumber', value, index, options)
       if (index !== -1) {
       this.data.listData[key].value3 = value
       this.data.listData[key].title3 = options[index].label,
@@ -294,7 +291,6 @@ Page({
   saveScheme: function(e) {
     var formData = e.detail.value
     var errorMes = ''
-    // console.log(formData)
     for (var i in formData) {
       if (i.indexOf('config') !== -1 && formData[i] === '') {
          errorMes = '请选择车辆配置'

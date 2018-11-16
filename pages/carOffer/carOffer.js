@@ -432,9 +432,9 @@ Page({
           })
           return false
         }
-        // wx.redirectTo({
-        //   url: "../immediateOffer/immediateOffer?id=" + _this.data.id
-        // })
+        wx.redirectTo({
+          url: "../immediateOffer/immediateOffer?id=" + _this.data.id
+        })
       },
       fail: function (res) {
         _this.$wuxLoading.hide()

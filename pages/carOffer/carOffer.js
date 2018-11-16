@@ -258,7 +258,6 @@ Page({
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
-    console.log(this.data.phoneCarDemandOfferVOList)
   },
   onClick1 (event) {
     var key = event.currentTarget.dataset.index
@@ -412,7 +411,6 @@ Page({
       }
       return outerSet
     })
-    console.log(phoneCarDemandOfferVOList)
     wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',
@@ -432,9 +430,9 @@ Page({
           })
           return false
         }
-        // wx.redirectTo({
-        //   url: "../immediateOffer/immediateOffer?id=" + _this.data.id
-        // })
+        wx.redirectTo({
+          url: "../immediateOffer/immediateOffer?id=" + _this.data.id
+        })
       },
       fail: function (res) {
         _this.$wuxLoading.hide()

@@ -12,36 +12,41 @@ Page({
     carBrandList: [],
     phoneCarDemandOfferVOList: [
       {
-        value1: '',
-        title1: '',
-        value2: '',
-        title2: '',
-        value3: '',
-        title3: '',
-        number: '',
-        price: ''
+        offerMoney: '',
+        sort: '1',
+        carDemandOfferItemVOList: [{
+          value1: '',
+          title1: '',
+          value2: '',
+          title2: '',
+          value3: '',
+          title3: '',
+          number: '',
+          price: ''
+        }]
       }
     ]
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       id: options.id
     })
-    // this.showLoading('数据加载中')
-    // this.getCarLevelList()
-    // this.getCarBrandList()
-    // this.getCarSeatNumberList()
+    this.showLoading('数据加载中')
+    this.getCarLevelList()
+    this.getCarBrandList()
+    this.getCarSeatNumberList()
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
   // 加载图标
   showLoading: function (e) {
@@ -50,14 +55,14 @@ Page({
       text: '数据加载中'
     })
   },
- // 获取车辆配置列表
-  getCarLevelList() {
+  // 获取车辆配置列表
+  getCarLevelList () {
     var _this = this
     setTimeout(() => {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarLevelList.json',
       method: 'post',
-      data:{},
+      data: {},
       success: function (res) {
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
@@ -90,13 +95,13 @@ Page({
   )
   },
   // 获取车品牌列表
-  getCarBrandList() {
+  getCarBrandList () {
     var _this = this
     setTimeout(() => {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarBrandList.json',
       method: 'post',
-      data:{},
+      data: {},
       success: function (res) {
         
         _this.$wuxLoading.hide()
@@ -130,19 +135,19 @@ Page({
   )
   },
   // 获取座位数列表
-  getCarSeatNumberList() {
+  getCarSeatNumberList () {
     var _this = this
     setTimeout(() => {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/enableCarInfoList.json',
       method: 'post',
-      data:{},
+      data: {},
       success: function (res) {
         res.data.data.map((item, index) => {
-          item.value = (index+1).toString()
-          item.label = item.guestSeat + '座'
-          return item
-        })
+          item.value = (index + 1).toString()
+        item.label = item.guestSeat + '座'
+        return item
+      })
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
         if (res.data.code) {
@@ -173,14 +178,14 @@ Page({
     500
   )
   },
- // 删除某个车辆
+  // 删除某个车辆
   delItem: function (e) {
     this.data.phoneCarDemandOfferVOList.splice(this.data.phoneCarDemandOfferVOList.length - 1, 1);
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
- //点击添加车辆
+  //点击添加车辆
   addItem: function (e) {
     this.data.phoneCarDemandOfferVOList.push({
       value1: '',
@@ -190,35 +195,38 @@ Page({
       value3: '',
       title3: '',
       number: '',
-      price: ''
+      price: '',
+      sort: ''
     })
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
-  onClick1(event) {
+  onClick1 (event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select1').open({
       value: this.data.phoneCarDemandOfferVOList[key].value1,
       options: this.data.carLevelList,
       onConfirm: (value, index, options) => {
-    if (index !== -1) {
+      if (index !== -1)
+    {
       this.data.phoneCarDemandOfferVOList[key].value1 = value
       this.data.phoneCarDemandOfferVOList[key].title1 = options[index].label,
-      this.setData({
-        phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
-      })
+        this.setData({
+          phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
+        })
     }
   },
   })
   },
-  onClick2(event) {
+  onClick2 (event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select2').open({
       value: this.data.phoneCarDemandOfferVOList[key].value2,
       options: this.data.carBrandList,
       onConfirm: (value, index, options) => {
-    if (index !== -1) {
+      if (index !== -1)
+    {
       this.data.phoneCarDemandOfferVOList[key].value2 = value
       this.data.phoneCarDemandOfferVOList[key].title2 = options[index].label,
         this.setData({
@@ -228,13 +236,14 @@ Page({
   },
   })
   },
-  onClick3(event) {
+  onClick3 (event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select3').open({
       value: this.data.phoneCarDemandOfferVOList[key].value3,
       options: this.data.seatNumberList,
       onConfirm: (value, index, options) => {
-      if (index !== -1) {
+      if (index !== -1)
+    {
       this.data.phoneCarDemandOfferVOList[key].value3 = value
       this.data.phoneCarDemandOfferVOList[key].title3 = options[index].label,
         this.setData({
@@ -244,14 +253,14 @@ Page({
   },
   })
   },
-  inputPrice(event) {
+  inputPrice (event) {
     var key = event.currentTarget.dataset.index
     this.data.phoneCarDemandOfferVOList[key].price = event.detail.value
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
-  inputNumber(event) {
+  inputNumber (event) {
     var key = event.currentTarget.dataset.index
     this.data.phoneCarDemandOfferVOList[key].number = event.detail.value
     this.setData({
@@ -265,7 +274,7 @@ Page({
       closable: false,
       title: '删除确认',
       content: '你确定要删除此方案？',
-      onConfirm(e) {
+      onConfirm (e) {
         wx.redirectTo({
           url: "../immediateOffer/immediateOffer"
         })
@@ -279,17 +288,17 @@ Page({
       duration: 500,
       color: '#fff',
       text: errorMes
-   })
+    })
   },
- // 提交报价方案
-  saveScheme: function(e) {
+  // 提交报价方案
+  saveScheme: function (e) {
     var formData = e.detail.value
     var errorMes = ''
     for (var i in formData) {
       if (i.indexOf('config') !== -1 && formData[i] === '') {
-         errorMes = '请选择车辆配置'
-         this.showError(errorMes)
-         return false
+        errorMes = '请选择车辆配置'
+        this.showError(errorMes)
+        return false
       }
       if (i.indexOf('seatNumber') !== -1 && formData[i] === '') {
         errorMes = '请选择座位数'
@@ -312,10 +321,61 @@ Page({
         return false
       }
     }
-    var phoneCarDemandOfferVOList = JSON.stringify(this.data.phoneCarDemandOfferVOList)
+    const carDemandOfferItemVOList = this.data.phoneCarDemandOfferVOList.map((item, index) => {
+      return{
+        carLevel: item.title1,
+        carLevelName: item.title1,
+        carBrand: item.value2,
+        carBrandName: item.title2,
+        seatNumber: item.title3,
+        carNumber: item.number,
+        unitPrice: item.price,
+        sort: index
+      }
+    })
+    const phoneCarDemandOfferVOList = [{
+      offerMoney: this.data.offerMoney,
+      sort: this.data.sort,
+      carDemandOfferItemVOList: carDemandOfferItemVOList
+    }]
     console.log(phoneCarDemandOfferVOList)
-    wx.redirectTo({
-      url: "../immediateOffer/immediateOffer?phoneCarDemandOfferVOList=" + phoneCarDemandOfferVOList + '&id=' + this.data.id
+    var _this = this
+    wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+      method: 'post',
+      data: {
+        demandId: _this.data.id,
+        offerMoney: '',
+        CarDemandOfferItemVO: [{
+          carDemandOfferItemVOList: []
+        }]
+      },
+      success: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        wx.redirectTo({
+          url: "../immediateOffer/immediateOffer?id=" + this.data.id
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
     })
   }
 })

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    schemeIndex: 0,
     id: '',
     carLevelList: [],
     seatNumberList: [],
@@ -33,11 +34,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    var schemeIndex = options.length == 1 ? '二' : options.length == 2 ? '三' : options.length == 3 ? '四' : '一'
     this.setData({
-      id: options.id
+      id: options.id,
+      schemeIndex: schemeIndex
     })
-    this.getList(options.id)
+    this.getList(this.data.id)
     this.showLoading('数据加载中')
     this.getCarLevelList()
     this.getCarBrandList()
@@ -59,7 +61,6 @@ Page({
   },
   // 获取编辑车辆列表的信息
   getList(id) {
-    console.log(id)
     var _this = this
     setTimeout(() => {
       wx.request({
@@ -78,9 +79,9 @@ Page({
           })
           return false
         }
-        console.log(res.data.data)
+        var phoneCarDemandOfferVOList = res.data.phoneCarDemandOfferVOList ?  res.data.phoneCarDemandOfferVOList: _this.data.phoneCarDemandOfferVOList
         _this.setData({
-          phoneCarDemandOfferVOList: res.data.data
+          phoneCarDemandOfferVOList: phoneCarDemandOfferVOList
         })
       },
       fail: function (res) {
@@ -319,7 +320,6 @@ Page({
       offerMoney += Number(carDemandOfferItemVOList[i].price) * Number(carDemandOfferItemVOList[i].number)
     }
     this.data.phoneCarDemandOfferVOList[0].offerMoney = offerMoney
-    console.log(offerMoney)
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
@@ -381,21 +381,21 @@ Page({
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('number') !== -1 && formData[i] == '') {
+      if (i.indexOf('number') !== -1 && (formData[i] === '' || formData[i] == 0)) {
         errorMes = '请输入数量'
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('price') !== -1 && formData[i] === '') {
+      if (i.indexOf('price') !== -1 && (formData[i] === '' || formData[i] == 0)) {
         errorMes = '请输入单价'
         this.showError(errorMes)
         return false
       }
     }
-    var phoneCarDemandOfferVOList = this.data.phoneCarDemandOfferVOList.map(function (item, index) {
-      item.carDemandOfferItemVOList.map(function (item, index) {
+    var phoneCarDemandOfferVOList = this.data.phoneCarDemandOfferVOList.map(function (item) {
+      return item.carDemandOfferItemVOList.map(function (item, index) {
         return {
-          carLevel: item.title1,
+          carLevel: item.value1,
           carLevelName: item.title1,
           carBrand: item.value2,
           carBrandName: item.title2,
@@ -405,7 +405,6 @@ Page({
           sort: index
         }
       })
-      return item
     })
     console.log(phoneCarDemandOfferVOList)
     wx.request({
@@ -427,9 +426,9 @@ Page({
           })
           return false
         }
-        wx.redirectTo({
-          url: "../immediateOffer/immediateOffer?id=" + _this.data.id
-        })
+        // wx.redirectTo({
+        //   url: "../immediateOffer/immediateOffer?id=" + _this.data.id
+        // })
       },
       fail: function (res) {
         _this.$wuxLoading.hide()

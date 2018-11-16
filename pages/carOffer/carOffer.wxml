@@ -10,7 +10,7 @@
     <view class="header">
       <wux-row>
         <wux-col span="2">
-          <text class="header_h">方案一</text>
+          <text class="header_h">方案{{ schemeIndex }}</text>
         </wux-col>
         <wux-col span="6">
           <view class="priceText">

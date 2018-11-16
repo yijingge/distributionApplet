@@ -19,7 +19,7 @@ Page({
     var _this = this
     setTimeout(() => {
       wx.request({
-      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+      url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
       data: {
         demandId: _this.data.id
@@ -36,9 +36,9 @@ Page({
           })
           return false
         }
-        if (res.data.phoneCarDemandOfferVOList) {
+        if (res.data.data.phoneCarDemandOfferVOList) {
           _this.setData({
-          phoneCarDemandOfferVOList: res.data.phoneCarDemandOfferVOList
+          phoneCarDemandOfferVOList: res.data.data.phoneCarDemandOfferVOList
         })
         }
       },
@@ -68,37 +68,40 @@ Page({
   editOffer: function(e) {
     var _this = this
     var index = e.currentTarget.dataset.index
-    wx.request({
-      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
-      method: 'post',
-      data: {
-        id: _this.data.id,
-        sort: index,
-        carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList[index]
-      },
-      success: function (res) {
-        if (res.data.code) {
-          $wuxToast().show({
-            type: 'forbidden',
-            duration: 1500,
-            color: '#fff',
-            text: '请求失败'
-          })
-          return false
-        }
-        wx.navigateTo({
-          url: "../carOffer/carOffer?id=" + _this.data.id
-        })
-      },
-      fail: function (res) {
-        $wuxToast().show({
-          type: 'forbidden',
-          duration: 1500,
-          color: '#fff',
-          text: '网络错误'
-        })
-      }
+    wx.navigateTo({
+      url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index
     })
+    // wx.request({
+    //   url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+    //   method: 'post',
+    //   data: {
+    //     id: _this.data.id,
+    //     sort: index,
+    //     carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList[index]
+    //   },
+    //   success: function (res) {
+    //     if (res.data.code) {
+    //       $wuxToast().show({
+    //         type: 'forbidden',
+    //         duration: 1500,
+    //         color: '#fff',
+    //         text: '请求失败'
+    //       })
+    //       return false
+    //     }
+    //     wx.navigateTo({
+    //       url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     $wuxToast().show({
+    //       type: 'forbidden',
+    //       duration: 1500,
+    //       color: '#fff',
+    //       text: '网络错误'
+    //     })
+    //   }
+    // })
   },
 
   // 获取报价留言

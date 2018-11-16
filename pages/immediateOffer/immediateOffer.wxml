@@ -12,27 +12,27 @@
     </wux-row>
 </view>
 
-<view class="card_offer">
-    <view class="card_offer_header" hover-class="card_offer_header_hover">
-        <text>方案一</text>
+<view class="card_offer" wx:for="{{phoneCarDemandOfferVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+    <view class="card_offer_header" hover-class="card_offer_header_hover" data-index="{{index}}" bindTap="editOffer">
+        <text>方案{{index + 1}}</text>
         <image src="../../images/arrow.png" class="image_arrow"></image>
     </view>
-    <view class="card_offer_content">
+    <view class="card_offer_content" wx:for="{{item.carDemandOfferItemVOList}}" wx:key="key" wx:for-index="key" wx:for-item="i">
         <wux-row class="card_offer_content_upRow">
             <wux-col span="12">
                 <image src="../../images/che.png" class="image_icon"></image>
-                <text class="text_brand">金龙</text>
+                <text class="text_brand">{{i.carBrandName}}</text>
             </wux-col>
         </wux-row>
         <wux-row class="card_offer_content_downRow">
-            <wux-col span="3">豪华型</wux-col>
-            <wux-col span="3">18座</wux-col>
-            <wux-col span="3">1辆</wux-col>
-            <wux-col span="3">250元</wux-col>
+            <wux-col span="3">{{i.carLevelName}}</wux-col>
+            <wux-col span="3">{{i.seatNumber}}座</wux-col>
+            <wux-col span="3">{{i.carNumber}}辆</wux-col>
+            <wux-col span="3">{{i.unitPrice}}元</wux-col>
         </wux-row>
     </view>
     <view class="card_offer_footer">
-        报价合计 : <text class="card_offer_price">¥ 1250</text>
+        报价合计 : <text class="card_offer_price">¥ {{item.offerMoney}}</text>
     </view>
 </view>
 
@@ -60,3 +60,4 @@
 </form>
 
 <wux-toast id="wux-toast"/>
+<wux-loading id="wux-loading"/>

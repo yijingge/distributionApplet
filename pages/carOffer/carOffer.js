@@ -393,7 +393,7 @@ Page({
       }
     }
     var phoneCarDemandOfferVOList = this.data.phoneCarDemandOfferVOList.map(function (item) {
-      return item.carDemandOfferItemVOList.map(function (item, index) {
+      var carDemandOfferItemVOList = item.carDemandOfferItemVOList.map(function (item, index) {
         return {
           carLevel: item.value1,
           carLevelName: item.title1,
@@ -402,44 +402,50 @@ Page({
           seatNumber: item.title3,
           carNumber: item.number,
           unitPrice: item.price,
-          sort: index
+          sort: index + 1
         }
       })
+      var outerSet = {
+        offerMoney: item.offerMoney,
+        sort: item.sort,
+        carDemandOfferItemVOList: carDemandOfferItemVOList
+      }
+      return outerSet
     })
     console.log(phoneCarDemandOfferVOList)
-    wx.request({
-      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
-      method: 'post',
-      data: {
-        demandId: _this.data.id,
-        phoneCarDemandOfferVOList: phoneCarDemandOfferVOList
-      },
-      success: function (res) {
-        _this.$wuxLoading.hide()
-        wx.stopPullDownRefresh() // 停止下拉刷新
-        if (res.data.code) {
-          $wuxToast().show({
-            type: 'forbidden',
-            duration: 1500,
-            color: '#fff',
-            text: '请求失败'
-          })
-          return false
-        }
-        // wx.redirectTo({
-        //   url: "../immediateOffer/immediateOffer?id=" + _this.data.id
-        // })
-      },
-      fail: function (res) {
-        _this.$wuxLoading.hide()
-        wx.stopPullDownRefresh() // 停止下拉刷新
-        $wuxToast().show({
-          type: 'forbidden',
-          duration: 1500,
-          color: '#fff',
-          text: '网络错误'
-        })
-      }
-    })
+    // wx.request({
+    //   url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+    //   method: 'post',
+    //   data: {
+    //     demandId: _this.data.id,
+    //     phoneCarDemandOfferVOList: phoneCarDemandOfferVOList
+    //   },
+    //   success: function (res) {
+    //     _this.$wuxLoading.hide()
+    //     wx.stopPullDownRefresh() // 停止下拉刷新
+    //     if (res.data.code) {
+    //       $wuxToast().show({
+    //         type: 'forbidden',
+    //         duration: 1500,
+    //         color: '#fff',
+    //         text: '请求失败'
+    //       })
+    //       return false
+    //     }
+    //     // wx.redirectTo({
+    //     //   url: "../immediateOffer/immediateOffer?id=" + _this.data.id
+    //     // })
+    //   },
+    //   fail: function (res) {
+    //     _this.$wuxLoading.hide()
+    //     wx.stopPullDownRefresh() // 停止下拉刷新
+    //     $wuxToast().show({
+    //       type: 'forbidden',
+    //       duration: 1500,
+    //       color: '#fff',
+    //       text: '网络错误'
+    //     })
+    //   }
+    // })
   }
 })

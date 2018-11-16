@@ -36,9 +36,11 @@ Page({
           })
           return false
         }
-        _this.setData({
+        if (res.data.phoneCarDemandOfferVOList) {
+          _this.setData({
           phoneCarDemandOfferVOList: res.data.phoneCarDemandOfferVOList
         })
+        }
       },
       fail: function (res) {
         _this.$wuxLoading.hide()

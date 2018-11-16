@@ -12,8 +12,8 @@ Page({
     carBrandList: [],
     phoneCarDemandOfferVOList: [
       {
-        offerMoney: '',
-        sort: '1',
+        offerMoney: 0,
+        sort: 1,
         carDemandOfferItemVOList: [{
           value1: '',
           title1: '',
@@ -21,8 +21,9 @@ Page({
           title2: '',
           value3: '',
           title3: '',
-          number: '',
-          price: ''
+          number: 0,
+          price: '',
+          sort: 1
         }]
       }
     ]
@@ -32,7 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     this.setData({
       id: options.id
     })
@@ -179,39 +180,53 @@ Page({
   )
   },
   // 删除某个车辆
-  delItem: function (e) {
-    this.data.phoneCarDemandOfferVOList.splice(this.data.phoneCarDemandOfferVOList.length - 1, 1);
+  delItem: function (event) {
+    var index = event.currentTarget.dataset.index
+    this.data.phoneCarDemandOfferVOList.map(function (item) {
+      item.carDemandOfferItemVOList.splice(index, 1);
+      return item
+    })
+    var carDemandOfferItemVOList = this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList
+    var offerMoney = 0
+    for (var i = 0; i < carDemandOfferItemVOList.length; i++) {
+      offerMoney += Number(carDemandOfferItemVOList[i].price) * Number(carDemandOfferItemVOList[i].number)
+    }
+    this.data.phoneCarDemandOfferVOList[0].offerMoney = offerMoney
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
   //点击添加车辆
-  addItem: function (e) {
-    this.data.phoneCarDemandOfferVOList.push({
-      value1: '',
-      title1: '',
-      value2: '',
-      title2: '',
-      value3: '',
-      title3: '',
-      number: '',
-      price: '',
-      sort: ''
+  addItem: function () {
+    this.data.phoneCarDemandOfferVOList.map(function (item) {
+      item.carDemandOfferItemVOList.push({
+          value1: '',
+          title1: '',
+          value2: '',
+          title2: '',
+          value3: '',
+          title3: '',
+          number: 0,
+          price: '',
+          sort: item.carDemandOfferItemVOList.length + 1
+       })
+      return item
     })
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
+    console.log(this.data.phoneCarDemandOfferVOList)
   },
   onClick1 (event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select1').open({
-      value: this.data.phoneCarDemandOfferVOList[key].value1,
+      value: this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].value1,
       options: this.data.carLevelList,
       onConfirm: (value, index, options) => {
       if (index !== -1)
     {
-      this.data.phoneCarDemandOfferVOList[key].value1 = value
-      this.data.phoneCarDemandOfferVOList[key].title1 = options[index].label,
+      this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].value1 = value
+      this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].title1 = options[index].label,
         this.setData({
           phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
         })
@@ -222,13 +237,13 @@ Page({
   onClick2 (event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select2').open({
-      value: this.data.phoneCarDemandOfferVOList[key].value2,
+      value: this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].value2,
       options: this.data.carBrandList,
       onConfirm: (value, index, options) => {
       if (index !== -1)
     {
-      this.data.phoneCarDemandOfferVOList[key].value2 = value
-      this.data.phoneCarDemandOfferVOList[key].title2 = options[index].label,
+      this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].value2 = value
+      this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].title2 = options[index].label,
         this.setData({
           phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
         })
@@ -239,13 +254,13 @@ Page({
   onClick3 (event) {
     var key = event.currentTarget.dataset.index
     $wuxSelect('#wux-select3').open({
-      value: this.data.phoneCarDemandOfferVOList[key].value3,
+      value: this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].value3,
       options: this.data.seatNumberList,
       onConfirm: (value, index, options) => {
       if (index !== -1)
     {
-      this.data.phoneCarDemandOfferVOList[key].value3 = value
-      this.data.phoneCarDemandOfferVOList[key].title3 = options[index].label,
+      this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].value3 = value
+      this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].title3 = options[index].label,
         this.setData({
           phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
         })
@@ -255,14 +270,27 @@ Page({
   },
   inputPrice (event) {
     var key = event.currentTarget.dataset.index
-    this.data.phoneCarDemandOfferVOList[key].price = event.detail.value
+    this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].price = Number(event.detail.value)
+    var carDemandOfferItemVOList = this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList
+    var offerMoney = 0
+    for (var i = 0; i < carDemandOfferItemVOList.length; i++) {
+      offerMoney += Number(carDemandOfferItemVOList[i].price) * Number(carDemandOfferItemVOList[i].number)
+    }
+    this.data.phoneCarDemandOfferVOList[0].offerMoney = offerMoney
+    console.log(offerMoney)
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
   },
   inputNumber (event) {
     var key = event.currentTarget.dataset.index
-    this.data.phoneCarDemandOfferVOList[key].number = event.detail.value
+    this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList[key].number = Number(event.detail.value)
+    var carDemandOfferItemVOList = this.data.phoneCarDemandOfferVOList[0].carDemandOfferItemVOList
+    var offerMoney = 0
+    for (var i = 0; i < carDemandOfferItemVOList.length; i++) {
+      offerMoney += Number(carDemandOfferItemVOList[i].price) * Number(carDemandOfferItemVOList[i].number)
+    }
+    this.data.phoneCarDemandOfferVOList[0].offerMoney = offerMoney
     this.setData({
       phoneCarDemandOfferVOList: this.data.phoneCarDemandOfferVOList
     })
@@ -292,6 +320,7 @@ Page({
   },
   // 提交报价方案
   saveScheme: function (e) {
+    var _this = this
     var formData = e.detail.value
     var errorMes = ''
     for (var i in formData) {
@@ -321,34 +350,28 @@ Page({
         return false
       }
     }
-    const carDemandOfferItemVOList = this.data.phoneCarDemandOfferVOList.map((item, index) => {
-      return{
-        carLevel: item.title1,
-        carLevelName: item.title1,
-        carBrand: item.value2,
-        carBrandName: item.title2,
-        seatNumber: item.title3,
-        carNumber: item.number,
-        unitPrice: item.price,
-        sort: index
-      }
+    var phoneCarDemandOfferVOList = this.data.phoneCarDemandOfferVOList.map(function (item, index) {
+      item.carDemandOfferItemVOList.map(function (item, index) {
+        return {
+          carLevel: item.title1,
+          carLevelName: item.title1,
+          carBrand: item.value2,
+          carBrandName: item.title2,
+          seatNumber: item.title3,
+          carNumber: item.number,
+          unitPrice: item.price,
+          sort: index
+        }
+      })
+      return item
     })
-    const phoneCarDemandOfferVOList = [{
-      offerMoney: this.data.offerMoney,
-      sort: this.data.sort,
-      carDemandOfferItemVOList: carDemandOfferItemVOList
-    }]
     console.log(phoneCarDemandOfferVOList)
-    var _this = this
     wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',
       data: {
         demandId: _this.data.id,
-        offerMoney: '',
-        CarDemandOfferItemVO: [{
-          carDemandOfferItemVOList: []
-        }]
+        phoneCarDemandOfferVOList: phoneCarDemandOfferVOList
       },
       success: function (res) {
         _this.$wuxLoading.hide()
@@ -363,7 +386,7 @@ Page({
           return false
         }
         wx.redirectTo({
-          url: "../immediateOffer/immediateOffer?id=" + this.data.id
+          url: "../immediateOffer/immediateOffer?id=" + _this.data.id
         })
       },
       fail: function (res) {

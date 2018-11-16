@@ -1,85 +1,89 @@
 <!-- pages/carOffer/carOffer.wxml -->
 <form class="page" bindsubmit="saveScheme">
-  <view class="header">
-    <wux-row>
-      <wux-col span="2">
-        <text class="header_h">方案一</text>
-      </wux-col>
-      <wux-col span="4">
-        <view class="priceText">
-          报价合计：
-          <text class="price_red">￥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
-        </view>
-      </wux-col>
-      <wux-col span="6">
-        <view style="text-align: right;margin-right: 56rpx;">
-          <button wx:if="{{phoneCarDemandOfferVOList.length < 3}}" hover-class="hoverActiveBtn" class="addBtn" bindtap="addItem">
-            新增车辆
-          </button>
-          <button disabled wx:if="{{phoneCarDemandOfferVOList.length > 2}}" class="disbaledBtn">
-            新增车辆
-          </button>
-        </view>
-      </wux-col>
-    </wux-row>
-  </view>
-  <wux-white-space body-style="height:20rpx"></wux-white-space>
   <wux-dialog id="wux-dialog" />
   <wux-toast id="wux-toast" />
   <wux-select id="wux-select1" />
   <wux-select id="wux-select2" />
   <wux-select id="wux-select3" />
+
   <view wx:for="{{phoneCarDemandOfferVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
-    <view class="listTitle">
+    <view class="header">
       <wux-row>
-        <wux-col span="6">
-          <image class="listTitleIcon" src="../../images/che.png"></image>
+        <wux-col span="2">
+          <text class="header_h">方案一</text>
         </wux-col>
-        <wux-col wx:if="{{index !== 0 }}" span="6" style="text-align: right">
-          <button class="delBtn" bindtap="delItem" style="color: #00aaff;font-size: 28rpx;">
-            删除
-          </button>
+        <wux-col span="6">
+          <view class="priceText">
+            报价合计：
+            <text class="price_red">￥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
+          </view>
+        </wux-col>
+        <wux-col span="4">
+          <view style="text-align: right;margin-right: 56rpx;">
+            <button wx:if="{{item.carDemandOfferItemVOList.length < 3}}" hover-class="hoverActiveBtn" class="addBtn" bindtap="addItem">
+              新增车辆
+            </button>
+            <button disabled wx:if="{{item.carDemandOfferItemVOList.length > 2}}" class="disbaledBtn">
+              新增车辆
+            </button>
+          </view>
         </wux-col>
       </wux-row>
     </view>
-    <view class="page__bd">
-      <wux-cell-group>
-        <wux-cell title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
-          <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}" />
-          <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
-        </wux-cell>
-        <wux-cell title="车辆品牌" data-index="{{index}}" extra="{{ item.title2 }}" bind:click="onClick2">
-          <input class="hideInput" type="text" name="{{ 'brand' + index }}" value="{{item.title2}}" />
-          <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
-        </wux-cell>
-        <wux-cell title="座位数" data-index="{{index}}" extra="{{ item.title3 }}" bind:click="onClick3">
-          <input class="hideInput" type="text" name="{{ 'seatNumber'+ index }}" value="{{item.title3}}" />
-          <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
-        </wux-cell>
-        <wux-cell title="数量">
-          <input class="hideInput" type="text" name="{{ 'number' + index }}" value="{{item.number}}" />
-          <view slot="footer" style="height: 50rpx; line-height: 50rpx;padding-top: 4rpx;">
-            <wux-input-number data-index="{{index}}" bind:change="inputNumber" min="0" longpress />
-          </view>
-        </wux-cell>
-        <wux-cell title="单价">
-          <input class="hideInput" type="number" name="{{ 'price' + index }}" value="{{item.price}}" />
-          <wux-row slot="footer">
-            <wux-col span="10">
-              <view style="height: 58rpx;position:relative; top: 12rpx;">
-                <wux-input data-index="{{index}}" bind:change="inputPrice" placeholder="请输入价格" value="{{item.price}}" controlled></wux-input>
-              </view>
-            </wux-col>
-            <wux-col span="2">
-              <view style="height: 58rpx;position:relative; top: 8rpx;">
-                <text style="color: #000">元</text>
-              </view>
-            </wux-col>
-          </wux-row>
-        </wux-cell>
-      </wux-cell-group>
+    <wux-white-space body-style="height:20rpx"></wux-white-space>
+    <view wx:for="{{item.carDemandOfferItemVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+      <view class="listTitle">
+        <wux-row>
+          <wux-col span="6">
+            <image class="listTitleIcon" src="../../images/che.png"></image>
+          </wux-col>
+          <wux-col  wx:if="{{index !== 0 }}" span="6" style="text-align: right">
+            <button data-index="{{ index }}" class="delBtn" bindtap="delItem" style="color: #00aaff;font-size: 28rpx;">
+              删除
+            </button>
+          </wux-col>
+        </wux-row>
+      </view>
+      <view class="page__bd">
+        <wux-cell-group>
+          <wux-cell title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
+            <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}" />
+            <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
+          </wux-cell>
+          <wux-cell title="车辆品牌" data-index="{{index}}" extra="{{ item.title2 }}" bind:click="onClick2">
+            <input class="hideInput" type="text" name="{{ 'brand' + index }}" value="{{item.title2}}" />
+            <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
+          </wux-cell>
+          <wux-cell title="座位数" data-index="{{index}}" extra="{{ item.title3 }}" bind:click="onClick3">
+            <input class="hideInput" type="text" name="{{ 'seatNumber'+ index }}" value="{{item.title3}}" />
+            <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
+          </wux-cell>
+          <wux-cell title="数量">
+            <input class="hideInput" type="text" name="{{ 'number' + index }}" value="{{item.number}}" />
+            <view slot="footer" style="height: 50rpx; line-height: 50rpx;padding-top: 4rpx;">
+              <wux-input-number data-index="{{index}}" bind:change="inputNumber" min="0" longpress />
+            </view>
+          </wux-cell>
+          <wux-cell title="单价">
+            <input class="hideInput" type="number" name="{{ 'price' + index }}" value="{{item.price}}" />
+            <wux-row slot="footer">
+              <wux-col span="10">
+                <view style="height: 58rpx;position:relative; top: 12rpx;">
+                  <wux-input data-index="{{index}}" bind:blur="inputPrice" placeholder="请输入价格" value="{{item.price}}" controlled></wux-input>
+                </view>
+              </wux-col>
+              <wux-col span="2">
+                <view style="height: 58rpx;position:relative; top: 8rpx;">
+                  <text style="color: #000">元</text>
+                </view>
+              </wux-col>
+            </wux-row>
+          </wux-cell>
+        </wux-cell-group>
+      </view>
     </view>
   </view>
+
   <wux-white-space body-style="height: 60rpx"></wux-white-space>
   <view class="footer">
     <wux-row>

@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/carOffer/carOffer",
     "pages/carCustomizationOrderList/carCustomizationOrderList",
     "pages/index/index",
     "pages/logs/logs",
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/immediateOffer/immediateOffer",
-    "pages/carOffer/carOffer",
     "pages/myQuote/myQuote",
     "pages/carKnowledge/carKnowledge"
   ],

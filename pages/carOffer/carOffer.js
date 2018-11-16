@@ -343,7 +343,7 @@ Page({
       resetOnClose: true,
       closable: false,
       title: '删除确认',
-      content: '你确定要删除此方案？',
+      content: '确定要删除此方案吗？',
       onConfirm (e) {
         wx.redirectTo({
           url: "../immediateOffer/immediateOffer"

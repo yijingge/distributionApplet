@@ -33,10 +33,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
+    console.log(options)
     this.setData({
       id: options.id
     })
+    if (options.id) {
+      this.getList(options.id)
+    }
     this.showLoading('数据加载中')
     this.getCarLevelList()
     this.getCarBrandList()
@@ -55,6 +58,45 @@ Page({
     this.$wuxLoading.show({
       text: '数据加载中'
     })
+  },
+  // 获取编辑车辆列表的信息
+  getList(id) {
+    var _this = this
+    setTimeout(() => {
+      wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+      method: 'post',
+      data: {id: id},
+      success: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        _this.setData({
+          phoneCarDemandOfferVOList: res.data.data
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
+  },
+    500
+  )
   },
   // 获取车辆配置列表
   getCarLevelList () {

@@ -1,5 +1,7 @@
 // pages/immediateOffer.js
+const util = require('../../utils/util.js')
 import { $wuxToast } from '../../style/index'
+import { $wuxLoading } from '../../style/index'
 
 Page({
 
@@ -9,16 +11,92 @@ Page({
   data: {
     id: '',
     remarks: '',
-    phoneCarDemandOfferVOList: [],
-    formData: {
-      phoneCarDemandOfferVOList: [
-        {
-          carDemandOfferItemVOList: [],
-          offerMoney: ''
+    phoneCarDemandOfferVOList: []
+  },
+
+  // 获取列表数据
+  getList: function () {
+    var _this = this
+    setTimeout(() => {
+      wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+      method: 'post',
+      data: {
+        demandId: _this.data.id
+      },
+      success: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
         }
-      ],
-      remarks: ''
-    }
+        _this.setData({
+          phoneCarDemandOfferVOList: res.data.phoneCarDemandOfferVOList
+        })
+      },
+      fail: function (res) {
+        _this.$wuxLoading.hide()
+        wx.stopPullDownRefresh() // 停止下拉刷新
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
+  }, 500)
+  },
+
+  // 加载图标
+  showLoading: function(text) {
+    this.$wuxLoading = $wuxLoading()
+    this.$wuxLoading.show({
+      text: text
+    })
+  },
+
+  // 编辑车辆方案
+  editOffer: function(e) {
+    var _this = this
+    var index = e.currentTarget.dataset.index
+    wx.request({
+      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+      method: 'post',
+      data: {
+        demandId: _this.data.id,
+        sort: index,
+        carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList[index]
+      },
+      success: function (res) {
+        if (res.data.code) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '请求失败'
+          })
+          return false
+        }
+        wx.navigateTo({
+          url: "../carOffer/carOffer?id=" + _this.data.id
+        })
+      },
+      fail: function (res) {
+        $wuxToast().show({
+          type: 'forbidden',
+          duration: 1500,
+          color: '#fff',
+          text: '网络错误'
+        })
+      }
+    })
   },
 
   // 获取报价留言
@@ -62,14 +140,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.showLoading('数据加载中')
     this.setData({
       id: options.id
     })
-    if (options.listData) {
-      var listData = JSON.parse(options.listData)
-      this.data.phoneCarDemandOfferVOList.push(listData)
-    }
-    console.log(this.data.phoneCarDemandOfferVOList)
+    this.getList()
   },
 
   /**

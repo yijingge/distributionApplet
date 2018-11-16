@@ -70,7 +70,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',
       data: {
-        demandId: _this.data.id,
+        id: _this.data.id,
         sort: index,
         carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList[index]
       },

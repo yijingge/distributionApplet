@@ -37,9 +37,7 @@ Page({
     this.setData({
       id: options.id
     })
-    if (options.id) {
-      this.getList(options.id)
-    }
+    this.getList(options.id)
     this.showLoading('数据加载中')
     this.getCarLevelList()
     this.getCarBrandList()
@@ -61,6 +59,7 @@ Page({
   },
   // 获取编辑车辆列表的信息
   getList(id) {
+    console.log(id)
     var _this = this
     setTimeout(() => {
       wx.request({
@@ -79,6 +78,7 @@ Page({
           })
           return false
         }
+        console.log(res.data.data)
         _this.setData({
           phoneCarDemandOfferVOList: res.data.data
         })

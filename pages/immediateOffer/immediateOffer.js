@@ -36,7 +36,7 @@ Page({
           })
           return false
         }
-        if (res.data.phoneCarDemandOfferVOList !== null) {
+        if (res.data.phoneCarDemandOfferVOList) {
           _this.setData({
           phoneCarDemandOfferVOList: res.data.phoneCarDemandOfferVOList
         })

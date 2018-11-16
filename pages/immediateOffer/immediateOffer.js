@@ -131,8 +131,9 @@ Page({
   // 前往编辑车辆方案页面
   goToCarOffer: function (e) {
     var id = e.currentTarget.id
+    var length = this.data.phoneCarDemandOfferVOList.length
     wx.navigateTo({
-      url: "../carOffer/carOffer?id=" + id
+      url: "../carOffer/carOffer?id=" + id + "&length=" + length
     })
   },
 

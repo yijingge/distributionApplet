@@ -37,7 +37,7 @@ Page({
           return false
         }
         if (res.data.phoneCarDemandOfferVOList !== null) {
-          this.setData({
+          _this.setData({
           phoneCarDemandOfferVOList: res.data.phoneCarDemandOfferVOList
         })
         }

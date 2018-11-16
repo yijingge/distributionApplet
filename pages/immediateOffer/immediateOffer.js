@@ -109,8 +109,46 @@ Page({
 
   // 提交表单(确认报价)
   formSubmit: function(e) {
+    var _this = this
     if (e.detail.value.isAgree[0]) {
-
+      wx.request({
+        url: util.baseUrl + '/phone/phoneCarDemand/addCarDemandOffer.json',
+        method: 'post',
+        data: {
+          demandId: _this.data.id,
+          remarks: _this.data.remarks,
+          carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList
+        },
+        success: function (res) {
+          if (res.data.code) {
+            $wuxToast().show({
+              type: 'forbidden',
+              duration: 1500,
+              color: '#fff',
+              text: '请求失败'
+            })
+            return false
+          } else {
+            $wuxToast().show({
+              type: 'success',
+              duration: 1500,
+              color: '#fff',
+              text: '保存成功'
+            })
+            wx.redirectTo({
+              url: "../carCustomizationOrderList/carCustomizationOrderList"
+            })
+          }
+        },
+        fail: function (res) {
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '网络错误'
+          })
+        }
+      })
     } else {
       $wuxToast().show({
         type: 'text',
@@ -131,8 +169,9 @@ Page({
   // 前往编辑车辆方案页面
   goToCarOffer: function (e) {
     var id = e.currentTarget.id
+    var length = this.data.phoneCarDemandOfferVOList.length
     wx.navigateTo({
-      url: "../carOffer/carOffer?id=" + id
+      url: "../carOffer/carOffer?id=" + id + "&length=" + length
     })
   },
 

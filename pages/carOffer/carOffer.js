@@ -189,7 +189,7 @@ Page({
       success: function (res) {
         res.data.data.map((item, index) => {
           item.value = (index + 1).toString()
-        item.label = item.guestSeat + '座'
+        item.label = item.guestSeat
         return item
       })
         _this.$wuxLoading.hide()
@@ -412,6 +412,7 @@ Page({
       }
       return outerSet
     })
+    console.log(phoneCarDemandOfferVOList)
     wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',

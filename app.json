@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/login/login",
-    // "pages/index/index",
-    // "pages/logs/logs",
     "pages/carCustomizationOrderList/carCustomizationOrderList",
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/immediateOffer/immediateOffer",

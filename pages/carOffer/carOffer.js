@@ -65,7 +65,7 @@ Page({
     }
   },
   // 加载图标
-  showLoading: function (e) {
+  showLoading: function () {
     this.$wuxLoading = $wuxLoading()
     this.$wuxLoading.show({
       text: '数据加载中'

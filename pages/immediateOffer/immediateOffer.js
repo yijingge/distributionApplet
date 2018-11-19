@@ -36,7 +36,7 @@ Page({
           })
           return false
         }
-        if (res.data.data.phoneCarDemandOfferVOList) {
+        if (res.data.data && res.data.data.phoneCarDemandOfferVOList) {
           _this.setData({
           phoneCarDemandOfferVOList: res.data.data.phoneCarDemandOfferVOList
         })
@@ -66,10 +66,12 @@ Page({
 
   // 编辑车辆方案
   editOffer: function(e) {
+    // console.log(e)
     var _this = this
     var index = e.currentTarget.dataset.index
+    var isAdd = false
     wx.navigateTo({
-      url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index
+      url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index + "&isAdd=" + isAdd
     })
     // wx.request({
     //   url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
@@ -175,8 +177,9 @@ Page({
   goToCarOffer: function (e) {
     var id = e.currentTarget.id
     var length = this.data.phoneCarDemandOfferVOList.length
+    var isAdd = true
     wx.navigateTo({
-      url: "../carOffer/carOffer?id=" + id + "&length=" + length
+      url: "../carOffer/carOffer?id=" + id + "&sort=" + length + "&isAdd=" + isAdd
     })
   },
 

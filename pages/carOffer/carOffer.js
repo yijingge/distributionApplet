@@ -14,30 +14,35 @@ Page({
     phoneCarDemandOfferVOList: [
       {
         offerMoney: 0,
-        sort: 1,
+        sort: 0,
         carDemandOfferItemVOList: [{
           value1: '',
-          title1: '',
+          title1: '请选择',
           value2: '',
-          title2: '',
+          title2: '请选择',
           value3: '',
-          title3: '',
-          number: 0,
-          price: '',
-          sort: 1
+          title3: '请选择',
+          number: 1,
+          price: 0,
+          sort: 0
         }]
       }
-    ]
+    ],
+    copyPhoneCarDemandOfferVOList: [],
+    otherPhoneCarDemandOfferVOList: []
   },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var schemeIndex = options.length == 1 ? '二' : options.length == 2 ? '三' : options.length == 3 ? '四' : '一'
+    console.log(options)
+    var schemeIndex = options.sort == 1 ? '二' : options.sort == 2 ? '三' : options.sort == 3 ? '四' : '一'
     this.setData({
       id: options.id,
-      schemeIndex: schemeIndex
+      schemeIndex: schemeIndex,
+      isAdd: options.isAdd,
+      sort: options.sort
     })
     this.getList(this.data.id)
     this.showLoading('数据加载中')
@@ -50,7 +55,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    var _this = this
+    if (_this.data.phoneCarDemandOfferVOList.length) {
+      _this.data.phoneCarDemandOfferVOList.map(function (item) {
+        item.sort = Number(_this.data.sort)
+        return item
+      })
+    }
   },
   // 加载图标
   showLoading: function (e) {
@@ -62,11 +73,11 @@ Page({
   // 获取编辑车辆列表的信息
   getList(id) {
     var _this = this
-    setTimeout(() => {
+    setTimeout(function () {
       wx.request({
-      url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+      url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
-      data: {id: id},
+      data: {demandId: id},
       success: function (res) {
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
@@ -79,10 +90,46 @@ Page({
           })
           return false
         }
-        var phoneCarDemandOfferVOList = res.data.phoneCarDemandOfferVOList ?  res.data.phoneCarDemandOfferVOList: _this.data.phoneCarDemandOfferVOList
+        if (res.data.data.phoneCarDemandOfferVOList.length) {
+          var phoneCarDemandOfferVOList = res.data.data.phoneCarDemandOfferVOList.map(function (item) {
+            var carDemandOfferItemVOList = item.carDemandOfferItemVOList.map(function (item, index) {
+              return {
+                value1: item.carLevel,
+                title1: item.carLevelName,
+                value2: item.carBrand,
+                title2: item.carBrandName,
+                value3: index,
+                title3: item.seatNumber,
+                number: item.carNumber,
+                price: item.unitPrice,
+                sort: item.sort
+              }
+            })
+            var outerSet = {
+              offerMoney: item.offerMoney,
+              sort: item.sort,
+              carDemandOfferItemVOList: carDemandOfferItemVOList
+            }
+            return outerSet
+          })
+        }
+        var editPhoneCarDemandOfferVOList = []
+        var otherPhoneCarDemandOfferVOList = []
+        if (phoneCarDemandOfferVOList) {
+          phoneCarDemandOfferVOList.forEach(function (item){
+            if (item.sort == Number(_this.data.sort)) {
+              editPhoneCarDemandOfferVOList.push(item)
+            } else {
+              otherPhoneCarDemandOfferVOList.push(item)
+            }
+          })
+        }
         _this.setData({
-          phoneCarDemandOfferVOList: phoneCarDemandOfferVOList
+          phoneCarDemandOfferVOList:  _this.data.isAdd === 'true' ? _this.data.phoneCarDemandOfferVOList : editPhoneCarDemandOfferVOList,
+          copyPhoneCarDemandOfferVOList: phoneCarDemandOfferVOList ? phoneCarDemandOfferVOList : [],
+          otherPhoneCarDemandOfferVOList: otherPhoneCarDemandOfferVOList ? otherPhoneCarDemandOfferVOList : []
         })
+        // console.log(phoneCarDemandOfferVOList)
       },
       fail: function (res) {
         _this.$wuxLoading.hide()
@@ -251,7 +298,7 @@ Page({
           title3: '',
           number: 0,
           price: '',
-          sort: item.carDemandOfferItemVOList.length + 1
+          sort: item.carDemandOfferItemVOList.length - 1
        })
       return item
     })
@@ -338,15 +385,76 @@ Page({
   },
   // 删除报价方案
   delScheme () {
+    var _this = this
+    var sort = _this.data.phoneCarDemandOfferVOList.findIndex(d => d.sort === Number(this.data.sort))
     $wuxDialog('#wux-dialog').confirm({
       resetOnClose: true,
       closable: false,
       title: '删除确认',
       content: '确定要删除此方案吗？',
       onConfirm (e) {
-        wx.redirectTo({
-          url: "../immediateOffer/immediateOffer"
+        var copyPhoneCarDemandOfferVOList = _this.data.copyPhoneCarDemandOfferVOList.map(function (item) {
+          var carDemandOfferItemVOList = item.carDemandOfferItemVOList.map(function (item, index) {
+            return {
+              carLevel: item.value1,
+              carLevelName: item.title1,
+              carBrand: item.value2,
+              carBrandName: item.title2,
+              seatNumber: item.title3,
+              carNumber: item.number,
+              unitPrice: item.price,
+              sort: index
+            }
+          })
+          var outerSet = {
+            offerMoney: item.offerMoney,
+            sort: item.sort,
+            carDemandOfferItemVOList: carDemandOfferItemVOList
+          }
+          return outerSet
         })
+        copyPhoneCarDemandOfferVOList.splice(sort, 1)
+        console.log(copyPhoneCarDemandOfferVOList)
+        if (_this.data.isAdd === 'false') {
+          wx.request({
+            url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
+            method: 'post',
+            data: {
+              demandId: _this.data.id,
+              phoneCarDemandOfferVOList: copyPhoneCarDemandOfferVOList
+            },
+            success: function (res) {
+              _this.$wuxLoading.hide()
+              wx.stopPullDownRefresh() // 停止下拉刷新
+              if (res.data.code) {
+                $wuxToast().show({
+                  type: 'forbidden',
+                  duration: 1500,
+                  color: '#fff',
+                  text: '请求失败'
+                })
+                return false
+              }
+              wx.redirectTo({
+                url: "../immediateOffer/immediateOffer?id=" + _this.data.id
+              })
+            },
+            fail: function (res) {
+              _this.$wuxLoading.hide()
+              wx.stopPullDownRefresh() // 停止下拉刷新
+              $wuxToast().show({
+                type: 'forbidden',
+                duration: 1500,
+                color: '#fff',
+                text: '网络错误'
+              })
+            }
+          })
+        } else {
+          wx.redirectTo({
+            url: "../immediateOffer/immediateOffer"
+          })
+        }
       }
     })
   },
@@ -391,7 +499,9 @@ Page({
         return false
       }
     }
-    var phoneCarDemandOfferVOList = this.data.phoneCarDemandOfferVOList.map(function (item) {
+    var submitData = this.data.isAdd === 'true' ? this.data.phoneCarDemandOfferVOList.concat(this.data.copyPhoneCarDemandOfferVOList)
+      : this.data.phoneCarDemandOfferVOList.concat(this.data.otherPhoneCarDemandOfferVOList)
+    var phoneCarDemandOfferVOList = submitData.map(function (item) {
       var carDemandOfferItemVOList = item.carDemandOfferItemVOList.map(function (item, index) {
         return {
           carLevel: item.value1,
@@ -401,7 +511,7 @@ Page({
           seatNumber: item.title3,
           carNumber: item.number,
           unitPrice: item.price,
-          sort: index + 1
+          sort: index
         }
       })
       var outerSet = {
@@ -411,6 +521,7 @@ Page({
       }
       return outerSet
     })
+    console.log(phoneCarDemandOfferVOList)
     wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',

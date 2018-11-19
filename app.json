@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/carOffer/carOffer",
     "pages/carCustomizationOrderList/carCustomizationOrderList",
+    "pages/carOffer/carOffer",
     "pages/index/index",
     "pages/logs/logs",
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",

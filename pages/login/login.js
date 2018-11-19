@@ -13,7 +13,7 @@ Page({
   },
   changeUsername(event) {
     this.setData({
-      username: event.detail.value
+      username: (event.detail.value).replace(/[^\u4e00-\u9fa5\w]/g,'')
     })
   },
   clearUsername() {
@@ -23,7 +23,7 @@ Page({
   },
   changePassword(event) {
     this.setData({
-      password: event.detail.value
+      password: (event.detail.value).replace(/\s*/g,"")
     })
   },
   clearPassword() {
@@ -32,11 +32,10 @@ Page({
     })
   },
   // 登录功能
-  login: function (e) {
+  login: function () {
     var _this = this
-    console.log()
+    console.log(_this.data)
     if (_this.data.username === '' || _this.data.username === null || _this.data.username === undefined) {
-      console.log(_this.data.username)
       $wuxToast().show({
         type: 'text',
         duration: 1500,

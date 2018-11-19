@@ -29,6 +29,7 @@
       <view hover-class="none" class="cell" style="border-bottom: 0;">
         <image class="image" src="../../images/pass.png"/>
         <input
+            password
             bindinput="changePassword"
             style="position: relative;top: 18rpx;width: 100%;"
             name="password" value="{{ password }}"

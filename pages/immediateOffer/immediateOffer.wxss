@@ -22,7 +22,7 @@ page {
     position: absolute;
     top: 16rpx;
     right: 50rpx;
-    width: 215rpx;
+    width: 220rpx;
     height: 64rpx;
     line-height: 64rpx;
     text-align: center;

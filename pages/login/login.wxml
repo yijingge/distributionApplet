@@ -9,28 +9,38 @@
       <view class="border_view">
         <text class="border"></text>
       </view>
-      <view><text class="logoTitle">飞鹰分销</text></view>
+      <view>
+        <text class="logoTitle">飞鹰分销</text>
+      </view>
     </view>
   </view>
 
- <view style="padding: 0 58rpx;">
-     <view class="inputView">
-       <wux-cell-group>
-         <wux-cell hover-class="none">
-           <image style="width: 26rpx; height: 26rpx; margin-right: 26rpx" slot="header" src="../../images/user.png" />
-           <wux-input bind:clear="clearUsername" bind:change="changeUsername"  value="{{ username }}" placeholder="请输入你的用户名/手机号/邮箱" controlled clear/>
-         </wux-cell>
-         <wux-cell hover-class="none">
-           <image style="width: 26rpx; height: 26rpx; margin-right: 26rpx" slot="header" src="../../images/pass.png" />
-           <wux-input bind:clear="clearPassword" bind:change="changePassword" value="{{ password }}" placeholder="请输入您的密码" password controlled  clear/>
-         </wux-cell>
-       </wux-cell-group>
-     </view>
-     <view class="buttonView">
-       <button bindtap="login" class="button">登录</button>
-     </view>
- </view>
+  <view style="padding: 0 58rpx;">
+    <view class="inputView">
+      <view hover-class="none" class="cell">
+        <image  class="image" src="../../images/user.png"/>
+        <input bindinput="changeUsername"
+               style="position: relative;top: 16rpx;width: 100%;"
+               name="username"
+               value="{{ username }}"
+               placeholder="请输入你的用户名/手机号/邮箱"/>
+        <image wx:if="{{ username.length }}" bindtap="clearUsername"  class="image" style="margin-right: 0" src="../../images/user.png"/>
+      </view>
+      <view hover-class="none" class="cell" style="border-bottom: 0;">
+        <image class="image" src="../../images/pass.png"/>
+        <input
+            bindinput="changePassword"
+            style="position: relative;top: 16rpx;width: 100%;"
+            name="password" value="{{ password }}"
+            placeholder="请输入您的密码"/>
+        <image wx:if="{{ password.length }}" bindtap="clearPassword" class="image" style="margin-right: 0;" src="../../images/pass.png"/>
+      </view>
+    </view>
+    <view class="buttonView">
+      <button bindtap="login" class="button">登录</button>
+    </view>
+  </view>
   <view>
-    <image style="width: 100%; height: 380rpx; margin-right: 26rpx"  src="../../images/bg.jpg" />
+    <image style="width: 100%; height: 380rpx; margin-right: 26rpx" src="../../images/bg.jpg"/>
   </view>
 </ivew>

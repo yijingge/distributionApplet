@@ -16,7 +16,7 @@ Page({
       username: event.detail.value
     })
   },
-  clearUsername(event) {
+  clearUsername() {
     this.setData({
       username: ''
     })
@@ -34,7 +34,8 @@ Page({
   // 登录功能
   login: function (e) {
     var _this = this
-    if (_this.data.username === '' && _this.data.username === null && _this.data.username === undefined) {
+    console.log()
+    if (_this.data.username === '' || _this.data.username === null || _this.data.username === undefined) {
       console.log(_this.data.username)
       $wuxToast().show({
         type: 'text',
@@ -42,7 +43,7 @@ Page({
         color: '#fff',
         text: '用户名不能为空'
       })
-    } else if (_this.data.password === '' && _this.data.password === null && _this.data.password === undefined) {
+    } else if (_this.data.password === '' || _this.data.password === null || _this.data.password === undefined) {
       $wuxToast().show({
         type: 'text',
         duration: 1500,

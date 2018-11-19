@@ -69,9 +69,10 @@ Page({
     // console.log(e)
     var _this = this
     var index = e.currentTarget.dataset.index
+    var sort = e.currentTarget.dataset.sort
     var isAdd = false
     wx.navigateTo({
-      url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index + "&isAdd=" + isAdd
+      url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + sort + "&index=" + index + "&isAdd=" + isAdd
     })
     // wx.request({
     //   url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',

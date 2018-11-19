@@ -37,8 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    var schemeIndex = options.sort == 1 ? '二' : options.sort == 2 ? '三' : options.sort == 3 ? '四' : '一'
+    var schemeIndex = options.index == 1 ? '二' : options.index == 2 ? '三' : options.index == 3 ? '四' : '一'
     this.setData({
       id: options.id,
       schemeIndex: schemeIndex,
@@ -56,13 +55,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var _this = this
-    if (_this.data.phoneCarDemandOfferVOList.length) {
-      _this.data.phoneCarDemandOfferVOList.map(function (item) {
-        item.sort = Number(_this.data.sort)
-        return item
-      })
-    }
+  
   },
   // 加载图标
   showLoading: function () {
@@ -131,7 +124,12 @@ Page({
           copyPhoneCarDemandOfferVOList: phoneCarDemandOfferVOList ? phoneCarDemandOfferVOList : [],
           otherPhoneCarDemandOfferVOList: otherPhoneCarDemandOfferVOList ? otherPhoneCarDemandOfferVOList : []
         })
-        console.log(this.data.phoneCarDemandOfferVOList)
+        if (_this.data.phoneCarDemandOfferVOList.length) {
+          _this.data.phoneCarDemandOfferVOList.map(function (item) {
+            item.sort = Number(_this.data.sort)
+            return item
+          })
+        }
       },
       fail: function (res) {
         _this.$wuxLoading.hide()

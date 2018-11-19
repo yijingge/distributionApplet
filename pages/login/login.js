@@ -54,8 +54,8 @@ Page({
         url: util.baseUrl + '/phone/member/login',
         method: 'post',
         data: {
-          account: _this.data.username,
-          password: _this.data.password,
+          account: _this.data.username.trim(),
+          password: _this.data.password.trim(),
           memberGroup: '2' // 2代表卖方会员,后端根据这个值判断会员的类型
         },
         success: function (res) {

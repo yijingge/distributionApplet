@@ -37,6 +37,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (!wx.getStorageSync('token')) {
+      wx.reLaunch({
+        url: "../login/login"
+      })
+    }
     var schemeIndex = options.index == 1 ? '二' : options.index == 2 ? '三' : options.index == 3 ? '四' : '一'
     this.setData({
       id: options.id,

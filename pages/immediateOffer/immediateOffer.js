@@ -99,7 +99,7 @@ Page({
         data: {
           demandId: _this.data.id,
           remarks: _this.data.remarks,
-          carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList
+          phoneCarDemandOfferVOList: _this.data.phoneCarDemandOfferVOList
         },
         success: function (res) {
           if (res.data.code) {

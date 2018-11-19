@@ -21,6 +21,9 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {
         demandId: _this.data.id
       },
@@ -66,7 +69,6 @@ Page({
 
   // 编辑车辆方案
   editOffer: function(e) {
-    // console.log(e)
     var _this = this
     var index = e.currentTarget.dataset.index
     var sort = e.currentTarget.dataset.sort
@@ -91,6 +93,9 @@ Page({
       wx.request({
         url: util.baseUrl + '/phone/phoneCarDemand/addCarDemandOffer.json',
         method: 'post',
+        header: {
+          'Authorization': wx.getStorage({ key: 'token' })
+        },
         data: {
           demandId: _this.data.id,
           remarks: _this.data.remarks,

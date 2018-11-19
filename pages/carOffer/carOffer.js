@@ -37,6 +37,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (!wx.getStorageSync('token')) {
+      wx.reLaunch({
+        url: "../login/login"
+      })
+    }
     var schemeIndex = options.index == 1 ? '二' : options.index == 2 ? '三' : options.index == 3 ? '四' : '一'
     this.setData({
       id: options.id,
@@ -71,7 +76,7 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
-      header: {'Authorization': wx.getStorage({ key: 'token' })},
+      header: {'Authorization': wx.getStorageSync('token')},
       data: {demandId: id},
       success: function (res) {
         _this.$wuxLoading.hide()
@@ -155,7 +160,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarLevelList.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {},
       success: function (res) {
@@ -197,7 +202,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarBrandList.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {},
       success: function (res) {
@@ -240,7 +245,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/enableCarInfoList.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {},
       success: function (res) {
@@ -435,7 +440,7 @@ Page({
             url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
             method: 'post',
             header: {
-              'Authorization': wx.getStorage({ key: 'token' })
+              'Authorization': wx.getStorageSync('token')
             },
             data: {
               demandId: _this.data.id,
@@ -544,7 +549,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {
         demandId: _this.data.id,

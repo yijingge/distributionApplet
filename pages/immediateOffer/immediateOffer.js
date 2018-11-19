@@ -22,7 +22,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {
         demandId: _this.data.id
@@ -94,12 +94,12 @@ Page({
         url: util.baseUrl + '/phone/phoneCarDemand/addCarDemandOffer.json',
         method: 'post',
         header: {
-          'Authorization': wx.getStorage({ key: 'token' })
+          'Authorization': wx.getStorageSync('token')
         },
         data: {
           demandId: _this.data.id,
           remarks: _this.data.remarks,
-          carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList
+          phoneCarDemandOfferVOList: _this.data.phoneCarDemandOfferVOList
         },
         success: function (res) {
           if (res.data.code) {
@@ -162,6 +162,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (!wx.getStorageSync('token')) {
+      wx.reLaunch({
+        url: "../login/login"
+      })
+    }
     this.showLoading('数据加载中')
     this.setData({
       id: options.id

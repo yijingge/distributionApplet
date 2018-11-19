@@ -130,7 +130,7 @@ page {
   height: 88rpx;
   margin: 60rpx auto;
   background: #00aaff;
-  border-radius: 6rpx;
+  border-radius: 16rpx;
   font-size: 36rpx;
   color: #fff;
   text-align: center;

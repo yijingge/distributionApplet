@@ -87,7 +87,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarDemandOfferDetail.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {
         demandId: id,

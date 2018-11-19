@@ -22,7 +22,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarDemandDetail.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {
         id: id

@@ -54,7 +54,7 @@ Page({
         url: util.baseUrl + '/phone/member/login',
         method: 'post',
         data: {
-          username: _this.data.username,
+          account: _this.data.username,
           password: _this.data.password,
           memberGroup: '2' // 2代表卖方会员,后端根据这个值判断会员的类型
         },
@@ -93,7 +93,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getStorage({ key: 'token' })) {
+    if (wx.getStorageSync('token')) {
       wx.redirectTo({
         url: "../carCustomizationOrderList/carCustomizationOrderList"
       })

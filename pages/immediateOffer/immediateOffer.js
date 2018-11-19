@@ -22,7 +22,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {
         demandId: _this.data.id
@@ -94,7 +94,7 @@ Page({
         url: util.baseUrl + '/phone/phoneCarDemand/addCarDemandOffer.json',
         method: 'post',
         header: {
-          'Authorization': wx.getStorage({ key: 'token' })
+          'Authorization': wx.getStorageSync('token')
         },
         data: {
           demandId: _this.data.id,

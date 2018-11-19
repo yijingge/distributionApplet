@@ -24,7 +24,7 @@ Page({
       url: util.baseUrl + '/phone/phoneCarDemand/demandList.json',
       method: 'post',
       header: {
-        'Authorization': wx.getStorage({ key: 'token' })
+        'Authorization': wx.getStorageSync('token')
       },
       data: {
         pageNumber: _this.data.pageIndex,
@@ -172,7 +172,7 @@ Page({
         url: util.baseUrl + '/phone/phoneCarDemand/demandList.json',
         method: 'post',
         header: {
-          'Authorization': wx.getStorage({ key: 'token' })
+          'Authorization': wx.getStorageSync('token')
         },
         data: {
           pageNumber: _this.data.pageIndex,

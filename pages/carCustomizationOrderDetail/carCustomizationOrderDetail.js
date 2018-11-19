@@ -21,6 +21,9 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarDemandDetail.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {
         id: id
       },

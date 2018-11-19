@@ -71,6 +71,7 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getProcessingData.json',
       method: 'post',
+      header: {'Authorization': wx.getStorage({ key: 'token' })},
       data: {demandId: id},
       success: function (res) {
         _this.$wuxLoading.hide()
@@ -153,6 +154,9 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarLevelList.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {},
       success: function (res) {
         _this.$wuxLoading.hide()
@@ -192,6 +196,9 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarBrandList.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {},
       success: function (res) {
         
@@ -232,6 +239,9 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/enableCarInfoList.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {},
       success: function (res) {
         res.data.data.map((item, index) => {
@@ -387,7 +397,6 @@ Page({
   delScheme () {
     var _this = this
     var index = _this.data.copyPhoneCarDemandOfferVOList.findIndex(d => d.id === _this.data.phoneCarDemandOfferVOList[0].id)
-    console.log(index)
     $wuxDialog('#wux-dialog').confirm({
       resetOnClose: true,
       closable: false,
@@ -421,11 +430,13 @@ Page({
           item.sort = index
           return item
         })
-        console.log(copyPhoneCarDemandOfferVOList)
         if (_this.data.isAdd === 'false') {
           wx.request({
             url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
             method: 'post',
+            header: {
+              'Authorization': wx.getStorage({ key: 'token' })
+            },
             data: {
               demandId: _this.data.id,
               phoneCarDemandOfferVOList: copyPhoneCarDemandOfferVOList
@@ -529,10 +540,12 @@ Page({
       }
       return outerSet
     })
-    console.log(phoneCarDemandOfferVOList)
     wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {
         demandId: _this.data.id,
         phoneCarDemandOfferVOList: phoneCarDemandOfferVOList

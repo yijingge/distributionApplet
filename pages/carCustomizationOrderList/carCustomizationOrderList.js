@@ -23,6 +23,9 @@ Page({
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/demandList.json',
       method: 'post',
+      header: {
+        'Authorization': wx.getStorage({ key: 'token' })
+      },
       data: {
         pageNumber: _this.data.pageIndex,
         pageSize: _this.data.pageSize
@@ -168,6 +171,9 @@ Page({
         wx.request({
         url: util.baseUrl + '/phone/phoneCarDemand/demandList.json',
         method: 'post',
+        header: {
+          'Authorization': wx.getStorage({ key: 'token' })
+        },
         data: {
           pageNumber: _this.data.pageIndex,
           pageSize: _this.data.pageSize

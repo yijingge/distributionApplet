@@ -73,37 +73,6 @@ Page({
     wx.navigateTo({
       url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index + "&isAdd=" + isAdd
     })
-    // wx.request({
-    //   url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
-    //   method: 'post',
-    //   data: {
-    //     id: _this.data.id,
-    //     sort: index,
-    //     carDemandOfferItemVOList: _this.data.phoneCarDemandOfferVOList[index]
-    //   },
-    //   success: function (res) {
-    //     if (res.data.code) {
-    //       $wuxToast().show({
-    //         type: 'forbidden',
-    //         duration: 1500,
-    //         color: '#fff',
-    //         text: '请求失败'
-    //       })
-    //       return false
-    //     }
-    //     wx.navigateTo({
-    //       url: "../carOffer/carOffer?id=" + _this.data.id + "&sort=" + index
-    //     })
-    //   },
-    //   fail: function (res) {
-    //     $wuxToast().show({
-    //       type: 'forbidden',
-    //       duration: 1500,
-    //       color: '#fff',
-    //       text: '网络错误'
-    //     })
-    //   }
-    // })
   },
 
   // 获取报价留言
@@ -161,7 +130,7 @@ Page({
         type: 'text',
         duration: 1500,
         color: '#fff',
-        text: '您还没有车辆方案哦,赶紧添加吧'
+        text: '请先阅读并同意《飞鹰旅游用车须知》使用条款'
       })
     }
   },

@@ -20,27 +20,30 @@
       <view hover-class="none" class="cell">
         <image  class="image" src="../../images/user.png"/>
         <input bindinput="changeUsername"
-               style="position: relative;top: 16rpx;width: 100%;"
+               style="position: relative;top: 18rpx;width: 100%;"
                name="username"
                value="{{ username }}"
                placeholder="请输入你的用户名/手机号/邮箱"/>
-        <image wx:if="{{ username.length }}" bindtap="clearUsername"  class="image" style="margin-right: 0" src="../../images/user.png"/>
+        <image wx:if="{{ username.length }}" bindtap="clearUsername"  class="image" style="margin-right: 0" src="../../images/delete.png"/>
       </view>
       <view hover-class="none" class="cell" style="border-bottom: 0;">
         <image class="image" src="../../images/pass.png"/>
         <input
             bindinput="changePassword"
-            style="position: relative;top: 16rpx;width: 100%;"
+            style="position: relative;top: 18rpx;width: 100%;"
             name="password" value="{{ password }}"
             placeholder="请输入您的密码"/>
-        <image wx:if="{{ password.length }}" bindtap="clearPassword" class="image" style="margin-right: 0;" src="../../images/pass.png"/>
+        <image wx:if="{{ password.length }}" bindtap="clearPassword" class="image" style="margin-right: 0;" src="../../images/delete.png"/>
       </view>
     </view>
     <view class="buttonView">
-      <button bindtap="login" class="button">登录</button>
+      <button bindtap="login" hover-class="hoverActiveBtn" class="button">登录</button>
     </view>
   </view>
   <view>
     <image style="width: 100%; height: 380rpx; margin-right: 26rpx" src="../../images/bg.jpg"/>
+  </view>
+  <view class="copyright">
+    <text style="text-transform: capitalize">copyright @2013-2018 .all rights reserved. 飞鹰分销版权所有</text>
   </view>
 </ivew>

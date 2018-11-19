@@ -76,6 +76,14 @@
   margin-right: 26rpx
 }
 
+.copyright{
+  position: absolute;
+  width: 100%;
+  bottom: 60rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #999;
+}
 
 
 

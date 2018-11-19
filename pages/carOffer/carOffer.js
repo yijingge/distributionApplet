@@ -15,6 +15,7 @@ Page({
       {
         offerMoney: 0,
         sort: 0,
+        id: '',
         carDemandOfferItemVOList: [{
           value1: '',
           title1: '请选择',
@@ -106,6 +107,7 @@ Page({
               }
             })
             var outerSet = {
+              id: item.id,
               offerMoney: item.offerMoney,
               sort: item.sort,
               carDemandOfferItemVOList: carDemandOfferItemVOList
@@ -129,7 +131,7 @@ Page({
           copyPhoneCarDemandOfferVOList: phoneCarDemandOfferVOList ? phoneCarDemandOfferVOList : [],
           otherPhoneCarDemandOfferVOList: otherPhoneCarDemandOfferVOList ? otherPhoneCarDemandOfferVOList : []
         })
-        // console.log(phoneCarDemandOfferVOList)
+        console.log(this.data.phoneCarDemandOfferVOList)
       },
       fail: function (res) {
         _this.$wuxLoading.hide()
@@ -386,7 +388,8 @@ Page({
   // 删除报价方案
   delScheme () {
     var _this = this
-    var sort = _this.data.phoneCarDemandOfferVOList.findIndex(d => d.sort === Number(this.data.sort))
+    var index = _this.data.copyPhoneCarDemandOfferVOList.findIndex(d => d.id === _this.data.phoneCarDemandOfferVOList[0].id)
+    console.log(index)
     $wuxDialog('#wux-dialog').confirm({
       resetOnClose: true,
       closable: false,
@@ -407,13 +410,19 @@ Page({
             }
           })
           var outerSet = {
+            id: item.id,
             offerMoney: item.offerMoney,
             sort: item.sort,
             carDemandOfferItemVOList: carDemandOfferItemVOList
           }
           return outerSet
         })
-        copyPhoneCarDemandOfferVOList.splice(sort, 1)
+        copyPhoneCarDemandOfferVOList.splice(index, 1)
+        copyPhoneCarDemandOfferVOList.map(function (item, index) {
+          console.log(index)
+          item.sort = index
+          return item
+        })
         console.log(copyPhoneCarDemandOfferVOList)
         if (_this.data.isAdd === 'false') {
           wx.request({
@@ -515,6 +524,7 @@ Page({
         }
       })
       var outerSet = {
+        id: item.id,
         offerMoney: item.offerMoney,
         sort: item.sort,
         carDemandOfferItemVOList: carDemandOfferItemVOList

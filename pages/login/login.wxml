@@ -16,13 +16,13 @@
  <view style="padding: 0 58rpx;">
      <view class="inputView">
        <wux-cell-group>
-         <wux-cell hover-class="none" style="border: 0!important;">
+         <wux-cell hover-class="none">
            <image style="width: 26rpx; height: 26rpx; margin-right: 26rpx" slot="header" src="../../images/user.png" />
-           <wux-input bind:blur="changeUsername" placeholder-class="placeholder" value="{{ username }}" placeholder="请输入你的用户名/手机号/邮箱" controlled clear/>
+           <wux-input bind:clear="clearUsername" bind:change="changeUsername"  value="{{ username }}" placeholder="请输入你的用户名/手机号/邮箱" controlled clear/>
          </wux-cell>
          <wux-cell hover-class="none">
            <image style="width: 26rpx; height: 26rpx; margin-right: 26rpx" slot="header" src="../../images/pass.png" />
-           <wux-input bind:blur="changePassword" placeholder-class="placeholder" value="{{ password }}" placeholder="请输入您的密码" password type="number" controlled  clear/>
+           <wux-input bind:clear="clearPassword" bind:change="changePassword" value="{{ password }}" placeholder="请输入您的密码" password controlled  clear/>
          </wux-cell>
        </wux-cell-group>
      </view>

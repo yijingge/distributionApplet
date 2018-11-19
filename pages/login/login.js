@@ -16,9 +16,19 @@ Page({
       username: event.detail.value
     })
   },
+  clearUsername(event) {
+    this.setData({
+      username: ''
+    })
+  },
   changePassword(event) {
     this.setData({
       password: event.detail.value
+    })
+  },
+  clearPassword() {
+    this.setData({
+      password: ''
     })
   },
   // 登录功能

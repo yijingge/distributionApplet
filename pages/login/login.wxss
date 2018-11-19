@@ -46,7 +46,7 @@
 }
 .input-placeholder{
   color: #cccccc;
-  font-size: 28rpx;
+  font-size: 28rpx!important;
 }
 .buttonView{
   margin-top: 60rpx;
@@ -55,6 +55,7 @@
   background: #00aaff;
   color: #ffffff;
   height: 88rpx;
+  line-height: 88rpx;
   font: 36rpx;
 }
 

@@ -1,6 +1,14 @@
 {
+  "navigationBarTitleText": "登录",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "wux-toast": "../../style/toast/index"
+    "wux-toast": "../../style/toast/index",
+    "wux-divider": "../../style/divider/index",
+    "wux-row": "../../style/row/index",
+    "wux-col": "../../style/col/index",
+    "wux-image": "../../style/image/index",
+    "wux-cell-group": "../../style/cell-group/index",
+    "wux-cell": "../../style/cell/index",
+    "wux-input": "../../style/input/index"
   }
 }

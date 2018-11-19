@@ -11,18 +11,28 @@ Page({
     username: '',
     password: ''
   },
-
+  changeUsername(event) {
+    this.setData({
+      username: event.detail.value
+    })
+  },
+  changePassword(event) {
+    this.setData({
+      password: event.detail.value
+    })
+  },
   // 登录功能
   login: function (e) {
     var _this = this
-    if (!_this.data.username) {
+    if (_this.data.username === '' && _this.data.username === null && _this.data.username === undefined) {
+      console.log(_this.data.username)
       $wuxToast().show({
         type: 'text',
         duration: 1500,
         color: '#fff',
         text: '用户名不能为空'
       })
-    } else if (!_this.data.password) {
+    } else if (_this.data.password === '' && _this.data.password === null && _this.data.password === undefined) {
       $wuxToast().show({
         type: 'text',
         duration: 1500,

@@ -529,7 +529,7 @@ Page({
       }
       return outerSet
     })
-    console.log(phoneCarDemandOfferVOList)
+    // console.log(phoneCarDemandOfferVOList)
     wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/processingData.json',
       method: 'post',

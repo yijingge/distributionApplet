@@ -28,3 +28,7 @@
   outline: none;
   border: none;
 }
+button::after {
+  border: none;
+  outline: none;
+}

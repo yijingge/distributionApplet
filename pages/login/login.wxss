@@ -1,1 +1,82 @@
 /* pages/login/login.wxss */
+.page{
+  padding: 0 58rpx;
+}
+.header{
+  width: 634rpx;
+  height: 75rpx;
+  display: flex;
+  justify-content: center;
+  margin-top: 180rpx;
+}
+.header_context{
+  display: flex;
+  margin-left: 15%;
+}
+.logoImg{
+  width: 230rpx;
+  height: 75rpx;
+}
+.border{
+  display: inline-block;
+  width: 2rpx;
+  height: 28rpx;
+  background: #cccccc;
+  margin: 0 38rpx;
+  position: relative;
+  top: 10rpx;
+}
+.border_view{
+  display: flex;
+  align-items: center;
+}
+.logoTitle{
+  font-size: 42rpx;
+  color: #00aaff;
+  position: relative;
+  top: 12rpx;
+}
+/*输入框*/
+.inputView{
+  margin-top: 126rpx;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  border-left: 1rpx solid #e8e8e8;
+  border-right: 1rpx solid #e8e8e8;
+}
+.input-placeholder{
+  color: #cccccc;
+  font-size: 28rpx;
+}
+.buttonView{
+  margin-top: 60rpx;
+}
+.button{
+  background: #00aaff;
+  color: #ffffff;
+  height: 88rpx;
+  font: 36rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

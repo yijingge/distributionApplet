@@ -1,4 +1,36 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<ivew class="page">
+  <wux-toast id="wux-toast"/>
+  <view class="header">
+    <view class="header_context">
+      <view>
+        <image src="../../images/logo.jpg" class="logoImg"></image>
+      </view>
+      <view class="border_view">
+        <text class="border"></text>
+      </view>
+      <view><text class="logoTitle">飞鹰分销</text></view>
+    </view>
+  </view>
 
-<wux-toast id="wux-toast"/>
+ <view style="padding: 0 58rpx;">
+     <view class="inputView">
+       <wux-cell-group>
+         <wux-cell hover-class="none" style="border: 0!important;">
+           <image style="width: 26rpx; height: 26rpx; margin-right: 26rpx" slot="header" src="../../images/user.png" />
+           <wux-input bind:blur="changeUsername" placeholder-class="placeholder" value="{{ username }}" placeholder="请输入你的用户名/手机号/邮箱" controlled clear/>
+         </wux-cell>
+         <wux-cell hover-class="none">
+           <image style="width: 26rpx; height: 26rpx; margin-right: 26rpx" slot="header" src="../../images/pass.png" />
+           <wux-input bind:blur="changePassword" placeholder-class="placeholder" value="{{ password }}" placeholder="请输入您的密码" password type="number" controlled  clear/>
+         </wux-cell>
+       </wux-cell-group>
+     </view>
+     <view class="buttonView">
+       <button bindtap="login" class="button">登录</button>
+     </view>
+ </view>
+  <view>
+    <image style="width: 100%; height: 380rpx; margin-right: 26rpx"  src="../../images/bg.jpg" />
+  </view>
+</ivew>

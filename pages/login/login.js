@@ -13,7 +13,7 @@ Page({
   },
   changeUsername(event) {
     this.setData({
-      username: (event.detail.value).replace(/\s+/g, "")
+      username: (event.detail.value).replace(/\s*/g,"")
     })
   },
   clearUsername() {

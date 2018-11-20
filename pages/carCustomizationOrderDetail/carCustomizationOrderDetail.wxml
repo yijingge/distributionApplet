@@ -72,7 +72,7 @@
     </view>
 </view>
 
-<view class="card_demandInfo">
+<view class="card_demandInfo" wx:if="{{pageData.carDemandCarList.length > 0}}">
     <view class="card_demandInfo_header">车辆需求</view>
     <view class="card_demandInfo_content" wx:for="{{pageData.carDemandCarList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
         <wux-row class="content_title">

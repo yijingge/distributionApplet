@@ -67,7 +67,7 @@ page {
 
 .card_content {
   width: auto;
-  height: 232rpx;
+  height: 212rpx;
   padding: 0 30rpx;
 }
 

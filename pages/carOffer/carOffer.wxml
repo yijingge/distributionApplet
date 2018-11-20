@@ -46,7 +46,9 @@
       <view class="page__bd">
         <wux-cell-group>
           <wux-cell style="color: #000;" class="wux-cell" title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
-            <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}" />
+             <view class="emeptyView">
+               <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}" />
+             </view>
             <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
           </wux-cell>
           <wux-cell title="车辆品牌" data-index="{{index}}" extra="{{ item.title2 }}" bind:click="onClick2">

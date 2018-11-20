@@ -100,3 +100,6 @@ button::after {
 .wux-cell{
   height: 60rpx;
 }
+.emeptyView{
+  margin: 20rpx 0;
+}

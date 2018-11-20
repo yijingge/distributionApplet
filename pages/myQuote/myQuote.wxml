@@ -53,8 +53,9 @@
         </view>
       </view>
     </view>
+
     <!--报价留言e-->
-    <view class="page pd30">
+    <view class="page pd30" style="position: relative;bottom: 30rpx;">
       <view class="card">
         <view class="title">
           <text>用车须知</text>

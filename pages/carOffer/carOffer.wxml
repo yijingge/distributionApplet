@@ -14,8 +14,7 @@
         </wux-col>
         <wux-col span="6">
           <view class="priceText">
-            报价合计：
-            <text class="price_red">￥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
+            报价合计：<text class="price_red">￥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
           </view>
         </wux-col>
         <wux-col span="4">
@@ -46,7 +45,7 @@
       </view>
       <view class="page__bd">
         <wux-cell-group>
-          <wux-cell title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
+          <wux-cell style="color: #000;" class="wux-cell" title="车辆配置" data-index="{{index}}" extra="{{ item.title1 }}" bind:click="onClick1">
             <input class="hideInput" type="text" name="{{ 'config' + index }}" value="{{item.title1}}" />
             <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
           </wux-cell>
@@ -69,7 +68,7 @@
             <wux-row slot="footer">
               <wux-col span="10">
                 <view style="height: 58rpx;position:relative; top: 12rpx;">
-                  <wux-input data-index="{{index}}" bind:blur="inputPrice" placeholder="请输入价格" value="{{item.price}}" controlled></wux-input>
+                  <wux-input style="color: #000;font-size: 36rpx;font-weight: bolder;" data-index="{{index}}" bind:blur="inputPrice" placeholder="请输入价格" value="{{item.price}}" controlled></wux-input>
                 </view>
               </wux-col>
               <wux-col span="2">

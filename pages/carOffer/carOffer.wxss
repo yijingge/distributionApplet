@@ -92,3 +92,11 @@ button::after {
   color: #00aaff;
   font-size: 36rpx;
 }
+.input-placeholder{
+  color: #999999;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.wux-cell{
+  height: 60rpx;
+}

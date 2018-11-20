@@ -24,7 +24,7 @@ Page({
           value3: '',
           title3: '请选择',
           number: 1,
-          price: 0,
+          price: '',
           sort: 0
         }]
       }

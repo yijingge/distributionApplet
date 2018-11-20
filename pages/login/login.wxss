@@ -54,6 +54,7 @@
 }
 .buttonView{
   margin-top: 60rpx;
+  z-index: 110;
 }
 .button{
   background: #00aaff;

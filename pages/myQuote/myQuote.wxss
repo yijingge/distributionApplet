@@ -50,7 +50,7 @@ page {
   border-top: 1rpx solid #dddee1;
 }
 .pd30 {
-  padding: 30rpx;
+  padding: 24rpx;
 }
 .pbt30{
   padding: 30rpx 0;

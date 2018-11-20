@@ -37,12 +37,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     if (!wx.getStorageSync('token')) {
       wx.reLaunch({
         url: "../login/login"
       })
     }
-    var schemeIndex = options.index === 1 ? '二' : options.index === 2 ? '三' : options.index === 3 ? '四' : '一'
+    var schemeIndex = options.index == 1 ? '二' : options.index == 2 ? '三' : options.index == 3 ? '四' : '一'
     this.setData({
       id: options.id,
       schemeIndex: schemeIndex,
@@ -197,7 +198,7 @@ Page({
   // 获取车品牌列表
   getCarBrandList () {
     var _this = this
-    setTimeout(() => {
+    setTimeout(function () {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarBrandList.json',
       method: 'post',
@@ -240,7 +241,7 @@ Page({
   // 获取座位数列表
   getCarSeatNumberList () {
     var _this = this
-    setTimeout(() => {
+    setTimeout(function () {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/enableCarInfoList.json',
       method: 'post',
@@ -511,12 +512,12 @@ Page({
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('number') !== -1 && (formData[i] === '' || formData[i] === 0)) {
+      if (i.indexOf('number') !== -1 && (formData[i] === '' || formData[i] == 0)) {
         errorMes = '请输入数量'
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('price') !== -1 && (formData[i] === '' || formData[i] === 0)) {
+      if (i.indexOf('price') !== -1 && (formData[i] === '' || formData[i] == 0)) {
         errorMes = '请输入单价'
         this.showError(errorMes)
         return false

@@ -99,6 +99,11 @@ Page({
         data: {
           demandId: _this.data.id,
           remarks: _this.data.remarks,
+          kilometersFee: '超出行程内的公里数另算',
+          overtimeFee: '当日用车时长超过10小时,司机将按50元/小时收取超时长费',
+          thirdPartyCharge: '含第三方收取的停车费、过路过桥费',
+          travelSubsidies: '用餐补贴30元/餐、住宿补贴为150元/晚',
+          emptyFee: '默认接送点为两个,且距离为50公里以内,司机将按1元/公里收取超公里费,超过两个以上接送点,每多一个增加100元',
           phoneCarDemandOfferVOList: _this.data.phoneCarDemandOfferVOList
         },
         success: function (res) {

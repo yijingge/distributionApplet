@@ -45,7 +45,7 @@
     </view>
 
     <view class="immediateOffer_checkBox">
-        <checkbox-group class="carKnowledge" name="isAgree">
+        <checkbox-group class="carKnowledge" name="isAgree" bindchange="changeCheckbox">
             <label class="checkbox">
                 <checkbox value="true" color="#00aaff"/>
             </label>
@@ -54,7 +54,7 @@
     </view>
 
     <view class="footer">
-        <button class="button" hover-class="button_hover" wx:if="{{phoneCarDemandOfferVOList.length > 0}}" formType="submit">确认报价</button>
+        <button class="button" hover-class="button_hover" wx:if="{{isAgree}}" formType="submit">确认报价</button>
         <button class="button button_grey" wx:else>确认报价</button>
     </view>
 </form>

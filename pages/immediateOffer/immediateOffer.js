@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isAgree: false,
     id: '',
     remarks: '',
     phoneCarDemandOfferVOList: []
@@ -86,10 +87,25 @@ Page({
 
   },
 
+  // 获取checkbox的值
+  changeCheckbox: function (e) {
+    var isAgree = e.detail.value[0]
+    if (isAgree) {
+      this.setData({
+        isAgree: isAgree
+      })
+    } else {
+      this.setData({
+        isAgree: false
+      })
+    }
+
+  },
+
   // 提交表单(确认报价)
   formSubmit: function(e) {
     var _this = this
-    if (e.detail.value.isAgree[0]) {
+    if (_this.data.phoneCarDemandOfferVOList.length > 0) {
       wx.request({
         url: util.baseUrl + '/phone/phoneCarDemand/addCarDemandOffer.json',
         method: 'post',
@@ -141,7 +157,7 @@ Page({
         type: 'text',
         duration: 1500,
         color: '#fff',
-        text: '请先阅读并同意《飞鹰旅游用车须知》使用条款'
+        text: '您还没有添加车辆方案哦赶紧添加吧'
       })
     }
   },

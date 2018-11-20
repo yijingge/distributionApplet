@@ -109,3 +109,9 @@ button::after {
   font-weight: bolder;
   height: 200rpx;
 }
+.hoverActiveBtn{
+  background: #26B7FF;
+}
+.hoverDefaultBtn{
+  background: #D6F1FF;
+}

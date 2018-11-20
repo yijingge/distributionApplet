@@ -8,12 +8,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }
-.hoverActiveBtn{
-  background: #26B7FF;
-}
-.hoverDefaultBtn{
-  background: #D6F1FF;
-}
+
 .hoverActiveBtn::after, hoverDefaultBtn::after{
   border: none;
 }

@@ -37,6 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     if (!wx.getStorageSync('token')) {
       wx.reLaunch({
         url: "../login/login"
@@ -197,7 +198,7 @@ Page({
   // 获取车品牌列表
   getCarBrandList () {
     var _this = this
-    setTimeout(() => {
+    setTimeout(function () {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/getCarBrandList.json',
       method: 'post',
@@ -240,7 +241,7 @@ Page({
   // 获取座位数列表
   getCarSeatNumberList () {
     var _this = this
-    setTimeout(() => {
+    setTimeout(function () {
       wx.request({
       url: util.baseUrl + '/phone/phoneCarDemand/enableCarInfoList.json',
       method: 'post',

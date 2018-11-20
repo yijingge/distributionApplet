@@ -496,17 +496,17 @@ Page({
     var formData = e.detail.value
     var errorMes = ''
     for (var i in formData) {
-      if (i.indexOf('config') !== -1 && formData[i] === '') {
+      if (i.indexOf('config') !== -1 && formData[i] === '请选择') {
         errorMes = '请选择车辆配置'
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('seatNumber') !== -1 && formData[i] === '') {
+      if (i.indexOf('seatNumber') !== -1 && formData[i] === '请选择') {
         errorMes = '请选择座位数'
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('brand') !== -1 && formData[i] === '') {
+      if (i.indexOf('brand') !== -1 && formData[i] === '请选择') {
         errorMes = '请选择车辆品牌'
         this.showError(errorMes)
         return false

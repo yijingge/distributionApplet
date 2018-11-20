@@ -38,7 +38,7 @@
 }
 /*输入框*/
 .inputView{
-  margin-top: 126rpx;
+  margin-top: 110rpx;
   font-size: 28rpx;
   border-radius: 16rpx;
   border: 1rpx solid #e8e8e8;
@@ -69,7 +69,7 @@
   padding: 10rpx 20rpx 0 20rpx;
 }
 .image{
-  width: 30rpx;
+  width: 34rpx;
   height:30rpx;
   position: relative;
   top: 26rpx;

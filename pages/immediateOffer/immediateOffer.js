@@ -112,7 +112,7 @@ Page({
               type: 'forbidden',
               duration: 1500,
               color: '#fff',
-              text: '请求失败'
+              text: res.data.msg
             })
             return false
           } else {

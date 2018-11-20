@@ -89,7 +89,12 @@
   font-size: 22rpx;
   color: #999;
 }
-
+.hoverActiveBtn{
+  background: #26B7FF;
+}
+.hoverDefaultBtn{
+  background: #D6F1FF;
+}
 
 
 

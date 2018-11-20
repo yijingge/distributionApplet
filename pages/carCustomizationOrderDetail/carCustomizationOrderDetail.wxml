@@ -50,7 +50,7 @@
             </wux-col>
             <wux-col span="9" class="content_right">
                 <text wx:if="{{pageData.isLimit === '1'}}" style="color: #ff4d4d">限制</text>
-                <text wx:if="{{pageData.isLimit === '2'}}">不限制</text>
+                <text wx:else>不限制</text>
             </wux-col>
         </wux-row>
         <wux-row class="content_row">

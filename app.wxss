@@ -29,7 +29,7 @@
   border: none;
 }
 button{
-  border-radius: 16rpx;
+  border-radius: 10rpx;
 }
 button::after {
   border: none;

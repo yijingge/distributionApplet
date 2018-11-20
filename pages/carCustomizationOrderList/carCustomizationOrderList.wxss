@@ -61,8 +61,8 @@ page {
 }
 
 .tag_grey {
-  background: rgba(233, 234, 236, 0.1);
-  color: #e9eaec;
+  background: #e9eaec;
+  color: #999999;
 }
 
 .card_content {

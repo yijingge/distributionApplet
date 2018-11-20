@@ -46,10 +46,10 @@
   </view>
   <view class="card_content">
     <wux-row class="card_content_row">
-      <wux-col span="6" class="card_content_left">
+      <wux-col span="5" class="card_content_left">
         需求编号
       </wux-col>
-      <wux-col span="6" class="card_content_right">
+      <wux-col span="7" class="card_content_right">
         {{item.demandCode}}
       </wux-col>
     </wux-row>

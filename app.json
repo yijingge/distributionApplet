@@ -5,6 +5,7 @@
     "pages/carCustomizationOrderList/carCustomizationOrderList",
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/immediateOffer/immediateOffer",
+    "pages/myQuote/myQuote",
     "pages/carKnowledge/carKnowledge"
   ],
   "window": {

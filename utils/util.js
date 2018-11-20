@@ -14,7 +14,7 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const baseUrl = 'http://192.168.0.154:8081'
+const baseUrl = 'https://member.feiying360.com/api' // 接口公共前缀
 
 module.exports = {
   formatTime: formatTime,

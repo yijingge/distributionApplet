@@ -35,7 +35,7 @@ page {
     width: auto;
     height: auto;
     font-weight: bold;
-    margin-bottom: 20rpx;
+    margin-bottom: 10rpx;
     padding: 0 30rpx;
 }
 

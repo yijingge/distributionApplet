@@ -39,6 +39,7 @@ page {
 
 .content_right {
   color: #000000;
+  text-align: right;
 }
 
 .card_tripInfo {
@@ -130,7 +131,7 @@ page {
   height: 88rpx;
   margin: 60rpx auto;
   background: #00aaff;
-  border-radius: 16rpx;
+  border-radius: 10rpx;
   font-size: 36rpx;
   color: #fff;
   text-align: center;

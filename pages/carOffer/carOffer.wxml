@@ -54,7 +54,7 @@
             <input class="hideInput" type="text" name="{{ 'brand' + index }}" value="{{item.title2}}" />
             <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
           </wux-cell>
-          <wux-cell title="座位数" data-index="{{index}}" extra="{{ item.title3 === '请选择' ? item.title3 : ( item.title3 + '座')}}" bind:click="onClick3">
+          <wux-cell title="座位数" data-index="{{index}}" extra="{{ item.title3 == '请选择' ? item.title3 : ( item.title3 + '座')}}" bind:click="onClick3">
             <input class="hideInput" type="text" name="{{ 'seatNumber'+ index }}" value="{{item.title3}}" />
             <image slot="footer" src="../../images/arrow.png" class="arrow_icon"></image>
           </wux-cell>

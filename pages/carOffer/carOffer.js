@@ -37,7 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     if (!wx.getStorageSync('token')) {
       wx.reLaunch({
         url: "../login/login"
@@ -307,11 +307,11 @@ Page({
     this.data.phoneCarDemandOfferVOList.map(function (item) {
       item.carDemandOfferItemVOList.push({
           value1: '',
-          title1: '',
+          title1: '请选择',
           value2: '',
-          title2: '',
+          title2: '请选择',
           value3: '',
-          title3: '',
+          title3: '请选择',
           number: 0,
           price: '',
           sort: item.carDemandOfferItemVOList.length - 1

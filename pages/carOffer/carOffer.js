@@ -42,7 +42,7 @@ Page({
         url: "../login/login"
       })
     }
-    var schemeIndex = options.index == 1 ? '二' : options.index == 2 ? '三' : options.index == 3 ? '四' : '一'
+    var schemeIndex = options.index === 1 ? '二' : options.index === 2 ? '三' : options.index === 3 ? '四' : '一'
     this.setData({
       id: options.id,
       schemeIndex: schemeIndex,
@@ -511,12 +511,12 @@ Page({
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('number') !== -1 && (formData[i] === '' || formData[i] == 0)) {
+      if (i.indexOf('number') !== -1 && (formData[i] === '' || formData[i] === 0)) {
         errorMes = '请输入数量'
         this.showError(errorMes)
         return false
       }
-      if (i.indexOf('price') !== -1 && (formData[i] === '' || formData[i] == 0)) {
+      if (i.indexOf('price') !== -1 && (formData[i] === '' || formData[i] === 0)) {
         errorMes = '请输入单价'
         this.showError(errorMes)
         return false

@@ -24,7 +24,7 @@ page {
   width: auto;
   height: auto;
   font-size: 28rpx;
-  padding: 30rpx 30rpx 8rpx 30rpx;
+  padding: 30rpx 30rpx 8rpx 20rpx;
 }
 
 .content_row {
@@ -86,7 +86,7 @@ page {
 .card_demandInfo_content {
   width: auto;
   height: auto;
-  padding: 30rpx;
+  padding: 25rpx;
   border-top: 1rpx solid #dddee1;
 }
 
@@ -97,7 +97,7 @@ page {
   font-size: 28rpx;
   color: #000000;
   text-align: left;
-  margin-bottom: 30rpx;
+  margin-bottom: 15rpx;
 }
 
 .content_text {
@@ -105,13 +105,13 @@ page {
   width: auto;
   height: auto;
   font-size: 24rpx;
-  margin-top: 20rpx;
+  margin-top: 15rpx;
   text-align: left;
 }
 
 .text_left {
   color: #999;
-  padding-left: 40rpx;
+  padding-left: 50rpx;
 }
 
 .text_right {
@@ -120,10 +120,11 @@ page {
 }
 
 .image_icon {
-  width: 24rpx;
-  height: 24rpx;
+  width: 28rpx;
+  height: 28rpx;
   position: absolute;
-  top: 6rpx;
+  top: 5rpx;
+  left: 10rpx;
 }
 
 .button {

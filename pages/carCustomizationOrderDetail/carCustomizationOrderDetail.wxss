@@ -97,7 +97,7 @@ page {
   font-size: 28rpx;
   color: #000000;
   text-align: left;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .content_text {
@@ -120,10 +120,10 @@ page {
 }
 
 .image_icon {
-  width: 24rpx;
-  height: 24rpx;
+  width: 28rpx;
+  height: 28rpx;
   position: absolute;
-  top: 6rpx;
+  top: 5rpx;
 }
 
 .button {

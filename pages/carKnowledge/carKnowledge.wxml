@@ -1,6 +1,6 @@
 <!--pages/carKnowledge/carKnowledge.wxml-->
 
-<view class="carKnowledge_title">《飞鹰旅游用车须知协议》</view>
+<view class="carKnowledge_title">《飞鹰旅游用车须知》</view>
 
 <view class="carKnowledge_date">
     更新日期 : 2018年11月5日

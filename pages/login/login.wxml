@@ -24,7 +24,7 @@
                name="username"
                value="{{ username }}"
                placeholder="请输入你的用户名/手机号/邮箱"/>
-        <image wx:if="{{ username.length }}" bindtap="clearUsername"  class="image" style="margin-right: 0" src="../../images/clear.png"/>
+        <image wx:if="{{ username.length }}" bindtap="clearUsername"  class="image" style="margin-right: 0" src="../../images/delete.png"/>
       </view>
       <view hover-class="none" class="cell_bottom">
         <image class="image" src="../../images/pass.png"/>
@@ -34,7 +34,7 @@
             style="position: relative;top: 18rpx;width: 100%;"
             name="password" value="{{ password }}"
             placeholder="请输入您的密码"/>
-        <image wx:if="{{ password.length }}" bindtap="clearPassword" class="image" style="margin-right: 0;" src="../../images/clear.png"/>
+        <image wx:if="{{ password.length }}" bindtap="clearPassword" class="image" style="margin-right: 0;" src="../../images/delete.png"/>
       </view>
     </view>
     <view class="buttonView">

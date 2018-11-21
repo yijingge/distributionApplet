@@ -15,7 +15,7 @@
         <wux-col span="6">
           <view class="priceText">
             报价合计：
-            <text class="price_red">￥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
+            <text class="price_red">¥{{ item.offerMoney ? item.offerMoney : 0 }}</text>
           </view>
         </wux-col>
         <wux-col span="4">

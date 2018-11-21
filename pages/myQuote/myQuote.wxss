@@ -50,7 +50,7 @@ page {
   border-top: 1rpx solid #dddee1;
 }
 .pd30 {
-  padding: 24rpx;
+  padding: 30rpx;
 }
 .pbt30{
   padding: 30rpx 0;
@@ -67,7 +67,6 @@ page {
 
 .quoteTitle {
   font-size: 28rpx;
-  font-weight: 600;
 }
 .quoteInfo{
   padding-bottom: 32rpx;
@@ -82,7 +81,6 @@ page {
   position: relative;
   bottom: 4rpx;
   padding-left: 10rpx;
-  font-weight: 600;
   font-size: 28rpx;
 }
 
@@ -97,11 +95,13 @@ page {
 }
 
 .title {
-  padding: 30rpx;
+  padding: 22rpx 30rpx;
   font-size: 32rpx;
-  font-weight: 600;
 }
-
+.quoteMes{
+  padding: 22rpx 30rpx;
+  padding-top: 16rpx;
+}
 /*报价留言*/
 .row_title {
   font-size: 28rpx;

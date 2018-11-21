@@ -41,7 +41,7 @@ page {
 .button {
     width: 92%;
     height: 88rpx;
-    margin: 60rpx auto;
+    margin: 40rpx auto;
     background: #00aaff;
     border-radius: 10rpx;
     font-size: 36rpx;

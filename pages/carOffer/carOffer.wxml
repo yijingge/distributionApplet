@@ -30,6 +30,9 @@
         </wux-col>
       </wux-row>
     </view>
+    <wux-white-space size="large" />
+    <wux-white-space size="large" />
+    <wux-white-space size="large" />
     <wux-white-space body-style="height:20rpx"></wux-white-space>
     <view style="margin-bottom: 20rpx;" wx:for="{{item.carDemandOfferItemVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
       <view class="listTitle">
@@ -89,7 +92,7 @@
     </view>
   </view>
 
-  <wux-white-space body-style="height: 60rpx"></wux-white-space>
+  <wux-white-space body-style="height: 40rpx"></wux-white-space>
   <view class="footer">
     <wux-row>
       <wux-col span="6">

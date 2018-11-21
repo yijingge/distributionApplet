@@ -73,6 +73,12 @@
   border-bottom: 1px solid #dddee1;
   padding: 10rpx 20rpx 0 20rpx;
 }
+.cell_bottom{
+  height: 90rpx;
+  line-height: 90rpx;
+  display: flex;
+  padding: 10rpx 20rpx 0 20rpx;
+}
 .image{
   width: 34rpx;
   height:30rpx;

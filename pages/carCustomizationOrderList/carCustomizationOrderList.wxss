@@ -73,7 +73,7 @@ page {
 
 .card_content_row {
   display: block;
-  margin-top: 32rpx;
+  margin-top: 28rpx;
 }
 
 .card_content_left {

@@ -27,7 +27,7 @@
             <view style="width: 16%">
               <text class="text">{{ item.carLevelName === null ? 0 : item.carLevelName }}</text>
             </view>
-            <view class="quoteInfoView" style="padding-right: 36rpx;">
+            <view class="quoteInfoView" style="padding-right: 30rpx;">
               <text class="text">{{ item.seatNumber === null ? 0 : item.seatNumber }}座</text>
             </view>
             <view class="quoteInfoView" style="padding-right: 20rpx;">

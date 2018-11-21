@@ -41,7 +41,7 @@
                 出行时间
             </wux-col>
             <wux-col span="9" class="content_right">
-                {{pageData.assignTime}}
+                {{pageData.startTime}}
             </wux-col>
         </wux-row>
         <wux-row class="content_row">

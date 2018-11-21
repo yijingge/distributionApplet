@@ -20,7 +20,7 @@
         </wux-col>
         <wux-col span="4">
           <view style="text-align: right;margin-right: 56rpx;">
-            <button wx:if="{{item.carDemandOfferItemVOList.length < 6}}" hover-class="hoverActiveBtn" class="addBtn" bindtap="addItem">
+            <button wx:if="{{item.carDemandOfferItemVOList.length < 5}}" hover-class="hoverActiveBtn" class="addBtn" bindtap="addItem">
               新增车辆
             </button>
             <button disabled wx:if="{{item.carDemandOfferItemVOList.length > 4}}" class="disbaledBtn">

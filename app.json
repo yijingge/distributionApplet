@@ -2,10 +2,10 @@
   "pages": [
     "pages/login/login",
     "pages/carCustomizationOrderList/carCustomizationOrderList",
-    "pages/myQuote/myQuote",
-    "pages/carOffer/carOffer",
     "pages/carCustomizationOrderDetail/carCustomizationOrderDetail",
     "pages/immediateOffer/immediateOffer",
+    "pages/carOffer/carOffer",
+    "pages/myQuote/myQuote",
     "pages/carKnowledge/carKnowledge"
   ],
   "window": {
@@ -13,6 +13,7 @@
     "navigationBarBackgroundColor": "#00aaff",
     "navigationBarTitleText": "飞鹰车队ERP",
     "navigationBarTextStyle": "white",
+    "backgroundColor": "#f2f3f4",
     "enablePullDownRefresh": true
   }
 }

@@ -91,7 +91,7 @@ button::after {
 /*footer*/
 .primary{
   color: #fff!important;
-  background: #00aaff;
+  background: #00aaff!important;
 }
 .footerBtn{
   border: 1rpx solid #00aaff;
@@ -100,6 +100,7 @@ button::after {
   line-height: 88rpx;
   color: #00aaff;
   font-size: 36rpx;
+  background: none;
 }
 .input-placeholder{
   color: #999999;

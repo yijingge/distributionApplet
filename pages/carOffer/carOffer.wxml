@@ -6,7 +6,7 @@
   <wux-select id="wux-select2"/>
   <wux-select id="wux-select3"/>
 
-  <view wx:for="{{phoneCarDemandOfferVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+  <view style wx:for="{{phoneCarDemandOfferVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
     <view class="header">
       <wux-row>
         <wux-col span="2">
@@ -31,18 +31,14 @@
       </wux-row>
     </view>
     <wux-white-space body-style="height:20rpx"></wux-white-space>
-    <view wx:for="{{item.carDemandOfferItemVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+    <view style="margin-bottom: 20rpx;" wx:for="{{item.carDemandOfferItemVOList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
       <view class="listTitle">
-        <wux-row>
-          <wux-col span="6">
-            <image class="listTitleIcon" src="../../images/che.png"></image>
-          </wux-col>
-          <wux-col wx:if="{{index !== 0 }}" span="6" style="text-align: right">
-            <button data-index="{{ index }}" class="delBtn" bindtap="delItem" style="color: #00aaff;font-size: 28rpx;">
-              删除
-            </button>
-          </wux-col>
-        </wux-row>
+        <view  class=" {{ index == 0 ? 'addMgbotom' : '' }} ">
+          <image class="listTitleIcon" src="../../images/che.png"></image>
+        </view>
+        <view wx:if="{{ index !== 0 }}" style="text-align: right">
+          <button data-index="{{ index }}" class="delBtn" bindtap="delItem">删除</button>
+        </view>
       </view>
       <view class="page__bd">
         <wux-cell-group>

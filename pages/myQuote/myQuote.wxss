@@ -71,6 +71,12 @@ page {
 }
 .quoteInfo{
   padding-bottom: 32rpx;
+  display: flex;
+  /*justify-content: space-around;*/
+}
+.quoteInfoView{
+  width: 28%;
+  text-align: right;
 }
 .carName {
   position: relative;

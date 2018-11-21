@@ -19,23 +19,23 @@
         </wux-row>
         <wux-white-space body-style="height: 20px"/>
         <wux-row  wx:for="{{item.carDemandOfferItemEntityList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
-          <view class="">
+          <view>
             <image src="../../images/che.png" class="image_icon"></image>
             <text class="carName">{{ item.carBrandName === null ? 0 : item.carBrandName }}</text>
           </view>
           <view class="quoteInfo">
-            <wux-col span="3" push="0">
-              <text class="text alignCenter">{{ item.carLevelName === null ? 0 : item.carLevelName }}</text>
-            </wux-col>
-            <wux-col span="3" push="1">
-              <text class="text alignCenter">{{ item.seatNumber === null ? 0 : item.seatNumber }}座</text>
-            </wux-col>
-            <wux-col span="3" push="1">
-              <text class="text alignCenter">{{ item.carNumber === null ? 0 : item.carNumber  }}辆</text>
-            </wux-col>
-            <wux-col span="3" push="1">
-              <text class="text alignRight">{{ item.unitPrice === null ? 0 : item.unitPrice }}元</text>
-            </wux-col>
+            <view style="width: 16%">
+              <text class="text">{{ item.carLevelName === null ? 0 : item.carLevelName }}</text>
+            </view>
+            <view class="quoteInfoView" style="padding-right: 40rpx;">
+              <text class="text">{{ item.seatNumber === null ? 0 : item.seatNumber }}座</text>
+            </view>
+            <view class="quoteInfoView" style="padding-right: 10rpx;">
+              <text class="text">{{ item.carNumber === null ? 0 : item.carNumber  }}辆</text>
+            </view>
+            <view class="quoteInfoView">
+              <text class="text">{{ item.unitPrice === null ? 0 : item.unitPrice }}元</text>
+            </view>
           </view>
           <wux-white-space body-style="height: 32px"/>
         </wux-row>

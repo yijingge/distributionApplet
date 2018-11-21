@@ -169,7 +169,7 @@ page {
 .immediateOffer_checkBox {
     width: 92%;
     height: auto;
-    margin: 40rpx auto;
+    margin: 40rpx auto 20rpx auto;
 }
 
 .checkbox_text {

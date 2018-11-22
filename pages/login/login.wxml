@@ -45,6 +45,6 @@
     <image style="width: 100%; height: 380rpx;" src="../../images/bg.jpg"/>
   </view>
   <view class="copyright">
-    <text style="text-transform: capitalize">copyright @2013-2018 .all rights reserved. 飞鹰分销版权所有</text>
+    <text style="text-transform: capitalize">copyright @2016-2018 .all rights reserved. 飞鹰分销版权所有</text>
   </view>
 </ivew>

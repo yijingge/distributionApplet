@@ -1,7 +1,11 @@
 //app.js
 App({
   onLaunch: function () {
-    if (!wx.getStorageSync('token')) {
+    if (wx.getStorageSync('token')) {
+      wx.reLaunch({
+        url: "./pages/carCustomizationOrderList/carCustomizationOrderList"
+      })
+    } else {
       wx.reLaunch({
         url: "./pages/login/login"
       })

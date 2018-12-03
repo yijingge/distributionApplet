@@ -33,12 +33,25 @@ Page({
       success: function (res) {
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
+        if (res.statusCode === 401) {
+          wx.removeStorageSync('token')
+          $wuxToast().show({
+            type: 'forbidden',
+            duration: 1500,
+            color: '#fff',
+            text: '登录已超时'
+          })
+          wx.reLaunch({
+            url: "../login/login"
+          })
+          return false
+        }
         if (res.data.code) {
           $wuxToast().show({
             type: 'forbidden',
             duration: 1500,
             color: '#fff',
-            text: '请求失败'
+            text: res.data.msg
           })
           return false
         }
@@ -185,12 +198,25 @@ Page({
         },
         success: function (res) {
           _this.$wuxLoading.hide()
+          if (res.statusCode === 401) {
+            wx.removeStorageSync('token')
+            $wuxToast().show({
+              type: 'forbidden',
+              duration: 1500,
+              color: '#fff',
+              text: '登录已超时'
+            })
+            wx.reLaunch({
+              url: "../login/login"
+            })
+            return false
+          }
           if (res.data.code) {
             $wuxToast().show({
               type: 'forbidden',
               duration: 1500,
               color: '#fff',
-              text: '请求失败'
+              text: res.data.msg
             })
             return false
           }

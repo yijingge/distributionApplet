@@ -34,7 +34,6 @@ Page({
   // 登录功能
   login: function () {
     var _this = this
-    console.log(_this.data)
     if (_this.data.username === '' || _this.data.username === null || _this.data.username === undefined) {
       $wuxToast().show({
         type: 'text',

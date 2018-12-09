@@ -30,17 +30,17 @@ Page({
       success: function (res) {
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
-        if (res.statusCode === 401) {
+        if (res.statusCode === 401 || res.statusCode === 410) {
           wx.removeStorageSync('token')
           $wuxToast().show({
             type: 'forbidden',
             duration: 1500,
             color: '#fff',
-            text: '登录已超时'
-          })
-          wx.reLaunch({
+            text: '登录状态已失效',
+            success: () => wx.reLaunch({
             url: "../login/login"
           })
+        })
           return false
         }
         if (res.data.code) {

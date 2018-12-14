@@ -31,7 +31,7 @@ Page({
       success: function (res) {
         _this.$wuxLoading.hide()
         wx.stopPullDownRefresh() // 停止下拉刷新
-        if (res.statusCode === 401 || res.statusCode === 410) {
+        if (res.statusCode === 401 || res.statusCode === 410 || res.statusCode === 403) {
           wx.removeStorageSync('token')
           $wuxToast().show({
             type: 'forbidden',
@@ -136,7 +136,7 @@ Page({
           phoneCarDemandOfferVOList: _this.data.phoneCarDemandOfferVOList
         },
         success: function (res) {
-          if (res.statusCode === 401 || res.statusCode === 410) {
+          if (res.statusCode === 401 || res.statusCode === 410 || res.statusCode === 403) {
             wx.removeStorageSync('token')
             $wuxToast().show({
               type: 'forbidden',
